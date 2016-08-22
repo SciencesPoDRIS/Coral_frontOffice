@@ -1,0 +1,29 @@
+{
+  "name": "coral_frontoffice",
+  "description": "Web interface of our ERM based on Coral Backoffice",
+  "main": "index.html",
+  "authors": [
+    "annelhote"
+  ],
+  "license": "LGPL-3.0",
+  "keywords": [
+    "Angular",
+    "ElasticSearch",
+    "Library",
+    "SciencesPo",
+    "ElectroniResources",
+    "ERM"
+  ],
+  "homepage": "https://github.com/SciencesPoDRIS/Coral_frontOffice",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "elasticsearch": "^11.0.1"
+  }
+}
