@@ -1,0 +1,9 @@
+#
+# Mac files
+# 
+.DS_Store
+
+#
+# Bower dependency directory
+#
+bower_components
