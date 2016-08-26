@@ -24,6 +24,10 @@
   ],
   "dependencies": {
     "angular": "^1.5.8",
-    "elasticsearch": "^11.0.1"
+    "elasticsearch": "^11.0.1",
+    "angular-ui-grid": "^3.2.1"
+  },
+  "resolutions": {
+    "angular": "^1.5.8"
   }
 }
