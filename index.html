@@ -19,23 +19,23 @@
             <section class='searchField'>
                 <form ng-submit='search()'>
                     <input ng-model='searchTerm' type='text'>
-                    <input type='submit' value='Search for recipes'>
+                    <input type='submit' value='Search for electronic resources'>
                 </form>
             </section>
             <section class='results'>
-                <div class='no-recipes' ng-hide='recipes.length'>No results</div>
-                <article class='recipe' ng-cloak ng-repeat='recipe in recipes'>
-                    {{recipe.titletext_fr}}
+                <div class='no-result' ng-hide='results.length'>No results</div>
+                <article class='result' ng-cloak ng-repeat='result in results'>
+                    {{result.titletext_fr}}
                     <!--
                     <h2>
-                        <a ng-href='{{recipe.url}}'>{{recipe.name}}</a>
+                        <a ng-href='{{result.url}}'>{{result.name}}</a>
                     </h2>
                     <ul>
-                        <li ng-repeat='ingredient in recipe.ingredients'>{{ ingredient }}</li>
+                        <li ng-repeat='ingredient in result.ingredients'>{{ ingredient }}</li>
                     </ul>
                     <p>
-                        {{recipe.description}}
-                        <a ng-href='{{recipe.url}}'>... more at {{recipe.source}}</a>
+                        {{result.description}}
+                        <a ng-href='{{result.url}}'>... more at {{result.source}}</a>
                     </p>
                     -->
                 </article>
