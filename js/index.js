@@ -4,7 +4,7 @@
     /**
      * Create the module. Set it up to use html5 mode.
      */
-    var app = angular.module('electronicResources', ['elasticsearch'], ['$locationProvider', function($locationProvider) {
+    var app = angular.module('eResources', ['elasticsearch', 'ngMaterial'], ['$locationProvider', function($locationProvider) {
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
@@ -28,9 +28,25 @@
         var search = function(term, offset) {
             var deferred = $q.defer();
             var query = {
+                // Get all the resources containing term in any field
                 "match": {
                     "_all": term
                 }
+                // Get all the resources containing "cairn" in "titletext" field
+                // "match": {
+                //     "titletext": "cairn"
+                // }
+                // Get all the resources containing "cairn" in "titletext" field AND "collection" in "descriptiontext"
+                // "bool" : {
+                //     "must" : [
+                //         { "match" : { "titletext" : "cairn" }},
+                //         { "match" : { "descriptiontext" : "collection" }}
+                //     ]
+                // }
+                // Get all the resources whose "titletext" field starts with "A"
+                // "match_phrase_prefix" :{
+                //     "titletext" : "A"
+                // }
             };
 
             client.search({
@@ -62,28 +78,14 @@
     /**
      * Create a controller to interact with the UI.
      */
-    app.controller('resourcesCtrl', ['eresourcesService', '$scope', '$location', function(eresourcesService, $scope, $location) {
-        // Provide some nice initial choices
-        var initChoices = [
-            "rendang",
-            "nasi goreng",
-            "pad thai",
-            "pizza",
-            "lasagne",
-            "ice cream",
-            "schnitzel",
-            "hummous"
-        ];
-        var idx = Math.floor(Math.random() * initChoices.length);
-
+    app.controller('eresourcesCtrl', ['eresourcesService', '$scope', '$location', function(eresourcesService, $scope, $location) {
         // Initialize the scope defaults.
         $scope.results = []; // An array of results to display
         $scope.page = 0; // A counter to keep track of our current page
         $scope.allResults = false; // Whether or not all results have been found.
 
         // And, a random search term to start if none was present on page load.
-        // $scope.searchTerm = $location.search().q || initChoices[idx];
-        $scope.searchTerm = $location.search().q;
+        $scope.searchTerm = $location.search().q || '';
 
         /**
          * A fresh search. Reset the scope variables to their defaults, set
@@ -103,7 +105,11 @@
          * whether all results have been returned (i.e. were 10 results returned?)
          */
         $scope.loadMore = function() {
-            eresourcesService.search($scope.searchTerm, $scope.page++).then(function(results) {
+            eresourcesService.search($scope.searchTerm, $scope.page++).then(function(r) {
+                var results = $.map(r, function(result) {
+                    return { logo: result.logo, title : result.titletext, description : result.descriptiontext, url : result.resourceurl }
+                });
+
                 if (results.length !== 10) {
                     $scope.allResults = true;
                 }
