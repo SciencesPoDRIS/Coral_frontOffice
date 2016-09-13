@@ -4,17 +4,21 @@
     /**
      * Create the module. Set it up to use html5 mode.
      */
-    var app = angular.module('eResources', ['elasticsearch', 'ngMaterial'], ['$locationProvider', function($locationProvider) {
+    var app = angular.module('eResources', ['elasticsearch', 'ngMaterial', 'elasticui'], ['$locationProvider', function($locationProvider) {
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
         });
     }]);
 
+    // Set to my local cluster address
+    app.constant('euiHost', 'http://localhost:9200/coral');
+
     /**
      * Create a service to power calls to Elasticsearch. We only need to
      * use the _search endpoint.
      */
+    /*
     app.factory('eresourcesService', ['$q', 'esFactory', '$location', function($q, elasticsearch, $location) {
         var client = elasticsearch({
             host: $location.host() + ":9200"
@@ -25,6 +29,7 @@
          *
          * Returns a promise.
          */
+        /*
         var search = function(term, offset) {
             var deferred = $q.defer();
             var query = {
@@ -78,6 +83,7 @@
     /**
      * Create a controller to interact with the UI.
      */
+    /*
     app.controller('eresourcesCtrl', ['eresourcesService', '$scope', '$location', function(eresourcesService, $scope, $location) {
         // Initialize the scope defaults.
         $scope.results = []; // An array of results to display
@@ -91,6 +97,7 @@
          * A fresh search. Reset the scope variables to their defaults, set
          * the q query parameter, and load more results.
          */
+        /*
         $scope.search = function() {
             $scope.page = 0;
             $scope.results = [];
@@ -104,6 +111,7 @@
          * When query is finished, push results onto $scope.results and decide
          * whether all results have been returned (i.e. were 10 results returned?)
          */
+        /*
         $scope.loadMore = function() {
             eresourcesService.search($scope.searchTerm, $scope.page++).then(function(r) {
                 var results = $.map(r, function(result) {
@@ -123,6 +131,12 @@
 
         // Load results on first run
         $scope.loadMore();
+    }]);
+    */
+
+    app.controller('eresourcesCtrl', ['$scope', function($scope) {
+        // console.log('eresourcesCtrl');
+        // console.log($scope.indexVM.results.hits.total);
     }]);
 
 })();
