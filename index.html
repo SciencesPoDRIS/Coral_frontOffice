@@ -10,76 +10,78 @@
     <link href="css/index.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 
-<body class='index' ng-app='eResources' eui-index="'resource'">
-    <!--
-    <div class='container'>
-        <div ng-controller='eresourcesCtrl' eui-index="'resource'">
-            <header>
-                <h1>Electronic Resources</h1>
-            </header>
-            <section class='searchField'>
-                <form ng-submit='search()'>
-                    <input ng-model='searchTerm' type='text'>
-                    <input type='submit' value='Search for electronic resources'>
-                </form>
-            </section>
-            <section class='results'>
-                <div class='no-result' ng-hide='results.length'>No results</div>
-                <div>{{results.length}} results</div>
-                <article class='result' ng-cloak ng-repeat='result in results'>
-                    <div layout="row">
-                        <div flex>
-                            <img ng-src="../Coral/resources/logo/{{result.logo}}" alt=""></img>
+<body class="index" ng-app="eResources" eui-index="'resource'">
+    <div layout="column" layout-margin ng-controller="eresourcesCtrl">
+        <div>HEADER</div>
+        <div>{{indexVM.results.hits.total}} ressources</div>
+        <div>
+            <div layout="row" layout-margin>
+                <div flex="20">
+                    <a href="www.google.fr">
+                        <div layout="row">
+                            <div flex="30">
+                                <img src="./images/tchat.png" layout-fill />
+                            </div>
+                            <div flex="70">
+                                Besoin d'aide
+                            </div>
                         </div>
-                        <div flex layout="column">
-                            <h2>
-                                <a ng-href=''>{{result.title}}</a>
-                            </h2>
-                            <p>
-                                {{result.description}}
-                            </p>
+                    </a>
+                    <div>
+                        Charte d'utilisation des ressources numériques
+                    </div>
+                    <div>
+                        Légende
+                    </div>
+                </div>
+                <div flex="60">
+                    <div layout="column">
+                        <div class="alphabetical-order">
+                            A B C D E ...
+                        </div>
+                        <div flex>
+                            <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" layout-margin>
+                                <div flex="15">
+                                    <img src="http://coral:8888/resources/logo/{{doc._source.logo}}" alt="Logo" layout-fill>
+                                </div>
+                                <div flex="70">
+                                    <div layout="column">
+                                        <div>
+                                            {{doc._source.titletext | uppercase | limitTo: 50}}
+                                        </div>
+                                        <div>
+                                            {{doc._source.descriptiontext | limitTo: 150}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div flex="15">
+                                    <div layout="column">
+                                        <div>locker</div>
+                                        <div>info</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <eui-simple-paging></eui-simple-paging>
                         </div>
                     </div>
-                </article>
-                <div class='load-more' ng-cloak ng-hide='allResults'>
-                    <a ng-click='loadMore()'>More...</a>
                 </div>
-            </section>
-            <footer>
-            </footer>
-        </div>
-    </div>
-    -->
-
-    <div class="container-fluid" ng-controller='eresourcesCtrl'>
-
-        <div class="row">
-            <div class="col-xs-3 sidebar">
-                <h3>Search</h3>
-                <eui-searchbox field="'titletext'"></eui-searchbox> <!-- ACTION: change to field to search on -->
-                <h3>Single select facet</h3>
-                <eui-singleselect field="'types'" size="5"></eui-singleselect> <!-- ACTION: change to field to use as facet -->
-                <h3>Multi select facet</h3>
-                <eui-checklist field="'subjects'" size="10"></eui-checklist> <!-- ACTION: change to field to use as facet -->
-                <h3>Results Per Page</h3>
-                <select ng-model="indexVM.pageSize">
-                    <option ng-repeat="item in [10, 20, 50, 100]">{{item}}</option>
-                </select>
-            </div>
-            <div class="col-xs-9 col-xs-offset-3 main">
-                <div class="instructions panel panel-primary">
-                <h1>{{indexVM.results.hits.total}} Results</h1>
-                <ul>
-                    <li ng-repeat="doc in indexVM.results.hits.hits">
-                        {{doc._source | json | limitTo: 500}} <!-- OPTIONAL: display more meaningful data instead of json -->
-                    </li>
-                </ul>
-                <eui-simple-paging></eui-simple-paging>
+                <div flex="20">
+                    <div>
+                        <h3>Sujets</h3>
+                        <eui-singleselect field="'subjects'" size="5"></eui-singleselect>
+                    </div>
+                    <div>
+                        <h3>Types de contenu</h3>
+                        <eui-checklist field="'types'" size="10"></eui-checklist>
+                    </div>
+                    <div>
+                        <h3>Types d'accès</h3>
+                        <eui-checklist field="'accesstype'" size="10"></eui-checklist>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
