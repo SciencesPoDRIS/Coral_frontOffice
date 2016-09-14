@@ -4,12 +4,20 @@
     /**
      * Create the module. Set it up to use html5 mode.
      */
-    var app = angular.module('eResources', ['ngMaterial', 'pascalprecht.translate', 'elasticsearch', 'elasticui'], ['$locationProvider', function($locationProvider) {
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        });
-    }]);
+    var app = angular.module('eResources', [
+            'ngMaterial',
+            'pascalprecht.translate',
+            'elasticsearch',
+            'elasticui',
+            'eResources.filters'
+        ],
+        ['$locationProvider', function($locationProvider) {
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
+            });
+        }]
+    );
 
     // Set to my local cluster address
     app.constant('euiHost', 'http://localhost:9200/coral');
