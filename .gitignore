@@ -7,3 +7,8 @@
 # Bower dependency directory
 #
 bower_components
+
+#
+# Images folder
+#
+images
