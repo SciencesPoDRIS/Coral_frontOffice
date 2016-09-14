@@ -8,5 +8,6 @@
     "LEGEND" : "Légende",
     "SUBJECTS" : "Sujets",
     "CONTENT_TYPE" : "Types de contenu",
-    "ACCESS_TYPE" : "Types d'accès"
+    "ACCESS_TYPE" : "Types d'accès",
+    "newspapers" : "Journeaux"
 }

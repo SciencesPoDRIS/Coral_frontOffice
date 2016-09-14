@@ -44,9 +44,9 @@
                             A B C D E ...
                         </div>
                         <div flex>
-                            <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" ng-if "indexVM.results.hits.hits.length" layout-margin>
+                            <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" layout-margin>
                                 <div flex="15">
-                                    <img src="http://coral:8888/resources/logo/{{doc._source.logo}}" alt="Logo" layout-fill>
+                                    <img ng-src="http://coral:8888/resources/logo/{{doc._source.logo}}" alt="Logo" layout-fill>
                                 </div>
                                 <div flex="70">
                                     <div layout="column">
@@ -76,7 +76,14 @@
                     </div>
                     <div>
                         <h3>{{'CONTENT_TYPE' | translate}}</h3>
-                        <eui-checklist field="'types'" size="10"></eui-checklist>
+                        <!-- <eui-checklist field="'types'" size="10"></eui-checklist> -->
+                        <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('types').field('types').size(10)">
+                            <li ng-repeat="bucket in aggResult.buckets">
+                                <label class="checkbox" eui-filter="ejs.TermsFilter(field, bucket.key)">
+                                    <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
+                                </label>
+                            </li>
+                        </ul>
                     </div>
                     <div>
                         <h3>{{'ACCESS_TYPE' | translate}}</h3>
@@ -97,7 +104,7 @@
     <script type="text/javascript" src="bower_components/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
     <script type="text/javascript" src="js/elasticui.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </body>
 
 </html>
