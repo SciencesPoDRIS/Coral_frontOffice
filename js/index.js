@@ -4,7 +4,7 @@
     /**
      * Create the module. Set it up to use html5 mode.
      */
-    var app = angular.module('eResources', ['elasticsearch', 'ngMaterial', 'elasticui'], ['$locationProvider', function($locationProvider) {
+    var app = angular.module('eResources', ['ngMaterial', 'pascalprecht.translate', 'elasticsearch', 'elasticui'], ['$locationProvider', function($locationProvider) {
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
@@ -13,6 +13,29 @@
 
     // Set to my local cluster address
     app.constant('euiHost', 'http://localhost:9200/coral');
+
+    app.config(function($translateProvider) {
+        // Enable localStorage to save on bandwidth and loading costs
+        // $translateProvider.useLocalStorage();
+        // Our translations will go in here
+        // $translateProvider.translations('fr', {
+        //         RESOURCES: 'ressources',
+        //         BUTTON_TEXT_FR: 'français',
+        //         BUTTON_TEXT_EN: 'anglais'
+        //     })
+        //     .translations('en', {
+        //         RESOURCES: 'resources',
+        //         BUTTON_TEXT_FR: 'french',
+        //         BUTTON_TEXT_EN: 'english'
+        //     });
+        $translateProvider.useStaticFilesLoader({
+            prefix: 'languages/',
+            suffix: '.json'
+        });
+        // Default language is french
+        $translateProvider.preferredLanguage('fr');
+        $translateProvider.useSanitizeValueStrategy('escape');
+    });
 
     /**
      * Create a service to power calls to Elasticsearch. We only need to
@@ -29,7 +52,7 @@
          *
          * Returns a promise.
          */
-        /*
+    /*
         var search = function(term, offset) {
             var deferred = $q.defer();
             var query = {
@@ -97,21 +120,21 @@
          * A fresh search. Reset the scope variables to their defaults, set
          * the q query parameter, and load more results.
          */
-        /*
-        $scope.search = function() {
-            $scope.page = 0;
-            $scope.results = [];
-            $scope.allResults = false;
-            $location.search({ 'q': $scope.searchTerm });
-            $scope.loadMore();
-        };
+    /*
+    $scope.search = function() {
+        $scope.page = 0;
+        $scope.results = [];
+        $scope.allResults = false;
+        $location.search({ 'q': $scope.searchTerm });
+        $scope.loadMore();
+    };
 
-        /**
-         * Load the next page of results, incrementing the page counter.
-         * When query is finished, push results onto $scope.results and decide
-         * whether all results have been returned (i.e. were 10 results returned?)
-         */
-        /*
+    /**
+     * Load the next page of results, incrementing the page counter.
+     * When query is finished, push results onto $scope.results and decide
+     * whether all results have been returned (i.e. were 10 results returned?)
+     */
+    /*
         $scope.loadMore = function() {
             eresourcesService.search($scope.searchTerm, $scope.page++).then(function(r) {
                 var results = $.map(r, function(result) {
@@ -134,9 +157,10 @@
     }]);
     */
 
-    app.controller('eresourcesCtrl', ['$scope', function($scope) {
-        // console.log('eresourcesCtrl');
-        // console.log($scope.indexVM.results.hits.total);
+    app.controller('eresourcesCtrl', ['$scope', '$translate', function($scope, $translate) {
+        $scope.changeLanguage = function(langKey) {
+            $translate.use(langKey);
+        };
     }]);
 
 })();

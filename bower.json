@@ -27,7 +27,10 @@
     "elasticsearch": "^11.0.1",
     "jquery": "^3.1.0",
     "angular-material": "^1.1.0",
-    "elastic.js": "^1.2.0"
+    "elastic.js": "^1.2.0",
+    "angular-translate": "^2.12.0",
+    "angular-translate-loader-url": "^2.12.0",
+    "angular-translate-loader-static-files": "^2.12.0"
   },
   "resolutions": {
     "angular": "^1.5.8"

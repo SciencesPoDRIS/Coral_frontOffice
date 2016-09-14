@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="eResources">
 
 <head>
     <meta charset='utf-8'>
     <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>Electronic Resources</title>
+    <title>{{'ELECTRONIC_RESOURCES' | translate}}</title>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link href="css/index.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="index" ng-app="eResources" eui-index="'resource'">
+<body class="index" eui-index="'resource'">
     <div layout="column" layout-margin ng-controller="eresourcesCtrl">
+        <div>
+            <button ng-click="changeLanguage('fr')" translate="LANGUAGE_FR"></button>
+            <button ng-click="changeLanguage('en')" translate="LANGUAGE_EN"></button>
+        </div>
         <div>HEADER</div>
-        <div>{{indexVM.results.hits.total}} ressources</div>
+        <div>{{indexVM.results.hits.total}} {{'RESOURCES' | translate}}</div>
         <div>
             <div layout="row" layout-margin>
                 <div flex="20">
@@ -23,15 +27,15 @@
                                 <img src="./images/tchat.png" layout-fill />
                             </div>
                             <div flex="70">
-                                Besoin d'aide
+                                {{'NEED_HELP' | translate}}
                             </div>
                         </div>
                     </a>
                     <div>
-                        Charte d'utilisation des ressources numériques
+                        {{'USAGE_CONVENTION' | translate}}
                     </div>
                     <div>
-                        Légende
+                        {{'LEGEND' | translate}}
                     </div>
                 </div>
                 <div flex="60">
@@ -40,7 +44,7 @@
                             A B C D E ...
                         </div>
                         <div flex>
-                            <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" layout-margin>
+                            <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" ng-if "indexVM.results.hits.hits.length" layout-margin>
                                 <div flex="15">
                                     <img src="http://coral:8888/resources/logo/{{doc._source.logo}}" alt="Logo" layout-fill>
                                 </div>
@@ -67,15 +71,15 @@
                 </div>
                 <div flex="20">
                     <div>
-                        <h3>Sujets</h3>
+                        <h3>{{'SUBJECTS' | translate}}</h3>
                         <eui-singleselect field="'subjects'" size="5"></eui-singleselect>
                     </div>
                     <div>
-                        <h3>Types de contenu</h3>
+                        <h3>{{'CONTENT_TYPE' | translate}}</h3>
                         <eui-checklist field="'types'" size="10"></eui-checklist>
                     </div>
                     <div>
-                        <h3>Types d'accès</h3>
+                        <h3>{{'ACCESS_TYPE' | translate}}</h3>
                         <eui-checklist field="'accesstype'" size="10"></eui-checklist>
                     </div>
                 </div>
@@ -89,6 +93,9 @@
     <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
     <script type="text/javascript" src="bower_components/elasticsearch/elasticsearch.angular.js"></script>
     <script type="text/javascript" src="bower_components/elastic.js/dist/elastic.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
     <script type="text/javascript" src="js/elasticui.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 </body>
