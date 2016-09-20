@@ -1,0 +1,248 @@
+/* Base styles */
+
+body {
+    font-family: "Arial";
+    color: #444;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 24px;
+    line-height: 24px;
+}
+
+li+li {
+    margin-top: 0px;
+}
+
+.container {
+    width: 100%;
+    margin: 0px auto;
+}
+
+.no-border {
+    border: none !important;
+}
+
+
+/* Header */
+
+.menu {
+    list-style: none;
+    padding: 0 0 0.5em;
+}
+
+.menu > li {
+    display: inline;
+}
+
+@media (max-width: 767px) {
+    .menu > li {
+        float: left;
+        width: 100%;
+    }
+}
+
+.menu > li:nth-child(1):before {
+    display: none;
+}
+
+#header-inmedia_1 {
+    background-color: white;
+    height: 68px;
+    margin-bottom: 3px;
+}
+
+@media (max-width: 767px) {
+    #header-inmedia_1 {
+        height: auto;
+        padding-bottom: 5px;
+    }
+}
+
+#logo-tools {
+    border-bottom: 3px solid #e6142d;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    #logo-tools {
+        position: initial;
+    }
+}
+
+.logo_scpo {
+    padding: 0 15px;
+    width: 11%;
+}
+
+@media (max-width: 767px) {
+    .logo_scpo {
+        float: left;
+        margin: 6px;
+        position: initial;
+    }
+}
+
+.logo_scpo img {
+    height: 29px;
+    margin-bottom: 17px;
+    margin-left: 18px;
+    margin-top: 17px;
+}
+
+@media (max-width: 767px) {
+    .logo_scpo img {
+        margin: 0;
+    }
+}
+
+ul#menu_appli {
+    float: left;
+    margin-right: 5px;
+    position: relative;
+    top: 5px;
+    width: 450px;
+}
+
+@media (max-width: 767px) {
+    ul#menu_appli {
+        margin: 0 0 5px 0;
+    }
+}
+
+ul#menu_appli li a {
+    color: #e6142d;
+    display: inline;
+    padding: 0;
+}
+
+ul#menu_appli li a::after {
+    color: #343333;
+    content: " |";
+}
+
+ul#menu_appli li:last-child a::after {
+    content: "";
+}
+
+@media (max-width: 767px) {
+    ul#menu_appli li a::after {
+        content: "";
+    }
+}
+
+.navbar {
+    font-size: 0.8em;
+    font-family: Roboto Condensed, sans-sefir;
+    background-color: transparent;
+    left: 67px;
+    top: 8px;
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        margin: 0 10px;
+        padding: 0;
+        position: initial;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-nav > li {
+        float: none;
+    }
+}
+
+#cata_ent {
+    border-radius: 5px;
+    font-size: 14px;
+    height: 45px !important;
+    padding: 3px;
+    position: relative;
+    width: 585px;
+}
+
+@media (max-width: 767px) {
+    #cata_ent {
+        height: 165px !important;
+        width: 100%;
+    }
+    #cata_ent > a {
+        float: left;
+        height: 32px;
+        width: 100%;
+    }
+}
+
+#social {
+    float: left;
+    position: relative;
+    top: 10px;
+}
+
+.desc-appli {
+    height: 68px;
+    position: fixed;
+    right: 30px;
+    top: -5px;
+    width: 250px;
+}
+
+@media (max-width: 767px) {
+    .desc-appli {
+        position: initial;
+        text-align: center;
+        width: initial;
+    }
+}
+
+.horaire_bloc {
+    background: #f6f4f3 url('http://sciencespo.fr/bibliotheque/sites/sciencespo.fr.bibliotheque/files/icones/schedule.png') no-repeat right top;
+    background-size: 25px 25px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.8em;
+    padding: 5px 2px 2px 3px;
+    width: 228px;
+}
+
+.horaire_bloc h2 {
+    left: -100000000000px;
+    position: absolute;
+}
+
+.horaire_bloc a {
+    color: #e6142d;
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+/* Block styles */
+
+header,
+section,
+footer {
+    margin: 48px 0;
+}
+
+.alphabetical-order {
+    height: 50px;
+}
+
+.fill {
+    max-height: 100%;
+    max-width: 100%;
+}
