@@ -8,8 +8,7 @@
             'ngMaterial',
             'pascalprecht.translate',
             'elasticsearch',
-            'elasticui',
-            'eResources.filters'
+            'elasticui'
         ],
         ['$locationProvider', function($locationProvider) {
             $locationProvider.html5Mode({
