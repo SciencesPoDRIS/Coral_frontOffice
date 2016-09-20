@@ -40,3 +40,8 @@ footer {
 .alphabetical-order {
     height: 50px;
 }
+
+.fill {
+    max-height: 100%;
+    max-width: 100%;
+}
