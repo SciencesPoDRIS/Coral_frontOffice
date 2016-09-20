@@ -14,14 +14,13 @@
     <div layout="column" ng-controller="eresourcesCtrl">
         <div ng-include="'partials/header.html'"></div>
         <div>
-            <button ng-click="changeLanguage('fr')" translate="LANGUAGE_FR"></button>
-            <!-- <button ng-click="changeLanguage('en')" translate="LANGUAGE_EN"></button> -->
+            <button ng-click="changeLanguage()">{{languageLabel | translate}}</button>
         </div>
         <div>{{indexVM.results.hits.total}} {{'RESOURCES' | translate}}</div>
         <div>
             <div layout="row" layout-margin>
                 <div flex="20">
-                    <a href="www.google.fr">
+                    <a href="http://www.sciencespo.fr/bibliotheque/fr/a-votre-ecoute/nous-contacter" target="_blank">
                         <div layout="row">
                             <div flex="30">
                                 <img src="./images/tchat.png" layout-fill />
@@ -32,7 +31,9 @@
                         </div>
                     </a>
                     <div>
-                        {{'USAGE_CONVENTION' | translate}}
+                        <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">
+                            {{'USAGE_CONVENTION' | translate}}
+                        </a>
                     </div>
                     <div>
                         {{'LEGEND' | translate}}

@@ -36,8 +36,20 @@
 
     app.controller('eresourcesCtrl', ['$scope', '$translate', function($scope, $translate) {
         // Language switcher
-        $scope.changeLanguage = function(langKey) {
-            $translate.use(langKey);
+        $scope.languageLabel = 'LANGUAGE_EN';
+        $scope.changeLanguage = function() {
+            switch($translate.use()) {
+                case 'fr' :
+                    $scope.languageLabel = 'LANGUAGE_FR';
+                    $translate.use('en');
+                    break;
+                case 'en' :
+                    $scope.languageLabel = 'LANGUAGE_EN';
+                    $translate.use('fr');
+                    break;
+                default:
+                    break;
+            }
         };
     }]);
 
