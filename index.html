@@ -7,16 +7,16 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>{{'ELECTRONIC_RESOURCES' | translate}}</title>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-    <link href="css/index.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/app.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="index" eui-index="'resource'">
-    <div layout="column" layout-margin ng-controller="eresourcesCtrl">
+    <div layout="column" ng-controller="eresourcesCtrl">
+        <div ng-include="'partials/header.html'"></div>
         <div>
             <button ng-click="changeLanguage('fr')" translate="LANGUAGE_FR"></button>
-            <button ng-click="changeLanguage('en')" translate="LANGUAGE_EN"></button>
+            <!-- <button ng-click="changeLanguage('en')" translate="LANGUAGE_EN"></button> -->
         </div>
-        <div>HEADER</div>
         <div>{{indexVM.results.hits.total}} {{'RESOURCES' | translate}}</div>
         <div>
             <div layout="row" layout-margin>
@@ -72,7 +72,15 @@
                 <div flex="20">
                     <div>
                         <h3>{{'SUBJECTS' | translate}}</h3>
-                        <eui-singleselect field="'subjects'" size="5"></eui-singleselect>
+                        <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(5)">
+                            <li ng-repeat="bucket in aggResult.buckets">
+                                <label eui-filter="ejs.TermsFilter(field, bucket.key)">
+                                    <span ng-if="!filter.enabled"><a href="" ng-click="filter.enabled=true">{{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span></a>
+                                    </span>
+                                    <span ng-if="filter.enabled">{{bucket.key | translate}} <a href="" ng-click="filter.enabled=false" class="facet-remove">x</a></span>
+                                </label>
+                            </li>
+                        </ul>
                     </div>
                     <div>
                         <h3>{{'CONTENT_TYPE' | translate}}</h3>
