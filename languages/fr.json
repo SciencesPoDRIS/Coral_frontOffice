@@ -9,5 +9,18 @@
     "SUBJECTS" : "Sujets",
     "CONTENT_TYPE" : "Types de contenu",
     "ACCESS_TYPE" : "Types d'accès",
-    "newspapers" : "Journeaux"
+    "E-journals platforms" : "Bases de revues",
+    "E-books platforms" : "Bases d'e-books",
+    "National licenses" : "Licences nationales",
+    "Online newspapers" : "Presse en ligne",
+    "Working papers" : "Working papers",
+    "Reference tools" : "Encyclopédies et dictionnaires",
+    "Audiovisual material" : "NO TRANSLATION",
+    "Official publications" : "Publications officielles",
+    "Country profiles" : "Etudes pays",
+    "Maps" : "Cartes",
+    "Local and remote access" : "Accès local et distant",
+    "Free access" : "Accès gratuit",
+    "Local access" : "Accès local",
+    "Restricted access" : "Accès restreint"
 }
