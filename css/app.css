@@ -249,3 +249,9 @@ ul#menu_appli li:last-child a::after {
 .letter {
     margin: 5px;
 }
+
+.icon {
+    vertical-align: middle;
+    max-height: 20px;
+    max-width: 20px;
+}

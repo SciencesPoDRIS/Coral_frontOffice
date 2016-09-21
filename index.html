@@ -35,19 +35,23 @@
                             {{'USAGE_CONVENTION' | translate}}
                         </a>
                     </div>
-                    <div>
-                        {{'LEGEND' | translate}}
-                    </div>
                 </div>
                 <div flex="60">
                     <div layout="column">
-                        <div class="alphabetical-order">
-                            A B C D E ...
+                        <div layout="row">
+                            <div ng-repeat="letter in alphabet" class="letter">
+                                <a href ng-click="filterByLetter();">
+                                    {{letter}}
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="text" eui-query="ejs.MatchQuery('title_fr', querystring).type('phrase_prefix')" ng-model="querystring" eui-enabled="querystring.length" />
                         </div>
                         <div flex>
                             <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" layout-margin>
                                 <div flex="15">
-                                    <img ng-src="http://coral:8888/resources/logo/{{doc._source.logo}}" alt="Logo" class="fill">
+                                    <img ng-src="../../dris_devdoc/Coral/resources/logo/{{doc._source.logo}}" alt="Logo" class="fill">
                                 </div>
                                 <div flex="70">
                                     <div layout="column">
@@ -62,7 +66,6 @@
                                 <div flex="15">
                                     <div layout="column">
                                         <div>locker</div>
-                                        <div>info</div>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +101,9 @@
                         <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('accesstype').field('accesstype').size(10)">
                             <li ng-repeat="bucket in aggResult.buckets">
                                 <label class="checkbox" eui-filter="ejs.TermsFilter(field, bucket.key)">
-                                    <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
+                                    <input type="checkbox" ng-model="filter.enabled">
+                                    <img ng-src="images/{{bucket.key | getImageUrl}}" class="icon"/>
+                                    {{bucket.key | translate}} ({{bucket.doc_count}})
                                 </label>
                             </li>
                         </ul>
@@ -119,6 +124,7 @@
     <script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
     <script type="text/javascript" src="js/elasticui.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/filters.js"></script>
 </body>
 
 </html>
