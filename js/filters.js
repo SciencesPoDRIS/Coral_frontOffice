@@ -8,7 +8,6 @@
     app.filter('getImageUrl', [
         function() {
             return function(input, $scope, facet) {
-                console.log(input);
                 var tmp = '';
                 switch(input) {
                     case 'Local and remote access' :
