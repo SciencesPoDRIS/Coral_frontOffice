@@ -28,6 +28,20 @@ li+li {
     margin: 0px auto;
 }
 
+header,
+section,
+footer {
+    margin: 48px 0;
+}
+
+
+/* Tool class */
+
+.fill {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 .no-border {
     border: none !important;
 }
@@ -232,17 +246,6 @@ ul#menu_appli li:last-child a::after {
 
 /* Block styles */
 
-header,
-section,
-footer {
-    margin: 48px 0;
-}
-
-.alphabetical-order {
-    height: 50px;
-}
-
-.fill {
-    max-height: 100%;
-    max-width: 100%;
+.letter {
+    margin: 5px;
 }
