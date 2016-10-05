@@ -1,0 +1,22 @@
+<div layout="column">
+    <div>Retour aux resultats</div>
+    <div>
+        <div layout="row">
+            <div flex="60">
+                <div layout="column">
+                	<div>{{indexVM.results.hits.hits[0]._source.title_fr}}</div>
+                	<div>{{indexVM.results.hits.hits[0]._source.description_fr}}</div>
+                	<div ng-repeat="language in indexVM.results.hits.hits[0]._source.languages">{{language | translate}}</div>
+                	<div>{{indexVM.results.hits.hits[0]._source.accesstype}}</div>
+                </div>
+            </div>
+            <div flex="40">
+                <div layout="column">
+                    <div flex="20">
+                        <img ng-src="../../dris_devdoc/Coral/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

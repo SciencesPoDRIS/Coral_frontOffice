@@ -1,7 +1,9 @@
 {
     "ELECTRONIC_RESOURCES" : "Ressources électroniques",
     "LANGUAGE_FR" : "Français",
+    "fr" : "Français",
     "LANGUAGE_EN" : "Anglais",
+    "en" : "Anglais",
     "RESOURCES" : "ressources",
     "NEED_HELP" : "Besoin d'aide",
     "USAGE_CONVENTION" : "Charte d'utilisation des ressources numériques",

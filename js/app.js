@@ -8,7 +8,8 @@
         'elasticsearch',
         'elasticui',
         'eResources.filters',
-        'eResources.welcome'
+        'eResources.welcome',
+        'eResources.resource'
     ]);
 
     // Set to my local cluster address
@@ -36,9 +37,13 @@
                 templateUrl: 'views/welcome.html',
                 controller: 'WelcomeController'
             }).
+            when('/:resourceId', {
+                templateUrl: 'views/resource.html',
+                controller: 'ResourceController'
+            }).
             otherwise({
                 redirectTo: '/'
-            });;
+            });
         }
     ]);
 

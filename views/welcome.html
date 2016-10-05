@@ -1,98 +1,94 @@
-<div layout="column">
-    <div ng-include="'partials/header.html'"></div>
-    <div>
-        <button ng-click="changeLanguage()">{{languageLabel | translate}}</button>
-    </div>
-    <div>{{indexVM.results.hits.total}} {{'RESOURCES' | translate}}</div>
-    <div>
-        <div layout="row" layout-margin>
-            <div flex="20">
-                <a href="http://www.sciencespo.fr/bibliotheque/fr/a-votre-ecoute/nous-contacter" target="_blank">
-                    <div layout="row">
-                        <div flex="30">
-                            <img src="./images/tchat.png" layout-fill />
-                        </div>
-                        <div flex="70">
-                            {{'NEED_HELP' | translate}}
-                        </div>
+<div>
+    {{indexVM.results.hits.total}} {{'RESOURCES' | translate}}
+</div>
+<div>
+    <div layout="row" layout-margin>
+        <div flex="20">
+            <a href="http://www.sciencespo.fr/bibliotheque/fr/a-votre-ecoute/nous-contacter" target="_blank">
+                <div layout="row">
+                    <div flex="30">
+                        <img src="./images/tchat.png" layout-fill />
                     </div>
-                </a>
-                <div>
-                    <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">
+                    <div flex="70">
+                        {{'NEED_HELP' | translate}}
+                    </div>
+                </div>
+            </a>
+            <div>
+                <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">
                             {{'USAGE_CONVENTION' | translate}}
                         </a>
-                </div>
-                <div>
-                    <h3>{{'SUBJECTS' | translate}}</h3>
-                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(5)">
-                        <li ng-repeat="bucket in aggResult.buckets">
-                            <label eui-filter="ejs.TermsFilter(field, bucket.key)">
-                                <span ng-if="!filter.enabled"><a href="" ng-click="filter.enabled=true">{{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span></a>
-                                </span>
-                                <span ng-if="filter.enabled">{{bucket.key | translate}} <a href="" ng-click="filter.enabled=false" class="facet-remove">x</a></span>
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>{{'CONTENT_TYPE' | translate}}</h3>
-                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('types').field('types').size(10)">
-                        <li ng-repeat="bucket in aggResult.buckets">
-                            <label class="checkbox" eui-filter="ejs.TermsFilter(field, bucket.key)">
-                                <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>{{'ACCESS_TYPE' | translate}}</h3>
-                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('accesstype').field('accesstype').size(10)">
-                        <li ng-repeat="bucket in aggResult.buckets">
-                            <label class="checkbox" eui-filter="ejs.TermsFilter(field, bucket.key)">
-                                <input type="checkbox" ng-model="filter.enabled">
-                                <img ng-src="images/{{bucket.key | getImageUrl}}" class="icon" /> {{bucket.key | translate}} ({{bucket.doc_count}})
-                            </label>
-                        </li>
-                    </ul>
-                </div>
             </div>
-            <div flex="80">
-                <div layout="column">
-                    <div layout-fill>
-                        <input type="text" eui-query="ejs.MatchQuery('title_fr', querystring).type('phrase_prefix')" ng-model="querystring" eui-enabled="querystring.length" layout-fill />
-                    </div>
-                    <div layout="row">
-                        <div ng-repeat="letter in alphabet" class="letter">
-                            <a href ng-click="filterByLetter();">
+            <div>
+                <h3>{{'SUBJECTS' | translate}}</h3>
+                <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(5)">
+                    <li ng-repeat="bucket in aggResult.buckets">
+                        <label eui-filter="ejs.TermsFilter(field, bucket.key)">
+                            <span ng-if="!filter.enabled"><a href="" ng-click="filter.enabled=true">{{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span></a>
+                            </span>
+                            <span ng-if="filter.enabled">{{bucket.key | translate}} <a href="" ng-click="filter.enabled=false" class="facet-remove">x</a></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>{{'CONTENT_TYPE' | translate}}</h3>
+                <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('types').field('types').size(10)">
+                    <li ng-repeat="bucket in aggResult.buckets">
+                        <label class="checkbox" eui-filter="ejs.TermsFilter(field, bucket.key)">
+                            <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>{{'ACCESS_TYPE' | translate}}</h3>
+                <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('accesstype').field('accesstype').size(10)">
+                    <li ng-repeat="bucket in aggResult.buckets">
+                        <label class="checkbox" eui-filter="ejs.TermsFilter(field, bucket.key)">
+                            <input type="checkbox" ng-model="filter.enabled">
+                            <img ng-src="images/{{bucket.key | getImageUrl}}" class="icon" /> {{bucket.key | translate}} ({{bucket.doc_count}})
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div flex="80">
+            <div layout="column">
+                <div layout-fill>
+                    <input type="text" eui-query="ejs.MatchQuery('title_fr', querystring).type('phrase_prefix')" ng-model="querystring" eui-enabled="querystring.length" layout-fill />
+                </div>
+                <div layout="row">
+                    <div ng-repeat="letter in alphabet" class="letter">
+                        <a href ng-click="filterByLetter();">
                                     {{letter}}
                                 </a>
-                        </div>
                     </div>
-                    <div flex>
-                        <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" layout-margin>
-                            <a href="www.google.fr" target="_blank">
-                                <div flex="15">
-                                    <img ng-src="../../dris_devdoc/Coral/resources/logo/{{doc._source.logo}}" alt="Logo" class="fill">
-                                </div>
-                                <div flex="70">
-                                    <div layout="column">
-                                        <div>
-                                            {{doc._source.title_fr | uppercase | limitTo: 50}}
-                                        </div>
-                                        <div>
-                                            {{doc._source.description_fr | limitTo: 150}}
-                                        </div>
+                </div>
+                <div flex>
+                    <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" layout-margin>
+                        <a href="#/{{doc._source.resourceid}}">
+                            <div flex="15">
+                                <img ng-src="../../dris_devdoc/Coral/resources/logo/{{doc._source.logo}}" alt="Logo" class="fill">
+                            </div>
+                            <div flex="70">
+                                <div layout="column">
+                                    <div>
+                                        {{doc._source.title_fr | uppercase | limitTo: 50}}
+                                    </div>
+                                    <div>
+                                        {{doc._source.description_fr | limitTo: 150}}
                                     </div>
                                 </div>
-                                <div flex="15">
-                                    <div layout="column">
-                                        <div ng-if="doc._source.accesstype == 'Restricted access'">locker</div>
-                                    </div>
+                            </div>
+                            <div flex="15">
+                                <div layout="column">
+                                    <div ng-if="doc._source.accesstype == 'Restricted access'">locker</div>
                                 </div>
-                            </a>
-                        </div>
-                        <eui-simple-paging></eui-simple-paging>
+                            </div>
+                        </a>
                     </div>
+                    <eui-simple-paging></eui-simple-paging>
                 </div>
             </div>
         </div>
