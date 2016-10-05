@@ -8,6 +8,7 @@
         'elasticsearch',
         'elasticui',
         'eResources.filters',
+        'eResources.directives',
         'eResources.welcome',
         'eResources.resource'
     ]);

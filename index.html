@@ -17,9 +17,7 @@
 <body class="index" eui-index="'resource'">
     <div layout="column">
         <div ng-include="'partials/header.html'"></div>
-        <div>
-            <button ng-click="changeLanguage()">{{languageLabel | translate}}</button>
-        </div>
+        <language-switcher></language-switcher>
         <div ng-view layout="column" layout-fill></div>
     </div>
     <!-- Project lib dependencies -->
@@ -38,6 +36,7 @@
     <!-- Project angular js -->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/filters.js"></script>
+    <script type="text/javascript" src="js/directives.js"></script>
     <script type="text/javascript" src="views/welcome.js"></script>
     <script type="text/javascript" src="views/resource.js"></script>
 </body>
