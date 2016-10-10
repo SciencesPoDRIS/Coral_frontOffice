@@ -67,7 +67,7 @@
                 </div>
                 <div flex>
                     <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" layout-margin>
-                        <a href="#/{{doc._source.resourceid}}">
+                        <a href="#/{{doc._source.resourceid}}" layout-fill>
                             <div flex="15">
                                 <img ng-src="../../dris_devdoc/Coral/resources/logo/{{doc._source.logo}}" alt="Logo" class="fill">
                             </div>
