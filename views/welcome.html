@@ -23,7 +23,7 @@
                 <h3>{{'SUBJECTS' | translate}}</h3>
                 <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(5)">
                     <li ng-repeat="bucket in aggResult.buckets">
-                        <label eui-filter="ejs.TermsFilter(field, bucket.key)">
+                        <label eui-filter="ejs.TermsFilter('subjects', bucket.key)">
                             <span ng-if="!filter.enabled"><a href="" ng-click="filter.enabled=true">{{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span></a>
                             </span>
                             <span ng-if="filter.enabled">{{bucket.key | translate}} <a href="" ng-click="filter.enabled=false" class="facet-remove">x</a></span>
@@ -35,7 +35,7 @@
                 <h3>{{'CONTENT_TYPE' | translate}}</h3>
                 <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('types').field('types').size(10)">
                     <li ng-repeat="bucket in aggResult.buckets">
-                        <label class="checkbox" eui-filter="ejs.TermsFilter(field, bucket.key)">
+                        <label class="checkbox" eui-filter="ejs.TermsFilter('types', bucket.key)">
                             <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
                         </label>
                     </li>
@@ -45,7 +45,7 @@
                 <h3>{{'ACCESS_TYPE' | translate}}</h3>
                 <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('accesstype').field('accesstype').size(10)">
                     <li ng-repeat="bucket in aggResult.buckets">
-                        <label class="checkbox" eui-filter="ejs.TermsFilter(field, bucket.key)">
+                        <label class="checkbox" eui-filter="ejs.TermsFilter('accesstype', bucket.key)">
                             <input type="checkbox" ng-model="filter.enabled">
                             <img ng-src="images/{{bucket.key | getImageUrl}}" class="icon" /> {{bucket.key | translate}} ({{bucket.doc_count}})
                         </label>
@@ -61,8 +61,8 @@
                 <div layout="row">
                     <div ng-repeat="letter in alphabet" class="letter">
                         <a href ng-click="filterByLetter();">
-                                    {{letter}}
-                                </a>
+                            {{letter}}
+                        </a>
                     </div>
                 </div>
                 <div flex>
@@ -74,7 +74,7 @@
                             <div flex="70">
                                 <div layout="column">
                                     <div>
-                                        {{doc._source.title_fr | uppercase | limitTo: 50}}
+                                        {{doc._source.title_fr | limitTo: 50}}
                                     </div>
                                     <div>
                                         {{doc._source.description_fr | limitTo: 150}}
