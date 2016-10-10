@@ -45,5 +45,6 @@
     "Local and remote access" : "Local and remote access",
     "Free access" : "Free access",
     "Local access" : "Local access",
-    "Restricted access" : "Restricted access"
+    "Restricted access" : "Restricted access",
+    "ALL" : "All"
 }
