@@ -10,6 +10,7 @@
         'eResources.filters',
         'eResources.directives',
         'eResources.welcome',
+        'eResources.list',
         'eResources.resource'
     ]);
 
@@ -37,6 +38,10 @@
             when('/', {
                 templateUrl: 'views/welcome.html',
                 controller: 'WelcomeController'
+            }).
+            when('list', {
+                templateUrl: 'views/list.html',
+                controller: 'ListController'
             }).
             when('/:resourceId', {
                 templateUrl: 'views/resource.html',
