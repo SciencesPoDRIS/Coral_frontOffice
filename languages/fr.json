@@ -48,5 +48,7 @@
     "Restricted access" : "Accès restreint",
     "ALL" : "Tous",
     "BY_NAME" : "Par nom",
-    "BY_SUBJECT" : "Par sujet"
+    "BY_SUBJECT" : "Par sujet",
+    "MOST_USED" : "Les plus utilisées",
+    "NEW_AND_TRIAL" : "Nouveautés / En test"
 }

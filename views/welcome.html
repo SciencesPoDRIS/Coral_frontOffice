@@ -1,6 +1,23 @@
-<md-tabs>
+<md-tabs md-dynamic-height>
     <md-tab label="{{'BY_NAME' | translate}}">
-        <my-search-bar />
+        <div layout="row" layout-margin>
+            <div flex="70">
+                <my-search-bar />
+                <div>
+                    <div>{{'MOST_USED' | translate}}</div>
+                </div>
+                <div>
+                    <div>{{'NEW_AND_TRIAL' | translate}}</div>
+                </div>
+            </div>
+            <div layout="column" flex="30">
+                <div><img src="images/image_01.jpg" style=""></div>
+                <div>© M. Nascimento / Sciences Po</div>
+                <div>
+                    <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">{{'USAGE_CONVENTION' | translate}}</a>
+                </div>
+            </div>
+        </div>
     </md-tab>
     <md-tab label="{{'BY_SUBJECT' | translate}}"></md-tab>
 </md-tabs>
