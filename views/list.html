@@ -55,21 +55,7 @@
         </div>
         <div flex="80">
             <div layout="column">
-                <div layout-fill>
-                    <input type="text" eui-query="ejs.MatchQuery('title_fr', querystring).type('phrase_prefix')" ng-model="querystring" eui-enabled="querystring.length" layout-fill />
-                </div>
-                <div layout="row">
-                    <div class="letter">
-                        <a href ng-click="filterByLetter();">
-                            {{'ALL' | translate}}
-                        </a>
-                    </div>
-                    <div ng-repeat="letter in alphabet" class="letter">
-                        <a href ng-click="filterByLetter();">
-                            {{letter}}
-                        </a>
-                    </div>
-                </div>
+                <my-search-bar />
                 <div flex>
                     <div layout="row" ng-repeat="doc in indexVM.results.hits.hits" layout-margin>
                         <a href="#/{{doc._source.resourceid}}" layout-fill>

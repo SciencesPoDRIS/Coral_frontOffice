@@ -46,5 +46,7 @@
     "Free access" : "Accès gratuit",
     "Local access" : "Accès local",
     "Restricted access" : "Accès restreint",
-    "ALL" : "Tous"
+    "ALL" : "Tous",
+    "BY_NAME" : "Par nom",
+    "BY_SUBJECT" : "Par sujet"
 }
