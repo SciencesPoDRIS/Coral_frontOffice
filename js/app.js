@@ -39,7 +39,7 @@
                 templateUrl: 'views/welcome.html',
                 controller: 'WelcomeController'
             }).
-            when('list', {
+            when('/list', {
                 templateUrl: 'views/list.html',
                 controller: 'ListController'
             }).
