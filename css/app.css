@@ -34,6 +34,11 @@ footer {
     margin: 48px 0;
 }
 
+/* Remove outline for Chrome Browser */
+*:focus {
+    outline-style: none;
+}
+
 
 /* Tool class */
 
@@ -44,6 +49,19 @@ footer {
 
 .no-border {
     border: none !important;
+}
+
+
+/* Language switcher */
+
+language-switcher {
+    background-color: #eaeaed;
+    outline: none;
+    padding: 5px;
+    position: absolute;
+    right: 48px;
+    top: 77px;
+    z-index: 2;
 }
 
 
@@ -254,4 +272,15 @@ ul#menu_appli li:last-child a::after {
     vertical-align: middle;
     max-height: 20px;
     max-width: 20px;
+}
+
+.copyright {
+    color: #595959;
+    font-size: 13px;
+}
+
+.my_resource_card {
+    border: 1px solid grey;
+    border-radius: 15px;
+    padding: 5px;
 }
