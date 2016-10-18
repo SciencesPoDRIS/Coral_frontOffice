@@ -1,6 +1,6 @@
 {
     "ELECTRONIC_RESOURCES" : "Electronic resources",
-    "LANGUAGE_FR" : "French",
+    "LANGUAGE_FR" : "Français",
     "fr" : "French",
     "LANGUAGE_EN" : "English",
     "en" : "English",
@@ -47,8 +47,8 @@
     "Local access" : "Local access",
     "Restricted access" : "Restricted access",
     "ALL" : "All",
-    "BY_NAME" : "By name",
-    "BY_SUBJECT" : "By subject",
-    "MOST_USED" : "Most used",
-    "NEW_AND_TRIAL" : "New / Trial"
+    "TAB_HOME" : "Home",
+    "TAB_SUBJECTS" : "Subjects",
+    "TAB_ALL": "All",
+    "MOST_USED" : "Most used"
 }

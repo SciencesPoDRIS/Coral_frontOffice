@@ -17,6 +17,7 @@
     // Set to my local cluster address
     app.constant('euiHost', 'http://localhost:9200/coral');
 
+    // Localization configuration
     app.config(function($translateProvider) {
         // Enable localStorage to save on bandwidth and loading costs
         // $translateProvider.useLocalStorage();
@@ -30,7 +31,7 @@
         $translateProvider.useSanitizeValueStrategy('escape');
     });
 
-    // Add new routes
+    // Routes configuration
     app.config(['$routeProvider', '$locationProvider', 
         function($routeProvider, $locationProvider) {
             $routeProvider.
@@ -38,10 +39,6 @@
             when('/', {
                 templateUrl: 'views/welcome.html',
                 controller: 'WelcomeController'
-            }).
-            when('/list', {
-                templateUrl: 'views/list.html',
-                controller: 'ListController'
             }).
             when('/:resourceId', {
                 templateUrl: 'views/resource.html',

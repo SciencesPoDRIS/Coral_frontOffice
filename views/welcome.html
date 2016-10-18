@@ -1,5 +1,5 @@
 <md-tabs md-dynamic-height>
-    <md-tab label="{{'BY_NAME' | translate}}">
+    <md-tab label="{{'TAB_HOME' | translate}}">
         <div layout="row" layout-margin>
             <div flex="70">
                 <my-search-bar />
@@ -7,17 +7,37 @@
                     <div>{{'MOST_USED' | translate}}</div>
                 </div>
                 <div>
-                    <div>{{'NEW_AND_TRIAL' | translate}}</div>
+                    <my-resource-card ng-repeat="resource in $parent.indexVM.results.hits.hits" resource="resource" />
                 </div>
             </div>
             <div layout="column" flex="30">
                 <div><img src="images/image_01.jpg" style=""></div>
-                <div>© M. Nascimento / Sciences Po</div>
+                <div class="copyright">© M. Nascimento / Sciences Po</div>
                 <div>
                     <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">{{'USAGE_CONVENTION' | translate}}</a>
                 </div>
             </div>
         </div>
     </md-tab>
-    <md-tab label="{{'BY_SUBJECT' | translate}}"></md-tab>
+    <md-tab label="{{'TAB_SUBJECTS' | translate}}">
+        <div layout="row" layout-margin>
+            <div flex="70">
+                <my-search-bar />
+                <div>LISTE DES SUJETS</div>
+            </div>
+            <div layout="column" flex="30">
+            </div>
+        </div>
+    </md-tab>
+    <md-tab label="{{'TAB_ALL' | translate}}">
+        <div layout="row" layout-margin>
+            <div flex="70">
+                <my-search-bar />
+                <div>LETTERS</div>
+                <div>LISTE DES RESULTATS</div>
+            </div>
+            <div layout="column" flex="30">
+            </div>
+        </div>
+    </md-tab>
 </md-tabs>

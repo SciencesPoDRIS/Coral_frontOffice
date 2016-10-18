@@ -1,0 +1,22 @@
+<div layout="row" layout-margin class="my_resource_card">
+    <a href="#/{{resource._source.resourceid}}" layout="row" layout-fill>
+        <div flex="15">
+            <img ng-src="../../dris_devdoc/Coral/resources/logo/{{resource._source.logo}}" alt="Logo" class="fill">
+        </div>
+        <div flex="70">
+            <div layout="column">
+                <div>
+                    {{resourceTitle | limitTo: 50}}
+                </div>
+                <div>
+                    {{resourceDescription | limitTo: 150}}
+                </div>
+            </div>
+        </div>
+        <div flex="15">
+            <div layout="column">
+                <div ng-if="resource._source.accesstype == 'Restricted access'">locker</div>
+            </div>
+        </div>
+    </a>
+</div>

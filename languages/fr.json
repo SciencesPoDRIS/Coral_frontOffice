@@ -2,7 +2,7 @@
     "ELECTRONIC_RESOURCES" : "Ressources électroniques",
     "LANGUAGE_FR" : "Français",
     "fr" : "Français",
-    "LANGUAGE_EN" : "Anglais",
+    "LANGUAGE_EN" : "English",
     "en" : "Anglais",
     "RESOURCES" : "ressources",
     "NEED_HELP" : "Besoin d'aide",
@@ -47,8 +47,8 @@
     "Local access" : "Accès local",
     "Restricted access" : "Accès restreint",
     "ALL" : "Tous",
-    "BY_NAME" : "Par nom",
-    "BY_SUBJECT" : "Par sujet",
-    "MOST_USED" : "Les plus utilisées",
-    "NEW_AND_TRIAL" : "Nouveautés / En test"
+    "TAB_HOME" : "Accueil",
+    "TAB_SUBJECTS" : "Sujets",
+    "TAB_ALL": "Tout",
+    "MOST_USED" : "Les plus utilisées"
 }
