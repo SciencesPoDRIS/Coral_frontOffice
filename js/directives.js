@@ -58,9 +58,6 @@
                 resource : '='
             },
             link: function($scope) {
-                console.log($scope);
-                // $scope.$watch($translate.use(), function() {
-                // });
                 switch ($translate.use()) {
                     case 'fr' :
                         $scope.resourceTitle = $scope.resource._source.title_fr;
