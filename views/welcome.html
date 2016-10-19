@@ -5,9 +5,15 @@
                 <my-search-bar />
                 <div>
                     <div>{{'MOST_USED' | translate}}</div>
+                    <my-resource-card ng-repeat="resource in highlighted" resource="resource" />
                 </div>
                 <div>
-                    <my-resource-card ng-repeat="resource in $parent.indexVM.results.hits.hits" resource="resource" />
+                    <div>{{'TRIAL' | translate}}</div>
+                    <my-resource-card ng-repeat="resource in trial" resource="resource" />
+                </div>
+                <div>
+                    <div>{{'NEW' | translate}}</div>
+                    <my-resource-card ng-repeat="resource in new" resource="resource" />
                 </div>
             </div>
             <div layout="column" flex="30">
