@@ -1,6 +1,22 @@
-<div>
-    <input type="text" eui-query="ejs.MatchQuery('title_fr', querystring).type('phrase_prefix')" ng-model="querystring" eui-enabled="querystring.length" layout-fill />
+<div layout="row">
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>{{'SEARCH' | translate}}</label>
+        <input ng-model="query">
+    </md-input-container>
+    <md-button class="md-primary" ng-click="search()">
+        {{'SEARCH' | translate}}
+    </md-button>
 </div>
+<!--
+<div layout="row">
+    <div flex="90" layout-fill>
+        <input type="text" eui-query="ejs.MatchQuery('title_fr', querystring).type('phrase_prefix')" ng-model="querystring" eui-enabled="querystring.length" layout-fill />
+    </div>
+    <div flex="10" class="button">
+        <md-button>{{'SEARCH' | translate}}</md-button>
+    </div>
+</div>
+-->
 <!--
 <div layout="row">
     <div class="letter">

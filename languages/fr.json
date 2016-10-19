@@ -50,5 +50,6 @@
     "TAB_HOME" : "Accueil",
     "TAB_SUBJECTS" : "Sujets",
     "TAB_ALL": "Tout",
-    "MOST_USED" : "Les plus utilisées"
+    "MOST_USED" : "Les plus utilisées",
+    "SEARCH" : "Rechercher"
 }
