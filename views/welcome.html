@@ -1,4 +1,4 @@
-<md-tabs md-dynamic-height>
+<md-tabs md-selected="selectedIndex" md-dynamic-height>
     <md-tab label="{{'TAB_HOME' | translate}}">
         <div layout="row" layout-margin>
             <div flex="70">
@@ -17,7 +17,9 @@
                 </div>
             </div>
             <div layout="column" flex="30">
-                <div><img src="images/image_01.jpg" style=""></div>
+                <div>
+                    <img src="images/image_01.jpg">
+                </div>
                 <div class="copyright">© M. Nascimento / Sciences Po</div>
                 <div>
                     <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">{{'USAGE_CONVENTION' | translate}}</a>
@@ -29,9 +31,26 @@
         <div layout="row" layout-margin>
             <div flex="70">
                 <my-search-bar />
-                <div>LISTE DES SUJETS</div>
+                <div>
+                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(100)">
+                        <li ng-repeat="bucket in aggResult.buckets">
+                            <label eui-filter="ejs.TermsFilter('subjects', bucket.key)">
+                                <span ng-if="!filter.enabled"><a href="" ng-click="filter.enabled=true">{{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span></a>
+                                </span>
+                                <span ng-if="filter.enabled">{{bucket.key | translate}} <a href="" ng-click="filter.enabled=false" class="facet-remove">x</a></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div layout="column" flex="30">
+                <div>
+                    <img src="images/image_01.jpg">
+                </div>
+                <div class="copyright">© M. Nascimento / Sciences Po</div>
+                <div>
+                    <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">{{'USAGE_CONVENTION' | translate}}</a>
+                </div>
             </div>
         </div>
     </md-tab>
@@ -39,10 +58,52 @@
         <div layout="row" layout-margin>
             <div flex="70">
                 <my-search-bar />
-                <div>LETTERS</div>
-                <div>LISTE DES RESULTATS</div>
+                <div layout="row">
+                    <div class="letter">
+                        <a href ng-click="filterByLetter();">
+                            {{'ALL' | translate}}
+                        </a>
+                    </div>
+                    <div ng-repeat="letter in alphabet" class="letter">
+                        <a href ng-click="filterByLetter()">
+                            {{letter}}
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <my-resource-card ng-repeat="resource in indexVM.results.hits.hits" resource="resource" />
+                </div>
             </div>
             <div layout="column" flex="30">
+                <div>
+                    <img src="images/image_01.jpg">
+                </div>
+                <div class="copyright">© M. Nascimento / Sciences Po</div>
+                <div>
+                    <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">{{'USAGE_CONVENTION' | translate}}</a>
+                </div>
+                <div>
+                    <h3>{{'SUBJECTS' | translate}}</h3>
+                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(5)">
+                        <li ng-repeat="bucket in aggResult.buckets">
+                            <label eui-filter="ejs.TermsFilter('subjects', bucket.key)">
+                                <span ng-if="!filter.enabled"><a href="" ng-click="filter.enabled=true">{{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span></a>
+                                </span>
+                                <span ng-if="filter.enabled">{{bucket.key | translate}} <a href="" ng-click="filter.enabled=false" class="facet-remove">x</a></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>{{'CONTENT_TYPE' | translate}}</h3>
+                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('types').field('types').size(10)">
+                        <li ng-repeat="bucket in aggResult.buckets">
+                            <label class="checkbox" eui-filter="ejs.TermsFilter('types', bucket.key)">
+                                <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
+                            </label>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </md-tab>

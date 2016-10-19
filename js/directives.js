@@ -36,19 +36,13 @@
             templateUrl: 'partials/mySearchBar.html',
             link: function($scope) {
                 $scope.search = function() {
+                    // Go to "All" tab and set it as active
+                    $scope.selectedIndex = 2;
+                    // Execute the query
                     if($scope.query != '') {
-                        $scope.$parent.$parent.indexVM.query = ejs.MatchQuery('title_fr', $scope.query);
+                        $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr', $scope.query);
                     }
                 }
-                // $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-                // $scope.filterByLetter = function() {
-                //     if($(this)[0].hasOwnProperty('letter')) {
-                //         $scope.$parent.$parent.indexVM.query = ejs.MatchQuery('title_fr', $(this)[0].letter).type('phrase_prefix');
-                //     } else {
-                //         $scope.$parent.$parent.indexVM.query = ejs.MatchAllQuery();
-                //     }
-                // }
             }
         }
     }]);
