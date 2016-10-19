@@ -9,7 +9,6 @@
         return {
             restrict: 'E',
             templateUrl: 'partials/myLanguageSwitcher.html',
-            scope : {},
             link: function($scope) {
                 // Language switcher
                 $scope.languageLabel = 'LANGUAGE_EN';
@@ -35,7 +34,6 @@
         return {
             restrict: 'E',
             templateUrl: 'partials/mySearchBar.html',
-            scope : {},
             link: function($scope) {
                 $scope.search = function() {
                     if($scope.query != '') {
@@ -83,10 +81,15 @@
     app.directive('mySideTiles', [function() {
         return {
             restrict: 'E',
-            templateUrl: 'partials/mySideTiles.html',
-            scope : {
-            }
+            templateUrl: 'partials/mySideTiles.html'
         }
-    }])
+    }]);
+
+    app.directive('myResourceHighlighted', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/myResourceHighlighted.html'
+        }
+    }]);
 
 })();
