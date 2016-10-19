@@ -10,7 +10,6 @@
         'eResources.filters',
         'eResources.directives',
         'eResources.welcome',
-        'eResources.list',
         'eResources.resource'
     ]);
 

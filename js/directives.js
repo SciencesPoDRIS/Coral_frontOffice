@@ -34,10 +34,13 @@
         return {
             restrict: 'E',
             templateUrl: 'partials/mySearchBar.html',
+            scope: {
+                query: '='
+            },
             link: function($scope) {
                 $scope.search = function() {
                     // Go to "All" tab and set it as active
-                    $scope.selectedIndex = 2;
+                    $scope.$parent.selectedIndex = 2;
                     // Execute the query
                     if($scope.query != '') {
                         $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr', $scope.query);

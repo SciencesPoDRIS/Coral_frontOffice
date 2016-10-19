@@ -41,6 +41,8 @@
                 if($(this)[0].hasOwnProperty('letter')) {
                     $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr', $(this)[0].letter).type('phrase_prefix');
                 } else {
+                    // Reset query term
+                    $scope.query = '';
                     $scope.$parent.indexVM.query = ejs.MatchAllQuery();
                 }
             }

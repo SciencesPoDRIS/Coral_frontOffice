@@ -2,7 +2,7 @@
     <md-tab label="{{'TAB_HOME' | translate}}">
         <div layout="row" layout-margin>
             <div flex="70">
-                <my-search-bar />
+                <my-search-bar query="query" />
                 <div>
                     <div>{{'MOST_USED' | translate}}</div>
                     <my-resource-highlighted ng-repeat="resource in highlighted" resource="resource" />
@@ -30,7 +30,7 @@
     <md-tab label="{{'TAB_SUBJECTS' | translate}}">
         <div layout="row" layout-margin>
             <div flex="70">
-                <my-search-bar />
+                <my-search-bar query="query" />
                 <div>
                     <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(100)">
                         <li ng-repeat="bucket in aggResult.buckets">
@@ -57,7 +57,7 @@
     <md-tab label="{{'TAB_ALL' | translate}}">
         <div layout="row" layout-margin>
             <div flex="70">
-                <my-search-bar />
+                <my-search-bar query="query" />
                 <div layout="row">
                     <div class="letter">
                         <a href ng-click="filterByLetter();">
