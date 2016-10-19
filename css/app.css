@@ -54,7 +54,7 @@ footer {
 
 /* Language switcher */
 
-language-switcher {
+my-language-switcher {
     outline: none;
     position: absolute;
     right: 48px;

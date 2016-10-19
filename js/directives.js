@@ -5,10 +5,10 @@
 
     var app = angular.module('eResources.directives', []);
 
-    app.directive('languageSwitcher', ['$translate', function($translate) {
+    app.directive('myLanguageSwitcher', ['$translate', function($translate) {
         return {
             restrict: 'E',
-            templateUrl: 'partials/languageSwitcher.html',
+            templateUrl: 'partials/myLanguageSwitcher.html',
             scope : {},
             link: function($scope) {
                 // Language switcher
