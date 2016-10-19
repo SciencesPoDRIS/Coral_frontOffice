@@ -55,9 +55,7 @@ footer {
 /* Language switcher */
 
 language-switcher {
-    background-color: #eaeaed;
     outline: none;
-    padding: 5px;
     position: absolute;
     right: 48px;
     top: 77px;
