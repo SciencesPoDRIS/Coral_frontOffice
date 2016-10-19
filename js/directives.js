@@ -79,4 +79,14 @@
         }
     }]);
 
+    // The tiles sticked on right side
+    app.directive('mySideTiles', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/mySideTiles.html',
+            scope : {
+            }
+        }
+    }])
+
 })();

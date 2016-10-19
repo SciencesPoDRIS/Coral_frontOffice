@@ -51,5 +51,7 @@
     "TAB_SUBJECTS" : "Sujets",
     "TAB_ALL": "Tout",
     "MOST_USED" : "Les plus utilisées",
-    "SEARCH" : "Rechercher"
+    "SEARCH" : "Rechercher",
+    "TRIAL" : "En test",
+    "NEW" : "Nouveauté"
 }

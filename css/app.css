@@ -52,17 +52,6 @@ footer {
 }
 
 
-/* Language switcher */
-
-my-language-switcher {
-    outline: none;
-    position: absolute;
-    right: 48px;
-    top: 77px;
-    z-index: 2;
-}
-
-
 /* Header */
 
 .menu {
@@ -260,7 +249,18 @@ ul#menu_appli li:last-child a::after {
 }
 
 
-/* Block styles */
+/* Language switcher */
+
+my-language-switcher {
+    outline: none;
+    position: absolute;
+    right: 48px;
+    top: 77px;
+    z-index: 2;
+}
+
+
+/* Search part */
 
 .letter {
     margin: 5px;
@@ -272,8 +272,11 @@ ul#menu_appli li:last-child a::after {
     max-width: 20px;
 }
 
+
+/* Image on the right column */
+
 .copyright {
-    color: #595959;
+    color: grey;
     font-size: 13px;
 }
 
@@ -281,4 +284,26 @@ ul#menu_appli li:last-child a::after {
     border: 1px solid grey;
     border-radius: 15px;
     padding: 5px;
+}
+
+
+/* Side tiles */
+
+my-side-tiles {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+my-side-tiles .tile {
+    background-color: grey; 
+    height: 50px;
+    margin: 5px;
+    padding: 10px;
+}
+
+my-side-tiles .tile:hover {
+    background-color: red;
 }
