@@ -298,10 +298,9 @@ my-side-tiles {
 }
 
 my-side-tiles .tile {
-    background-color: grey; 
-    height: 50px;
-    margin: 5px;
-    padding: 10px;
+    height: 62px;
+    margin-bottom: 3px;
+    width: 62px;
 }
 
 my-side-tiles .tile:hover {

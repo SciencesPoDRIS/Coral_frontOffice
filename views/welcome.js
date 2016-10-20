@@ -48,8 +48,14 @@
                     $scope.subjects = response.aggregations.subjects.buckets;
                 });
 
+            // Tab "Subjects", on click on a subject, activate the "All" tab on filter on this subject
+            $scope.selectSubject = function() {
+                $scope.selectedIndex = 2;
+            }
+
             $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
+            // Tab "All", on click on a letter, filter all the resources whose title begins with this letter
             $scope.filterByLetter = function() {
                 if ($(this)[0].hasOwnProperty('letter')) {
                     $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr', $(this)[0].letter).type('phrase_prefix');
@@ -59,6 +65,7 @@
                     $scope.$parent.indexVM.query = ejs.MatchAllQuery();
                 }
             }
+
         }
     ]);
 

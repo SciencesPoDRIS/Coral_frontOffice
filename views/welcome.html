@@ -32,7 +32,7 @@
             <div flex="70">
                 <my-search-bar query="query" />
                 <div>
-                    <div ng-repeat="subject in subjects">
+                    <div ng-repeat="subject in subjects" ng-click="selectSubject();">
                         {{subject.key}} ({{subject.doc_count}})
                     </div>
                 </div>
