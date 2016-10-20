@@ -58,7 +58,7 @@
             // Tab "All", on click on a letter, filter all the resources whose title begins with this letter
             $scope.filterByLetter = function() {
                 if ($(this)[0].hasOwnProperty('letter')) {
-                    $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr', $(this)[0].letter).type('phrase_prefix');
+                    $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', $(this)[0].letter).type('phrase_prefix');
                 } else {
                     // Reset query term
                     $scope.query = '';
