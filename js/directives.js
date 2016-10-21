@@ -43,7 +43,8 @@
                     $scope.$parent.selectedIndex = 2;
                     // Execute the query
                     if($scope.query != '') {
-                        $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr', $scope.query);
+                        // $scope.$parent.indexVM.query = ejs.WildcardQuery('title_fr', '*' + $scope.query + '*');
+                        $scope.$parent.indexVM.query = ejs.BoolQuery().should(ejs.QueryStringQuery(['title_fr', 'description_fr', 'alias']).query('*' + $scope.query + '*'));
                     }
                 }
             }
