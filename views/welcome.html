@@ -3,15 +3,15 @@
         <div layout="row" layout-margin>
             <div flex="70">
                 <my-search-bar query="query" />
-                <div>
+                <div ng-if="highlighted.length > 0">
                     <div>{{'MOST_USED' | translate}}</div>
                     <my-resource-highlighted ng-repeat="resource in highlighted" resource="resource" />
                 </div>
-                <div>
+                <div ng-if="trial.length > 0">
                     <div>{{'TRIAL' | translate}}</div>
                     <my-resource-card ng-repeat="resource in trial" resource="resource" />
                 </div>
-                <div>
+                <div ng-if="new.length > 0">
                     <div>{{'NEW' | translate}}</div>
                     <my-resource-card ng-repeat="resource in new" resource="resource" />
                 </div>
