@@ -1,9 +1,6 @@
 <div layout="row">
     <md-input-container class="md-block" flex-gt-sm>
         <label>{{'SEARCH' | translate}}</label>
-        <input ng-model="query">
+        <input ng-model="query" ng-keyup="$event.keyCode == 13 && search()">
     </md-input-container>
-    <md-button class="md-primary" ng-click="search()">
-        {{'SEARCH' | translate}}
-    </md-button>
 </div>
