@@ -36,7 +36,7 @@
                 <my-search-bar query="query" />
                 <div>
                     <div ng-repeat="subject in subjects" ng-click="selectSubject();">
-                        {{subject.key | translate}} ({{subject.doc_count}})
+                        <span ng-bind-html="subject.key | translate"></span> ({{subject.doc_count}})
                     </div>
                 </div>
             </div>
