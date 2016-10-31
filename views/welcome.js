@@ -12,7 +12,6 @@
                     .query(ejs.MatchQuery('status', 'highlight'))
                     .sort(ejs.Sort('title_fr_notanalyzed').asc())
             }, function(error, response) {
-                console.log(response);
                 $scope.highlighted = response.hits.hits;
             });
 
