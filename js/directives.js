@@ -39,12 +39,11 @@
             },
             link: function($scope) {
                 $scope.search = function() {
-                    // Go to "All" tab and set it as active
-                    $scope.$parent.selectedIndex = 2;
-                    // Execute the query
-                    if($scope.query != '') {
-                        // $scope.$parent.indexVM.query = ejs.WildcardQuery('title_fr', '*' + $scope.query + '*');
-                        $scope.$parent.indexVM.query = ejs.BoolQuery().should(ejs.QueryStringQuery(['title_fr', 'description_fr', 'alias']).query('*' + $scope.query + '*'));
+                    // Execute the query if the searched term is not empty
+                    if($scope.query && ($scope.query != '') ) {
+                        // Go to "All" tab and set it as active
+                        $scope.$parent.selectedTab = 2;
+                        $scope.$parent.indexVM.query = ejs.BoolQuery().should(ejs.QueryStringQuery(['title_en', 'title_fr', 'description_en', 'description_fr', 'alias']).query('*' + $scope.query + '*'));
                     }
                 }
             }
