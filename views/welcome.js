@@ -1,10 +1,34 @@
 (function() {
     'use strict';
 
-    var app = angular.module('eResources.welcome', []);
+    var app = angular.module('eResources.welcome', ['ngSanitize']);
 
-    app.controller('WelcomeController', ['$scope', 'es',
-        function($scope, es) {
+    app.controller('WelcomeController', ['$scope', 'es', '$routeParams',
+        function($scope, es, $routeParams) {
+
+            // Init default values
+            // $scope.selectedTab = 0;
+            // Init route params
+            /*
+            if($routeParams.tab && ['0', '1', '2'].includes($routeParams.tab)) {
+                $scope.selectedTab = $routeParams.tab;
+            } else {
+                $scope.selectedTab = 0;
+            }
+            */
+            if($routeParams.campus || $routeParams.letter || $routeParams.query || $routeParams.subjects || $routeParams.types) {
+                // Execute the query
+                if($routeParams.campus && $routeParams.campus != '') {
+                    console.log($routeParams.campus);
+                    // $scope.query = $routeParams.query;
+                }
+                if($routeParams.query && $routeParams.query != '') {
+                    $scope.query = $routeParams.query;
+                }
+            } else if($routeParams.tab && ['0', '1', '2'].includes($routeParams.tab)) {
+                $scope.selectedTab = $routeParams.tab;
+            }
+
             // Get all resources 'highlight' order by title
             es.client.search({
                 index: 'resource',
