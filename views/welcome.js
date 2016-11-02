@@ -50,7 +50,7 @@
 
             // Tab "Subjects", on click on a subject, activate the "All" tab on filter on this subject
             $scope.selectSubject = function() {
-                $scope.selectedIndex = 2;
+                $scope.selectedTab = 2;
             }
 
             $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
