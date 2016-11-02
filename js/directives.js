@@ -41,11 +41,12 @@
                 $scope.search = function() {
                     // Execute the query if the searched term is not empty
                     if($scope.query && ($scope.query != '') ) {
-                        // Go to "All" tab and set it as active
+                        // Set "All" tab as active
                         $scope.$parent.selectedTab = 2;
                         $scope.$parent.indexVM.query = ejs.BoolQuery().should(ejs.QueryStringQuery(['title_en', 'title_fr', 'description_en', 'description_fr', 'alias']).query('*' + $scope.query + '*'));
                     }
                 }
+                $scope.$watch('query', $scope.search());
             }
         }
     }]);
