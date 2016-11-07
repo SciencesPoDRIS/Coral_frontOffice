@@ -5,27 +5,55 @@
 
     app.controller('WelcomeController', ['$scope', 'es', '$routeParams',
         function($scope, es, $routeParams) {
+            // Config
+            var filterSeparator = ':';
 
-            // Init default values
-            // $scope.selectedTab = 0;
-            // Init route params
-            /*
-            if($routeParams.tab && ['0', '1', '2'].includes($routeParams.tab)) {
-                $scope.selectedTab = $routeParams.tab;
-            } else {
-                $scope.selectedTab = 0;
+            // Set page size to 1.000 in order to display all the results
+            $scope.$parent.indexVM.pageSize = 1000;
+
+            // Reset the query's filter
+            var tmp_json = {};
+            var index, obj, key, val;
+            for(index in $scope.$parent.filters.jsonObjects) {
+                obj = JSON.parse($scope.$parent.filters.jsonObjects[index]).terms;
+                key = Object.keys(obj)[0];
+                val = obj[key][0];
+                tmp_json[key] = val;
             }
-            */
-            if($routeParams.campus || $routeParams.letter || $routeParams.query || $routeParams.subjects || $routeParams.types) {
-                // Execute the query
-                if($routeParams.campus && $routeParams.campus != '') {
-                    console.log($routeParams.campus);
-                    // $scope.query = $routeParams.query;
+            for(index in tmp_json) {
+                $scope.$parent.indexVM.filters.remove(ejs.TermsFilter(index, tmp_json[index]));
+            }
+
+            // Fill the filters object according to the route params
+            if ($routeParams.sites || $routeParams.letter || $routeParams.query || $routeParams.subjects || $routeParams.types) {
+                // Set the "All" tab as selected
+                $scope.selectedTab = 2;
+                // Fill the query's filters attribute
+                if ($routeParams.sites && $routeParams.sites != '') {
+                    $.map($routeParams.sites.split(filterSeparator), function(site) {
+                        if(site != '') {
+                            $scope.$parent.indexVM.filters.add(ejs.TermsFilter('sites', site));
+                        }
+                    });
                 }
-                if($routeParams.query && $routeParams.query != '') {
+                if ($routeParams.subjects && $routeParams.subjects != '') {
+                    $.map($routeParams.subjects.split(filterSeparator), function(subject) {
+                        if(subject != '') {
+                            $scope.$parent.indexVM.filters.add(ejs.TermsFilter('subjects', subject));
+                        }
+                    });
+                }
+                if ($routeParams.types && $routeParams.types != '') {
+                    $.map($routeParams.types.split(filterSeparator), function(type) {
+                        if(type != '') {
+                            $scope.$parent.indexVM.filters.add(ejs.TermsFilter('types', type));
+                        }
+                    });
+                }
+                if ($routeParams.query && $routeParams.query != '') {
                     $scope.query = $routeParams.query;
                 }
-            } else if($routeParams.tab && ['0', '1', '2'].includes($routeParams.tab)) {
+            } else if ($routeParams.tab && ['0', '1', '2'].includes($routeParams.tab)) {
                 $scope.selectedTab = $routeParams.tab;
             }
 
@@ -81,6 +109,7 @@
 
             // Tab "All", on click on a letter, filter all the resources whose title begins with this letter
             $scope.filterByLetter = function() {
+                ejs.TermsFilter('sites', 'Paris');
                 if ($(this)[0].hasOwnProperty('letter')) {
                     $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', $(this)[0].letter).type('phrase_prefix');
                 } else {

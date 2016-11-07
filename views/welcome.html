@@ -69,6 +69,9 @@
                             {{letter}}
                         </a>
                     </div>
+                    <div>
+                        {{indexVM.results.hits.total}} <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;RESOURCE&quot; | translate}}', '1' : '{{&quot;RESOURCE&quot; | translate}}', 'other' : '{{&quot;RESOURCES&quot; | translate}}'}"></ng-pluralize>
+                    </div>
                 </div>
                 <div>
                     <my-resource-card ng-repeat="resource in indexVM.results.hits.hits" resource="resource" />
@@ -106,7 +109,7 @@
                     <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(5)">
                         <li ng-repeat="bucket in aggResult.buckets">
                             <label class="checkbox" eui-filter="ejs.TermsFilter('sites', bucket.key)">
-                                <input type="checkbox" ng-model="filter.enabled"> {{bucket.key}} ({{bucket.doc_count}})
+                                <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
                             </label>
                         </li>
                     </ul>
