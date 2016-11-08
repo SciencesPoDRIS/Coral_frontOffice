@@ -7,6 +7,7 @@
         function($scope, es, $routeParams) {
             // Config
             var filterSeparator = ':';
+            $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
             // Set page size to 1.000 in order to display all the results
             $scope.$parent.indexVM.pageSize = 1000;
@@ -25,10 +26,17 @@
             }
 
             // Fill the filters object according to the route params
-            if ($routeParams.sites || $routeParams.letter || $routeParams.query || $routeParams.subjects || $routeParams.types) {
+            if ($routeParams.letter || $routeParams.query || $routeParams.sites || $routeParams.subjects || $routeParams.types) {
                 // Set the "All" tab as selected
                 $scope.selectedTab = 2;
                 // Fill the query's filters attribute
+                if ($routeParams.letter && $routeParams.letter != '') {
+                    // Only one letter is allowed in the request
+                    var letter = $routeParams.letter.split(filterSeparator)[0].toUpperCase();
+                    if($.inArray(letter, $scope.alphabet) != -1) {
+                        $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', letter).type('phrase_prefix');
+                    }
+                }
                 if ($routeParams.sites && $routeParams.sites != '') {
                     $.map($routeParams.sites.split(filterSeparator), function(site) {
                         if(site != '') {
@@ -105,11 +113,8 @@
                 $scope.selectedTab = 2;
             }
 
-            $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
             // Tab "All", on click on a letter, filter all the resources whose title begins with this letter
             $scope.filterByLetter = function() {
-                ejs.TermsFilter('sites', 'Paris');
                 if ($(this)[0].hasOwnProperty('letter')) {
                     $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', $(this)[0].letter).type('phrase_prefix');
                 } else {
