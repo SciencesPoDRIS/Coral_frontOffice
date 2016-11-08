@@ -86,7 +86,7 @@
                 <div class="copyright">© M. Nascimento / Sciences Po</div>
                 <div>
                     <h3>{{'SUBJECTS' | translate}}</h3>
-                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(100)">
+                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(0)">
                         <li ng-repeat="bucket in aggResult.buckets">
                             <label eui-filter="ejs.TermsFilter('subjects', bucket.key)">
                                 <span ng-if="!filter.enabled">
@@ -101,7 +101,7 @@
                 </div>
                 <div>
                     <h3>{{'CONTENT_TYPE' | translate}}</h3>
-                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('types').field('types').size(100)">
+                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('types').field('types').size(0)">
                         <li ng-repeat="bucket in aggResult.buckets">
                             <label class="checkbox" eui-filter="ejs.TermsFilter('types', bucket.key)">
                                 <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
@@ -111,7 +111,7 @@
                 </div>
                 <div>
                     <h3>{{'CAMPUS' | translate}}</h3>
-                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(100)">
+                    <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(0)">
                         <li ng-repeat="bucket in aggResult.buckets">
                             <label class="checkbox" eui-filter="ejs.TermsFilter('sites', bucket.key)">
                                 <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
