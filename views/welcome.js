@@ -108,11 +108,6 @@
                     $scope.subjects = response.aggregations.subjects.buckets;
                 });
 
-            // Tab "Subjects", on click on a subject, activate the "All" tab on filter on this subject
-            $scope.selectSubject = function() {
-                $scope.selectedTab = 2;
-            }
-
             // Tab "All", on click on a letter, filter all the resources whose title begins with this letter
             $scope.filterByLetter = function() {
                 if ($(this)[0].hasOwnProperty('letter')) {
