@@ -91,7 +91,7 @@
                             {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
                         </md-checkbox>
                         <md-button class="more" ng-click="subjectsToogle();"><md-icon>{{subjectsIcon}}</md-icon> {{subjectsLabel}}</md-button>
-                        <div ng-show="subjectsShow === true" layout="column">
+                        <div ng-show="subjectsShow" layout="column">
                             <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index >= 5">
                                 {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
                             </md-checkbox>
@@ -112,23 +112,41 @@
                 </div>
                 <div>
                     <h3>{{'CONTENT_TYPE' | translate}}</h3>
-                    <ul class="nav nav-list types" eui-aggregation="ejs.TermsAggregation('types').field('types').size(0)">
-                        <li ng-repeat="bucket in aggResult.buckets">
+                    <div class="nav nav-list types" eui-aggregation="ejs.TermsAggregation('types').field('types').size(0)"  layout="column">
+                        <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index < 5">
+                            {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
+                        </md-checkbox>
+                        <md-button class="more" ng-click="typesToogle();"><md-icon>{{typesIcon}}</md-icon> {{typesLabel}}</md-button>
+                        <div ng-show="typesShow" layout="column">
+                            <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index >= 5">
+                                {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
+                            </md-checkbox>
+                        </div>
+                        <!-- <li ng-repeat="bucket in aggResult.buckets">
                             <label class="checkbox" eui-filter="ejs.TermsFilter('types', bucket.key)">
                                 <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
                             </label>
-                        </li>
-                    </ul>
+                        </li> -->
+                    </div>
                 </div>
                 <div>
                     <h3>{{'CAMPUS' | translate}}</h3>
-                    <ul class="nav nav-list sites" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(0)">
-                        <li ng-repeat="bucket in aggResult.buckets">
+                    <div class="nav nav-list sites" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(0)"  layout="column">
+                        <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index < 5">
+                            {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
+                        </md-checkbox>
+                        <md-button class="more" ng-click="sitesToogle();"><md-icon>{{sitesIcon}}</md-icon> {{sitesLabel}}</md-button>
+                        <div ng-show="sitesShow" layout="column">
+                            <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index >= 5">
+                                {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
+                            </md-checkbox>
+                        </div>
+                        <!-- <li ng-repeat="bucket in aggResult.buckets">
                             <label class="checkbox" eui-filter="ejs.TermsFilter('sites', bucket.key)">
                                 <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
                             </label>
-                        </li>
-                    </ul>
+                        </li> -->
+                    </div>
                 </div>
             </div>
         </div>

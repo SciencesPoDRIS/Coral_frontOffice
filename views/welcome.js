@@ -11,9 +11,6 @@
 
             // Set page size to 1.000 in order to display all the results
             $scope.$parent.indexVM.pageSize = 1000;
-            $scope.subjectsShow = false;
-            $scope.subjectsIcon = 'keyboard_arrow_right';
-            $scope.subjectsLabel = $filter('translate')('MORE');
 
             // Reset the query's filter
             var tmp_json = {};
@@ -122,11 +119,34 @@
                 }
             }
 
+            $scope.sitesShow = false;
+            $scope.sitesIcon = 'keyboard_arrow_right';
+            $scope.sitesLabel = $filter('translate')('MORE');
+            $scope.sitesToogle = function() {
+                $timeout(function() {
+                    $scope.sitesShow = !$scope.sitesShow;
+                    $scope.sitesIcon = ($scope.sitesShow ? 'keyboard_arrow_down' : 'keyboard_arrow_right');
+                    $scope.sitesLabel = ($scope.sitesShow ? $filter('translate')('LESS') : $filter('translate')('MORE'));
+                }, 0);
+            }
+            $scope.subjectsShow = false;
+            $scope.subjectsIcon = 'keyboard_arrow_right';
+            $scope.subjectsLabel = $filter('translate')('MORE');
             $scope.subjectsToogle = function() {
                 $timeout(function() {
                     $scope.subjectsShow = !$scope.subjectsShow;
                     $scope.subjectsIcon = ($scope.subjectsShow ? 'keyboard_arrow_down' : 'keyboard_arrow_right');
                     $scope.subjectsLabel = ($scope.subjectsShow ? $filter('translate')('LESS') : $filter('translate')('MORE'));
+                }, 0);
+            }
+            $scope.typesShow = false;
+            $scope.typesIcon = 'keyboard_arrow_right';
+            $scope.typesLabel = $filter('translate')('MORE');
+            $scope.typesToogle = function() {
+                $timeout(function() {
+                    $scope.typesShow = !$scope.typesShow;
+                    $scope.typesIcon = ($scope.typesShow ? 'keyboard_arrow_down' : 'keyboard_arrow_right');
+                    $scope.typesLabel = ($scope.typesShow ? $filter('translate')('LESS') : $filter('translate')('MORE'));
                 }, 0);
             }
         }
