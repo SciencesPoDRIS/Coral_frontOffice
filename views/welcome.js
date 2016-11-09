@@ -3,25 +3,27 @@
 
     var app = angular.module('eResources.welcome', ['ngSanitize']);
 
-    app.controller('WelcomeController', ['$scope', 'es', '$routeParams',
-        function($scope, es, $routeParams) {
+    app.controller('WelcomeController', ['$scope', 'es', '$routeParams', '$filter', '$timeout',
+        function($scope, es, $routeParams, $filter, $timeout) {
             // Config
             var filterSeparator = ':';
             $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
             // Set page size to 1.000 in order to display all the results
             $scope.$parent.indexVM.pageSize = 1000;
+            $scope.subjectsShow = false;
+            $scope.subjectsLabel = $filter('translate')('MORE');
 
             // Reset the query's filter
             var tmp_json = {};
             var index, obj, key, val;
-            for(index in $scope.$parent.filters.jsonObjects) {
+            for (index in $scope.$parent.filters.jsonObjects) {
                 obj = JSON.parse($scope.$parent.filters.jsonObjects[index]).terms;
                 key = Object.keys(obj)[0];
                 val = obj[key][0];
                 tmp_json[key] = val;
             }
-            for(index in tmp_json) {
+            for (index in tmp_json) {
                 $scope.$parent.indexVM.filters.remove(ejs.TermsFilter(index, tmp_json[index]));
             }
 
@@ -33,27 +35,27 @@
                 if ($routeParams.letter && $routeParams.letter != '') {
                     // Only one letter is allowed in the request
                     var letter = $routeParams.letter.split(filterSeparator)[0].toUpperCase();
-                    if($.inArray(letter, $scope.alphabet) != -1) {
+                    if ($.inArray(letter, $scope.alphabet) != -1) {
                         $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', letter).type('phrase_prefix');
                     }
                 }
                 if ($routeParams.sites && $routeParams.sites != '') {
                     $.map($routeParams.sites.split(filterSeparator), function(site) {
-                        if(site != '') {
+                        if (site != '') {
                             $scope.$parent.indexVM.filters.add(ejs.TermsFilter('sites', site));
                         }
                     });
                 }
                 if ($routeParams.subjects && $routeParams.subjects != '') {
                     $.map($routeParams.subjects.split(filterSeparator), function(subject) {
-                        if(subject != '') {
+                        if (subject != '') {
                             $scope.$parent.indexVM.filters.add(ejs.TermsFilter('subjects', subject));
                         }
                     });
                 }
                 if ($routeParams.types && $routeParams.types != '') {
                     $.map($routeParams.types.split(filterSeparator), function(type) {
-                        if(type != '') {
+                        if (type != '') {
                             $scope.$parent.indexVM.filters.add(ejs.TermsFilter('types', type));
                         }
                     });
@@ -119,6 +121,12 @@
                 }
             }
 
+            $scope.subjectsToogle = function() {
+                $timeout(function() {
+                    $scope.subjectsShow = !$scope.subjectsShow;
+                    $scope.subjectsLabel = ($scope.subjectsShow ? $filter('translate')('LESS') : $filter('translate')('MORE'));
+                }, 0);
+            }
         }
     ]);
 

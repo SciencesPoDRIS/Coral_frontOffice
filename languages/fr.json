@@ -60,5 +60,7 @@
     "lehavre" : "Le Havre",
     "menton" : "Menton",
     "nancy" : "Nancy",
-    "paris" : "Paris"
+    "paris" : "Paris",
+    "MORE" : "Plus",
+    "LESS" : "Moins"
 }
