@@ -90,7 +90,7 @@
                         <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index < 5">
                             {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
                         </md-checkbox>
-                        <div class="more" ng-click="subjectsToogle();">{{subjectsLabel}}</div>
+                        <md-button class="more" ng-click="subjectsToogle();"><md-icon>{{subjectsIcon}}</md-icon> {{subjectsLabel}}</md-button>
                         <div ng-show="subjectsShow === true" layout="column">
                             <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index >= 5">
                                 {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
