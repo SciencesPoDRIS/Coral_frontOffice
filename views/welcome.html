@@ -67,7 +67,7 @@
                         </a>
                     </div>
                     <div ng-repeat="letter in alphabet" class="letter">
-                        <a href ng-click="filterByLetter()">
+                        <a href ng-click="addFilterToUrl('letter', letter);">
                             {{letter}}
                         </a>
                     </div>
