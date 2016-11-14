@@ -14,10 +14,10 @@
 
             // Init default behaviour
             $scope.sites = {
-                'show' : false,
-                'size' : 5,
-                'icon' : 'keyboard_arrow_right',
-                'label' : $filter('translate')('MORE')
+                'show': false,
+                'size': 5,
+                'icon': 'keyboard_arrow_right',
+                'label': $filter('translate')('MORE')
             }
             $scope.sitesToogle = function() {
                 $timeout(function() {
@@ -28,10 +28,10 @@
                 }, 0);
             }
             $scope.subjects = {
-                'show' : false,
-                'size' : 5,
-                'icon' : 'keyboard_arrow_right',
-                'label' : $filter('translate')('MORE')
+                'show': false,
+                'size': 5,
+                'icon': 'keyboard_arrow_right',
+                'label': $filter('translate')('MORE')
             }
             $scope.subjectsToogle = function() {
                 $timeout(function() {
@@ -42,10 +42,10 @@
                 }, 0);
             }
             $scope.types = {
-                'show' : false,
-                'size' : 5,
-                'icon' : 'keyboard_arrow_right',
-                'label' : $filter('translate')('MORE')
+                'show': false,
+                'size': 5,
+                'icon': 'keyboard_arrow_right',
+                'label': $filter('translate')('MORE')
             }
             $scope.typesToogle = function() {
                 $timeout(function() {
@@ -68,6 +68,8 @@
             for (index in tmp_json) {
                 $scope.$parent.indexVM.filters.remove(ejs.TermsFilter(index, tmp_json[index]));
             }
+            // Reset the 'letter' query
+            $scope.$parent.indexVM.query = ejs.MatchAllQuery();
 
             // Fill the filters object according to the route params
             if ($routeParams.letter || $routeParams.query || $routeParams.sites || $routeParams.subjects || $routeParams.types) {
@@ -141,48 +143,54 @@
 
             // Get all subjects
             es.client.search({
-                index: 'resource',
-                size: 1000,
-                body: ejs.Request()
-                    .agg(ejs.TermsAggregation('subjects')
-                        .field('subjects')
-                        .size(0))
-            },
-            function(error, response) {
-                $scope.subjects.facets = response.aggregations.subjects.buckets;
-            });
-
-            // Tab "All", on click on a letter, filter all the resources whose title begins with this letter
-            $scope.filterByLetter = function() {
-                if ($(this)[0].hasOwnProperty('letter')) {
-                    $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', $(this)[0].letter).type('phrase_prefix');
-                } else {
-                    // Reset query term
-                    $scope.query = '';
-                    $scope.$parent.indexVM.query = ejs.MatchAllQuery();
-                }
-            }
+                    index: 'resource',
+                    size: 1000,
+                    body: ejs.Request()
+                        .agg(ejs.TermsAggregation('subjects')
+                            .field('subjects')
+                            .size(0))
+                },
+                function(error, response) {
+                    $scope.subjects.facets = response.aggregations.subjects.buckets;
+                });
 
             $scope.addFilterToUrl = function(facet, value) {
                 // Extract the parameters part of the url
                 var parameters = window.location.href.split('?').length == 1 ? '' : window.location.href.split('?')[1];
                 // Transform this parameters into a JSON Object
-                var parametersJSON = parameters ? JSON.parse('{"' + parameters.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) { return key === "" ? value : decodeURIComponent(value) }) : {};
+                var parametersJSON = parameters ? JSON.parse('{"' + parameters.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) {
+                    return key === "" ? value : decodeURIComponent(value) }) : {};
                 // If facet filter already in the url params, replace or complete
                 if ($.inArray(facet, Object.keys(parametersJSON)) != -1) {
-                    switch(facet) {
-                        case 'letter' :
+                    switch (facet) {
+                        case 'letter':
                             parametersJSON[facet] = value;
                             break;
                         default:
                             console.log('Error : this facet is not taken into consideration : ' + facet);
                             break;
                     }
-                // Else create the facet as a new query filter
+                    // Else create the facet as a new query filter
                 } else {
                     parametersJSON[facet] = value;
                 }
-                parameters = Object.keys(parametersJSON).map(function(k) { return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k]) }).join('&');
+                parameters = Object.keys(parametersJSON).map(function(k) {
+                    return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k]) }).join('&');
+                // Redirect to the new url with the added facet
+                window.location.href = window.location.href.split('?')[0] + '?' + parameters;
+            }
+
+            $scope.removeFilterFromUrl = function(facet) {
+                // Extract the parameters part of the url
+                var parameters = window.location.href.split('?').length == 1 ? '' : window.location.href.split('?')[1];
+                // Transform this parameters into a JSON Object
+                var parametersJSON = parameters ? JSON.parse('{"' + parameters.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) {
+                    return key === "" ? value : decodeURIComponent(value) }) : {};
+                delete parametersJSON[facet]
+                // Force to rest on the tab 'All'
+                parametersJSON['tab'] = 2;
+                parameters = Object.keys(parametersJSON).map(function(k) {
+                    return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k]) }).join('&');
                 // Redirect to the new url with the added facet
                 window.location.href = window.location.href.split('?')[0] + '?' + parameters;
             }
