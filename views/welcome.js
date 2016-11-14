@@ -120,32 +120,34 @@
             }
 
             // Init default behaviour
-            $scope.sitesShow = $scope.subjectsShow = $scope.typesShow = false;
-            $scope.sitesSize = $scope.subjectsSize = $scope.typesSize = 5;
-            $scope.sitesIcon = $scope.subjectsIcon = $scope.typesIcon = 'keyboard_arrow_right';
-            $scope.sitesLabel = $scope.subjectsLabel = $scope.typesLabel = $filter('translate')('MORE');
+            $scope.sites = $scope.subjects = $scope.types = {
+                'show' : false,
+                'size' : 5,
+                'icon' : 'keyboard_arrow_right',
+                'label' : $filter('translate')('MORE')
+            }
             $scope.sitesToogle = function() {
                 $timeout(function() {
-                    $scope.sitesShow = !$scope.sitesShow;
-                    $scope.sitesSize = ($scope.sitesShow ? 100 : 5);
-                    $scope.sitesIcon = ($scope.sitesShow ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
-                    $scope.sitesLabel = ($scope.sitesShow ? $filter('translate')('LESS') : $filter('translate')('MORE'));
+                    $scope.sites.show = !$scope.sites.show;
+                    $scope.sites.size = ($scope.sites.show ? 100 : 5);
+                    $scope.sites.icon = ($scope.sites.show ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
+                    $scope.sites.label = ($scope.sites.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
                 }, 0);
             }
             $scope.subjectsToogle = function() {
                 $timeout(function() {
-                    $scope.subjectsShow = !$scope.subjectsShow;
-                    $scope.subjectsSize = ($scope.subjectsShow ? 100 : 5);
-                    $scope.subjectsIcon = ($scope.subjectsShow ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
-                    $scope.subjectsLabel = ($scope.subjectsShow ? $filter('translate')('LESS') : $filter('translate')('MORE'));
+                    $scope.subjects.show = !$scope.subjects.show;
+                    $scope.subjects.size = ($scope.subjects.show ? 100 : 5);
+                    $scope.subjects.icon = ($scope.subjects.show ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
+                    $scope.subjects.label = ($scope.subjects.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
                 }, 0);
             }
             $scope.typesToogle = function() {
                 $timeout(function() {
-                    $scope.typesShow = !$scope.typesShow;
-                    $scope.typesSize = ($scope.typesShow ? 100 : 5);
-                    $scope.typesIcon = ($scope.typesShow ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
-                    $scope.typesLabel = ($scope.typesShow ? $filter('translate')('LESS') : $filter('translate')('MORE'));
+                    $scope.types.show = !$scope.types.show;
+                    $scope.types.size = ($scope.types.show ? 100 : 5);
+                    $scope.types.icon = ($scope.types.show ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
+                    $scope.types.label = ($scope.types.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
                 }, 0);
             }
 

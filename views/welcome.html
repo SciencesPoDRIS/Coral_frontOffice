@@ -124,7 +124,7 @@
                 </div>
                 <div>
                     <h3>{{'CAMPUS' | translate}}</h3>
-                    <ul class="nav nav-list sites" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(sitesSize)"  layout="column">
+                    <ul class="nav nav-list sites" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size($scope.sites.size)"  layout="column">
                         <!--
                         <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index < 5">
                             {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
@@ -141,7 +141,7 @@
                                 <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
                             </label>
                         </li>
-                        <md-button class="more" ng-click="sitesToogle();"><md-icon>{{sitesIcon}}</md-icon> {{sitesLabel}}</md-button>
+                        <md-button class="more" ng-click="sitesToogle();"><md-icon>{{$scope.sites.icon}}</md-icon> {{$scope.sites.label}}</md-button>
                     </ul>
                 </div>
             </div>
