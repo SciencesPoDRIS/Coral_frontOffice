@@ -1,9 +1,11 @@
 <div layout="row" layout-margin class="my_resource_card">
     <a href="#/{{resource._source.resourceid}}" layout="row" layout-fill>
-        <div flex="15">
+        <div flex="15" layout="column" layout-fill>
             <div ng-if="resource._source.status == 'trial'">{{'TRIAL' | translate}}</div>
             <div ng-if="resource._source.status == 'new'">{{'NEW' | translate}}</div>
-            <img ng-src="../../dris_devdoc/Coral/resources/logo/{{resource._source.logo}}" alt="Logo" class="fill">
+            <div flex>
+                <img ng-src="../../dris_devdoc/Coral/resources/logo/{{resource._source.logo}}" alt="Logo" class="fill">
+            </div>
         </div>
         <div flex="70">
             <div layout="column">
