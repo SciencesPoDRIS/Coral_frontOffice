@@ -35,7 +35,7 @@
             <div flex="70">
                 <my-search-bar query="query" />
                 <div>
-                    <div ng-repeat="subject in subjects">
+                    <div ng-repeat="subject in subjects.facets">
                         <a href="#/?subjects={{subject.key | rewriteUrl}}">
                             <span ng-bind-html="subject.key | translate"></span> ({{subject.doc_count}})
                         </a>
@@ -86,7 +86,7 @@
                 <div class="copyright">© M. Nascimento / Sciences Po</div>
                 <div>
                     <h3>{{'SUBJECTS' | translate}}</h3>
-                    <ul class="nav nav-list subjects" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(subjectsSize)" layout="column">
+                    <ul class="nav nav-list subjects" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(subjects.size)" layout="column">
                         <li ng-repeat="bucket in aggResult.buckets">
                             <label eui-filter="ejs.TermsFilter('subjects', bucket.key)">
                                 <span ng-if="!filter.enabled">
@@ -97,12 +97,12 @@
                                 <span ng-if="filter.enabled">{{bucket.key | translate}} <a href ng-click="filter.enabled=false" class="facet-remove">x</a></span>
                             </label>
                         </li>
-                        <md-button class="more" ng-click="subjectsToogle();"><md-icon>{{subjectsIcon}}</md-icon> {{subjectsLabel}}</md-button>
+                        <md-button class="more" ng-click="subjectsToogle();"><md-icon>{{subjects.icon}}</md-icon> {{subjects.label}}</md-button>
                     </ul>
                 </div>
                 <div>
                     <h3>{{'CONTENT_TYPE' | translate}}</h3>
-                    <ul class="nav nav-list types" eui-aggregation="ejs.TermsAggregation('types').field('types').size(typesSize)"  layout="column">
+                    <ul class="nav nav-list types" eui-aggregation="ejs.TermsAggregation('types').field('types').size(types.size)"  layout="column">
                         <!--
                         <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index < 5">
                             {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
@@ -119,12 +119,12 @@
                                 <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
                             </label>
                         </li>
-                        <md-button class="more" ng-click="typesToogle();"><md-icon>{{typesIcon}}</md-icon> {{typesLabel}}</md-button>
+                        <md-button class="more" ng-click="typesToogle();"><md-icon>{{types.icon}}</md-icon> {{types.label}}</md-button>
                     </ul>
                 </div>
                 <div>
                     <h3>{{'CAMPUS' | translate}}</h3>
-                    <ul class="nav nav-list sites" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size($scope.sites.size)"  layout="column">
+                    <ul class="nav nav-list sites" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(sites.size)"  layout="column">
                         <!--
                         <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index < 5">
                             {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
@@ -141,7 +141,7 @@
                                 <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
                             </label>
                         </li>
-                        <md-button class="more" ng-click="sitesToogle();"><md-icon>{{$scope.sites.icon}}</md-icon> {{$scope.sites.label}}</md-button>
+                        <md-button class="more" ng-click="sitesToogle();"><md-icon>{{sites.icon}}</md-icon> {{sites.label}}</md-button>
                     </ul>
                 </div>
             </div>

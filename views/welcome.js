@@ -12,6 +12,50 @@
             // Set page size to 1.000 in order to display all the results
             $scope.$parent.indexVM.pageSize = 1000;
 
+            // Init default behaviour
+            $scope.sites = {
+                'show' : false,
+                'size' : 5,
+                'icon' : 'keyboard_arrow_right',
+                'label' : $filter('translate')('MORE')
+            }
+            $scope.sitesToogle = function() {
+                $timeout(function() {
+                    $scope.sites.show = !$scope.sites.show;
+                    $scope.sites.size = ($scope.sites.show ? 100 : 5);
+                    $scope.sites.icon = ($scope.sites.show ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
+                    $scope.sites.label = ($scope.sites.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
+                }, 0);
+            }
+            $scope.subjects = {
+                'show' : false,
+                'size' : 5,
+                'icon' : 'keyboard_arrow_right',
+                'label' : $filter('translate')('MORE')
+            }
+            $scope.subjectsToogle = function() {
+                $timeout(function() {
+                    $scope.subjects.show = !$scope.subjects.show;
+                    $scope.subjects.size = ($scope.subjects.show ? 100 : 5);
+                    $scope.subjects.icon = ($scope.subjects.show ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
+                    $scope.subjects.label = ($scope.subjects.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
+                }, 0);
+            }
+            $scope.types = {
+                'show' : false,
+                'size' : 5,
+                'icon' : 'keyboard_arrow_right',
+                'label' : $filter('translate')('MORE')
+            }
+            $scope.typesToogle = function() {
+                $timeout(function() {
+                    $scope.types.show = !$scope.types.show;
+                    $scope.types.size = ($scope.types.show ? 100 : 5);
+                    $scope.types.icon = ($scope.types.show ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
+                    $scope.types.label = ($scope.types.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
+                }, 0);
+            }
+
             // Reset the query's filter
             var tmp_json = {};
             var index, obj, key, val;
@@ -97,16 +141,16 @@
 
             // Get all subjects
             es.client.search({
-                    index: 'resource',
-                    size: 1000,
-                    body: ejs.Request()
-                        .agg(ejs.TermsAggregation('subjects')
-                            .field('subjects')
-                            .size(0))
-                },
-                function(error, response) {
-                    $scope.subjects = response.aggregations.subjects.buckets;
-                });
+                index: 'resource',
+                size: 1000,
+                body: ejs.Request()
+                    .agg(ejs.TermsAggregation('subjects')
+                        .field('subjects')
+                        .size(0))
+            },
+            function(error, response) {
+                $scope.subjects.facets = response.aggregations.subjects.buckets;
+            });
 
             // Tab "All", on click on a letter, filter all the resources whose title begins with this letter
             $scope.filterByLetter = function() {
@@ -117,38 +161,6 @@
                     $scope.query = '';
                     $scope.$parent.indexVM.query = ejs.MatchAllQuery();
                 }
-            }
-
-            // Init default behaviour
-            $scope.sites = $scope.subjects = $scope.types = {
-                'show' : false,
-                'size' : 5,
-                'icon' : 'keyboard_arrow_right',
-                'label' : $filter('translate')('MORE')
-            }
-            $scope.sitesToogle = function() {
-                $timeout(function() {
-                    $scope.sites.show = !$scope.sites.show;
-                    $scope.sites.size = ($scope.sites.show ? 100 : 5);
-                    $scope.sites.icon = ($scope.sites.show ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
-                    $scope.sites.label = ($scope.sites.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
-                }, 0);
-            }
-            $scope.subjectsToogle = function() {
-                $timeout(function() {
-                    $scope.subjects.show = !$scope.subjects.show;
-                    $scope.subjects.size = ($scope.subjects.show ? 100 : 5);
-                    $scope.subjects.icon = ($scope.subjects.show ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
-                    $scope.subjects.label = ($scope.subjects.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
-                }, 0);
-            }
-            $scope.typesToogle = function() {
-                $timeout(function() {
-                    $scope.types.show = !$scope.types.show;
-                    $scope.types.size = ($scope.types.show ? 100 : 5);
-                    $scope.types.icon = ($scope.types.show ? 'keyboard_arrow_up' : 'keyboard_arrow_right');
-                    $scope.types.label = ($scope.types.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
-                }, 0);
             }
 
             $scope.addFilterToUrl = function(facet, value) {
