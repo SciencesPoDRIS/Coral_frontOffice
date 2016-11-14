@@ -27,7 +27,7 @@
         });
         // Default language is french
         $translateProvider.preferredLanguage('fr');
-        $translateProvider.useSanitizeValueStrategy('escape');
+        $translateProvider.useSanitizeValueStrategy(null);
     });
 
     // Routes configuration
