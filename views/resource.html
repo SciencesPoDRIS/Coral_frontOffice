@@ -4,23 +4,46 @@
         <div layout="row">
             <div flex="60">
                 <div layout="column">
+                    <!-- French title -->
                     <div ng-if="currentLanguage == 'fr'">
                         {{indexVM.results.hits.hits[0]._source.title_fr}}
+                        <br /><br />
                     </div>
+                    <!-- English title -->
                     <div ng-if="currentLanguage == 'en'">
                         {{indexVM.results.hits.hits[0]._source.title_en}}
+                        <br /><br />
                     </div>
+                    <!-- French description -->
                     <div ng-if="currentLanguage == 'fr'">
                         {{indexVM.results.hits.hits[0]._source.description_fr}}
+                        <br /><br />
                     </div>
+                    <!-- English description -->
                     <div ng-if="currentLanguage == 'en'">
                         {{indexVM.results.hits.hits[0]._source.description_en}}
+                        <br /><br />
                     </div>
+                    <!-- Languages -->
                     <div ng-repeat="language in indexVM.results.hits.hits[0]._source.languages">
                         {{language | translate}}
                     </div>
+                    <br />
+                    <!-- Access type -->
                     <div>
                         {{indexVM.results.hits.hits[0]._source.accesstype}}
+                        <br /><br />
+                    </div>
+                    <!-- Url -->
+                    <div>
+                        {{indexVM.results.hits.hits[0]._source.resourceurl}}
+                        <br /><br />
+                    </div>
+                    <!-- Tutos -->
+                    <div ng-repeat="(key, value) in indexVM.results.hits.hits[0]._source.tutosrank">
+                        {{indexVM.results.hits.hits[0]._source.tutosname[key]}}
+                        <br />
+                        {{indexVM.results.hits.hits[0]._source.tutosurl[key]}}
                     </div>
                 </div>
             </div>
