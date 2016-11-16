@@ -12,14 +12,17 @@
             link: function($scope) {
                 // Language switcher
                 $scope.languageLabel = 'LANGUAGE_EN';
+                $scope.currentLanguage = 'fr';
                 $scope.changeLanguage = function() {
                     switch ($translate.use()) {
                         case 'fr' :
                             $scope.languageLabel = 'LANGUAGE_FR';
+                            $scope.currentLanguage = 'en';
                             $translate.use('en');
                             break;
                         case 'en' :
                             $scope.languageLabel = 'LANGUAGE_EN';
+                            $scope.currentLanguage = 'en';
                             $translate.use('fr');
                             break;
                         default :
