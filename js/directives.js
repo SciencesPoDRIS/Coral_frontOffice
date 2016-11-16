@@ -39,14 +39,11 @@
             },
             link: function($scope) {
                 $scope.search = function() {
-                    // Execute the query if the searched term is not empty
+                    // If the searched term is not empty, add searched term to the url
                     if($scope.query && ($scope.query != '') ) {
-                        // Set "All" tab as active
-                        $scope.$parent.selectedTab = 2;
-                        $scope.$parent.indexVM.query = ejs.BoolQuery().should(ejs.QueryStringQuery(['title_en', 'title_fr', 'description_en', 'description_fr', 'alias']).query('*' + $scope.query + '*'));
+                        $scope.$parent.addFilterToUrl('query', $scope.query);
                     }
                 }
-                $scope.$watch('query', $scope.search());
             }
         }
     }]);
