@@ -12,13 +12,31 @@
             // Set page size to 1.000 in order to display all the results
             $scope.$parent.indexVM.pageSize = 1000;
 
-            // Init default behaviour
+            // Init default search with an empty term
+            $scope.query = '';
+
+            // Init default facets
+            $scope.getAggreagtion = function(facet) {
+                $timeout(function() {
+                    es.client.search({
+                        index: 'resource',
+                        body: ejs.Request()
+                            .agg(ejs.TermsAggregation(facet).field(facet))
+                    }, function(error, response) {
+                        $scope[facet].values = response.aggregations[facet].buckets.map(function(obj) {
+                            obj.selected = true;
+                            return obj;
+                        });
+                    });
+                }, 0)
+            }
             $scope.sites = {
                 'show': false,
                 'size': 5,
                 'icon': 'keyboard_arrow_right',
                 'label': $filter('translate')('MORE')
-            }
+            };
+            $scope.getAggreagtion('sites');
             $scope.sitesToogle = function() {
                 $timeout(function() {
                     $scope.sites.show = !$scope.sites.show;
@@ -32,7 +50,8 @@
                 'size': 5,
                 'icon': 'keyboard_arrow_right',
                 'label': $filter('translate')('MORE')
-            }
+            };
+            $scope.getAggreagtion('subjects');
             $scope.subjectsToogle = function() {
                 $timeout(function() {
                     $scope.subjects.show = !$scope.subjects.show;
@@ -46,7 +65,8 @@
                 'size': 5,
                 'icon': 'keyboard_arrow_right',
                 'label': $filter('translate')('MORE')
-            }
+            };
+            $scope.getAggreagtion('types');
             $scope.typesToogle = function() {
                 $timeout(function() {
                     $scope.types.show = !$scope.types.show;
@@ -68,7 +88,7 @@
             for (index in tmp_json) {
                 $scope.$parent.indexVM.filters.remove(ejs.TermsFilter(index, tmp_json[index]));
             }
-            // Reset the 'letter' query
+            // Reset the query's term
             $scope.$parent.indexVM.query = ejs.MatchAllQuery();
 
             // Fill the filters object according to the route params
@@ -106,6 +126,7 @@
                 }
                 if ($routeParams.query && $routeParams.query != '') {
                     $scope.query = $routeParams.query;
+                    $scope.$parent.indexVM.query = ejs.BoolQuery().should(ejs.QueryStringQuery(['title_en', 'title_fr', 'description_en', 'description_fr', 'alias']).query('*' + $scope.query + '*'));
                 }
             } else if ($routeParams.tab && ['0', '1', '2'].includes($routeParams.tab)) {
                 $scope.selectedTab = $routeParams.tab;
@@ -159,11 +180,15 @@
                 var parameters = window.location.href.split('?').length == 1 ? '' : window.location.href.split('?')[1];
                 // Transform this parameters into a JSON Object
                 var parametersJSON = parameters ? JSON.parse('{"' + parameters.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) {
-                    return key === "" ? value : decodeURIComponent(value) }) : {};
+                    return key === "" ? value : decodeURIComponent(value)
+                }) : {};
                 // If facet filter already in the url params, replace or complete
                 if ($.inArray(facet, Object.keys(parametersJSON)) != -1) {
                     switch (facet) {
                         case 'letter':
+                            parametersJSON[facet] = value;
+                            break;
+                        case 'query':
                             parametersJSON[facet] = value;
                             break;
                         default:
@@ -175,7 +200,8 @@
                     parametersJSON[facet] = value;
                 }
                 parameters = Object.keys(parametersJSON).map(function(k) {
-                    return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k]) }).join('&');
+                    return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k])
+                }).join('&');
                 // Redirect to the new url with the added facet
                 window.location.href = window.location.href.split('?')[0] + '?' + parameters;
             }
@@ -185,15 +211,18 @@
                 var parameters = window.location.href.split('?').length == 1 ? '' : window.location.href.split('?')[1];
                 // Transform this parameters into a JSON Object
                 var parametersJSON = parameters ? JSON.parse('{"' + parameters.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) {
-                    return key === "" ? value : decodeURIComponent(value) }) : {};
+                    return key === "" ? value : decodeURIComponent(value)
+                }) : {};
                 delete parametersJSON[facet]
-                // Force to rest on the tab 'All'
+                    // Force to rest on the tab 'All'
                 parametersJSON['tab'] = 2;
                 parameters = Object.keys(parametersJSON).map(function(k) {
-                    return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k]) }).join('&');
+                    return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k])
+                }).join('&');
                 // Redirect to the new url with the added facet
                 window.location.href = window.location.href.split('?')[0] + '?' + parameters;
             }
+
         }
     ]);
 
