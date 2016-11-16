@@ -1,10 +1,14 @@
 <div layout="row" layout-margin class="my_resource_card">
-    <a href="#/{{resource._source.resourceid}}" layout="row" layout-fill>
+    <a href="{{resource._source.resourceurl}}" target="_blank" layout="row" layout-fill>
         <div flex="15" layout="column" layout-fill>
-            <div ng-if="resource._source.status == 'trial'">{{'TRIAL' | translate}}</div>
-            <div ng-if="resource._source.status == 'new'">{{'NEW' | translate}}</div>
+            <div ng-if="resource._source.status == 'trial'">
+                {{'TRIAL' | translate}}
+            </div>
+            <div ng-if="resource._source.status == 'new'">
+                {{'NEW' | translate}}
+            </div>
             <div flex>
-                <img ng-src="../../dris_devdoc/Coral/resources/logo/{{resource._source.logo}}" alt="Logo" class="fill">
+                <img ng-src="../../dris_devdoc/Coral/resources/logo/{{resource._source.logo}}" alt="Logo" class="fill" />
             </div>
         </div>
         <div flex="70">
@@ -19,7 +23,14 @@
         </div>
         <div flex="15">
             <div layout="column">
-                <div ng-if="resource._source.accesstype == 'Restricted access'">locker</div>
+                <div ng-if="resource._source.accesstype == 'Restricted access'">
+                    locker
+                </div>
+                <div>
+                    <md-button class="md-primary" aria-label="Use Android" ng-href="#/{{resource._source.resourceid}}">
+                        En savoir plus
+                    </md-button>
+                </div>
             </div>
         </div>
     </a>
