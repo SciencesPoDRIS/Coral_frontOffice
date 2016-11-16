@@ -4,10 +4,10 @@
         <div layout="row">
             <div flex="60">
                 <div layout="column">
-                	<div>{{indexVM.results.hits.hits[0]._source.title_fr}}</div>
-                	<div>{{indexVM.results.hits.hits[0]._source.description_fr}}</div>
-                	<div ng-repeat="language in indexVM.results.hits.hits[0]._source.languages">{{language | translate}}</div>
-                	<div>{{indexVM.results.hits.hits[0]._source.accesstype}}</div>
+                    <div>{{indexVM.results.hits.hits[0]._source.title_fr}}</div>
+                    <div>{{indexVM.results.hits.hits[0]._source.description_fr}}</div>
+                    <div ng-repeat="language in indexVM.results.hits.hits[0]._source.languages">{{language | translate}}</div>
+                    <div>{{indexVM.results.hits.hits[0]._source.accesstype}}</div>
                 </div>
             </div>
             <div flex="40">
