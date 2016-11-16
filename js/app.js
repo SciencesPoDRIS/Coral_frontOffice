@@ -26,8 +26,10 @@
             suffix: '.json'
         });
         // Default language is french
-        $translateProvider.preferredLanguage('fr');
-        $translateProvider.useSanitizeValueStrategy(null);
+        $translateProvider
+            .preferredLanguage('fr')
+            .fallbackLanguage('fr')
+            .useSanitizeValueStrategy(null);
     });
 
     // Routes configuration
