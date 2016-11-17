@@ -93,6 +93,12 @@
         <div ng-repeat="(key, value) in indexVM.results.hits.hits[0]._source.tutosrank">
             {{indexVM.results.hits.hits[0]._source.tutosname[key]}}
             <br /> {{indexVM.results.hits.hits[0]._source.tutosurl[key]}}
+            <br />
+            <br />
+        </div>
+        <!-- Update -->
+        <div>
+            {{indexVM.results.hits.hits[0]._source.updatedate}}
         </div>
     </div>
 </div>
