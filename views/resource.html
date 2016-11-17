@@ -53,6 +53,12 @@
             <br />
             <br />
         </div>
+        <!-- Accessibility -->
+        <div ng-if="indexVM.results.hits.hits[0]._source.accessibility == 1">
+            <img ng-src="images/accessibility.png" alt="Accessibility" class="fill">
+            <br />
+            <br />
+        </div>
         <!-- Url -->
         <div>
             {{indexVM.results.hits.hits[0]._source.resourceurl}}
