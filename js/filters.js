@@ -5,7 +5,7 @@
 
     var app = angular.module('eResources.filters', []);
 
-    app.filter('getImageUrl', [function() {
+    app.filter('getAccessTypeIcon', [function() {
         return function(input, $scope, facet) {
             var tmp = '';
             switch (input) {
