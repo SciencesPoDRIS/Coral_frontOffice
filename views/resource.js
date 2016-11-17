@@ -7,6 +7,11 @@
         function($scope, $translate, $routeParams) {
             // Get information about this resource
             $scope.indexVM.query = ejs.MatchQuery('resourceid', $routeParams.resourceId);
+
+            // Navigate back to the previous page, the search one
+            $scope.goBack = function() {
+                window.history.back();
+            }
         }
     ]);
 

@@ -77,5 +77,6 @@
     "reims" : "Reims",
     "MORE" : "Plus",
     "LESS" : "Moins",
-    "READ_MORE" : "En savoir plus"
+    "READ_MORE" : "En savoir plus",
+    "BACK_TO_RESULTS" : "Retour aux résultats"
 }
