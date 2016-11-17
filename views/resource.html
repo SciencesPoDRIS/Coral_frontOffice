@@ -5,59 +5,88 @@
         </md-button>
     </div>
     <div>
-        <div layout="row">
-            <div flex="60">
-                <div layout="column">
-                    <!-- French title -->
-                    <div ng-if="currentLanguage == 'fr'">
-                        {{indexVM.results.hits.hits[0]._source.title_fr}}
-                        <br /><br />
-                    </div>
-                    <!-- English title -->
-                    <div ng-if="currentLanguage == 'en'">
-                        {{indexVM.results.hits.hits[0]._source.title_en}}
-                        <br /><br />
-                    </div>
-                    <!-- French description -->
-                    <div ng-if="currentLanguage == 'fr'">
-                        {{indexVM.results.hits.hits[0]._source.description_fr}}
-                        <br /><br />
-                    </div>
-                    <!-- English description -->
-                    <div ng-if="currentLanguage == 'en'">
-                        {{indexVM.results.hits.hits[0]._source.description_en}}
-                        <br /><br />
-                    </div>
-                    <!-- Languages -->
-                    <div ng-repeat="language in indexVM.results.hits.hits[0]._source.languages">
-                        {{language | translate}}
-                    </div>
-                    <br />
-                    <!-- Access type -->
-                    <div>
-                        {{indexVM.results.hits.hits[0]._source.accesstype}}
-                        <br /><br />
-                    </div>
-                    <!-- Url -->
-                    <div>
-                        {{indexVM.results.hits.hits[0]._source.resourceurl}}
-                        <br /><br />
-                    </div>
-                    <!-- Tutos -->
-                    <div ng-repeat="(key, value) in indexVM.results.hits.hits[0]._source.tutosrank">
-                        {{indexVM.results.hits.hits[0]._source.tutosname[key]}}
-                        <br />
-                        {{indexVM.results.hits.hits[0]._source.tutosurl[key]}}
-                    </div>
-                </div>
-            </div>
-            <div flex="40">
-                <div layout="column">
-                    <div flex="20">
-                        <img ng-src="../../dris_devdoc/Coral/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
-                    </div>
-                </div>
-            </div>
+        <!-- Status -->
+        <div ng-if="indexVM.results.hits.hits[0]._source.status != null">
+            {{indexVM.results.hits.hits[0]._source.status | uppercase | translate}}
+            <br />
+        </div>
+        <!-- French title -->
+        <div ng-if="currentLanguage == 'fr'">
+            {{indexVM.results.hits.hits[0]._source.title_fr}}
+            <br />
+            <br />
+        </div>
+        <!-- English title -->
+        <div ng-if="currentLanguage == 'en'">
+            {{indexVM.results.hits.hits[0]._source.title_en}}
+            <br />
+            <br />
+        </div>
+        <!-- Subjects -->
+        <div ng-repeat="subject in indexVM.results.hits.hits[0]._source.subjects">
+            {{subject | translate}}
+        </div>
+        <!-- Languages -->
+        <div ng-repeat="language in indexVM.results.hits.hits[0]._source.languages">
+            {{language | translate}}
+        </div>
+        <br />
+        <!-- French description -->
+        <div ng-if="currentLanguage == 'fr'">
+            {{indexVM.results.hits.hits[0]._source.description_fr}}
+            <br />
+            <br />
+        </div>
+        <!-- English description -->
+        <div ng-if="currentLanguage == 'en'">
+            {{indexVM.results.hits.hits[0]._source.description_en}}
+            <br />
+            <br />
+        </div>
+        <!-- Logo -->
+        <div flex="20">
+            <img ng-src="../../dris_devdoc/Coral/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
+        </div>
+        <!-- Access type -->
+        <div>
+            <img ng-src="images/{{indexVM.results.hits.hits[0]._source.accesstype | getAccessTypeIcon}}" alt="Access type" class="fill"> {{indexVM.results.hits.hits[0]._source.accesstype | translate}}
+            <br />
+            <br />
+        </div>
+        <!-- Url -->
+        <div>
+            {{indexVM.results.hits.hits[0]._source.resourceurl}}
+            <br />
+            <br />
+        </div>
+        <!-- French general note -->
+        <div ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.notegeneral_fr != null">
+            {{indexVM.results.hits.hits[0]._source.notegeneral_fr}}
+            <br />
+            <br />
+        </div>
+        <!-- English general note -->
+        <div ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.notegeneral_en != null">
+            {{indexVM.results.hits.hits[0]._source.notegeneral_en}}
+            <br />
+            <br />
+        </div>
+        <!-- French access note -->
+        <div ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.noteaccess_fr != null">
+            {{indexVM.results.hits.hits[0]._source.noteaccess_fr}}
+            <br />
+            <br />
+        </div>
+        <!-- English access note -->
+        <div ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.noteaccess_en != null">
+            {{indexVM.results.hits.hits[0]._source.noteaccess_en}}
+            <br />
+            <br />
+        </div>
+        <!-- Tutos -->
+        <div ng-repeat="(key, value) in indexVM.results.hits.hits[0]._source.tutosrank">
+            {{indexVM.results.hits.hits[0]._source.tutosname[key]}}
+            <br /> {{indexVM.results.hits.hits[0]._source.tutosurl[key]}}
         </div>
     </div>
 </div>
