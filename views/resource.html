@@ -99,6 +99,12 @@
         <!-- Update -->
         <div>
             {{indexVM.results.hits.hits[0]._source.updatedate}}
+            <br />
+            <br />
+        </div>
+        <!-- User limitation -->
+        <div ng-if="indexVM.results.hits.hits[0]._source.userlimitid != null">
+            {{indexVM.results.hits.hits[0]._source.userlimitid}}
         </div>
     </div>
 </div>
