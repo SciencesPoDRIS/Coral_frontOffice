@@ -10,6 +10,11 @@
             {{indexVM.results.hits.hits[0]._source.status | uppercase | translate}}
             <br />
         </div>
+        <!-- Downtimes / Issues -->
+        <div ng-show="downtimes.length > 0">
+            {{'OUT_OF_ORDER' | translate}} : {{downtimes[0]._source.shortname | translate}} du {{downtimes[0]._source.startdate | date : $parent.dateFormat}} au {{downtimes[0]._source.enddate | date : $parent.dateFormat}}.
+            <br />
+        </div>
         <!-- French title -->
         <div ng-if="currentLanguage == 'fr'">
             {{indexVM.results.hits.hits[0]._source.title_fr}}

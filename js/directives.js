@@ -13,16 +13,19 @@
                 // Language switcher
                 $scope.languageLabel = 'LANGUAGE_EN';
                 $scope.currentLanguage = 'fr';
+                $scope.dateFormat = 'dd/MM/yyyy';
                 $scope.changeLanguage = function() {
                     switch ($translate.use()) {
                         case 'fr':
                             $scope.languageLabel = 'LANGUAGE_FR';
                             $scope.currentLanguage = 'en';
+                            $scope.dateFormat = 'MM/dd/yyyy';
                             $translate.use('en');
                             break;
                         case 'en':
                             $scope.languageLabel = 'LANGUAGE_EN';
                             $scope.currentLanguage = 'en';
+                            $scope.dateFormat = 'dd/MM/yyyy';
                             $translate.use('fr');
                             break;
                         default:

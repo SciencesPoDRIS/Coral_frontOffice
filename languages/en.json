@@ -82,5 +82,10 @@
     "MORE" : "More",
     "LESS" : "Less",
     "READ_MORE" : "Read more",
-    "BACK_TO_RESULTS" : "Back to results"
+    "BACK_TO_RESULTS" : "Back to results",
+    "OUT_OF_ORDER" : "Out of order",
+    "Maintenance" : "Maintenance",
+    "Blocked by abusive use" : "Blocked by abusive use",
+    "Internal problem" : "Internal problem",
+    "Technical problem with remote access" : "Technical problem with remote access"
 }
