@@ -15,17 +15,17 @@
                 $scope.currentLanguage = 'fr';
                 $scope.changeLanguage = function() {
                     switch ($translate.use()) {
-                        case 'fr' :
+                        case 'fr':
                             $scope.languageLabel = 'LANGUAGE_FR';
                             $scope.currentLanguage = 'en';
                             $translate.use('en');
                             break;
-                        case 'en' :
+                        case 'en':
                             $scope.languageLabel = 'LANGUAGE_EN';
                             $scope.currentLanguage = 'en';
                             $translate.use('fr');
                             break;
-                        default :
+                        default:
                             break;
                     }
                 };
@@ -43,7 +43,7 @@
             link: function($scope) {
                 $scope.search = function() {
                     // If the searched term is not empty, add searched term to the url
-                    if($scope.query && ($scope.query != '') ) {
+                    if ($scope.query && ($scope.query != '')) {
                         $scope.$parent.addFilterToUrl('query', $scope.query);
                     }
                 }
@@ -55,22 +55,25 @@
         return {
             restrict: 'E',
             templateUrl: 'partials/myResourceCard.html',
-            scope : {
-                resource : '='
+            scope: {
+                resource: '='
             },
             link: function($scope) {
-                switch ($translate.use()) {
-                    case 'fr' :
-                        $scope.resourceTitle = $scope.resource._source.title_fr;
-                        $scope.resourceDescription = $scope.resource._source.description_fr;
-                        break;
-                    case 'en' :
-                        $scope.resourceTitle = $scope.resource._source.title_en;
-                        $scope.resourceDescription = $scope.resource._source.description_en;
-                        break;
-                    default :
-                        break;
-                }
+                // Add a listener on the current language to translate resource title and description
+                $scope.$watch('$parent.currentLanguage', function(lang) {
+                    switch (lang) {
+                        case 'fr':
+                            $scope.resourceTitle = $scope.resource._source.title_fr;
+                            $scope.resourceDescription = $scope.resource._source.description_fr;
+                            break;
+                        case 'en':
+                            $scope.resourceTitle = $scope.resource._source.title_en;
+                            $scope.resourceDescription = $scope.resource._source.description_en;
+                            break;
+                        default:
+                            break;
+                    }
+                });
             }
         }
     }]);
