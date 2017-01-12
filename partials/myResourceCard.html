@@ -1,37 +1,41 @@
 <div layout="row" layout-margin class="my_resource_card">
-    <a href="{{resource._source.resourceurl}}" target="_blank" layout="row" layout-fill>
-        <div flex="15" layout="column" layout-fill>
-            <div ng-if="resource._source.status == 'trial'">
-                {{'TRIAL' | translate}}
-            </div>
-            <div ng-if="resource._source.status == 'new'">
-                {{'NEW' | translate}}
-            </div>
-            <div flex>
-                <img ng-src="../../dris_devdoc/Coral/resources/logo/{{resource._source.logo}}" alt="Logo" class="fill" />
-            </div>
+    <div flex="15" layout="column" layout-fill>
+        <div ng-if="resource._source.status == 'trial'">
+            {{'TRIAL' | translate}}
         </div>
-        <div flex="70">
-            <div layout="column">
-                <div>
+        <div ng-if="resource._source.status == 'new'">
+            {{'NEW' | translate}}
+        </div>
+        <div flex>
+            <a href="{{resource._source.resourceurl}}" target="_blank">
+                <img ng-src="../../dris_devdoc/Coral/resources/logo/{{resource._source.logo}}" alt="Logo" layout-fill />
+            </a>
+        </div>
+    </div>
+    <div flex="70">
+        <div layout="column">
+            <div>
+                <a href="{{resource._source.resourceurl}}" target="_blank">
                     {{resourceTitle | limitTo: 50}}
-                </div>
-                <div>
+                </a>
+            </div>
+            <div>
+                <a href="#/{{resource._source.resourceid}}">
                     {{resourceDescription | limitTo: 150}}
-                </div>
+                </a>
             </div>
         </div>
-        <div flex="15">
-            <div layout="column">
-                <div ng-if="resource._source.accesstype == 'Restricted access'">
-                    locker
-                </div>
-                <div>
-                    <md-button class="md-primary" aria-label="Use Android" ng-href="#/{{resource._source.resourceid}}">
-                        {{'READ_MORE' | translate}}
-                    </md-button>
-                </div>
+    </div>
+    <div flex="15">
+        <div layout="column">
+            <div ng-if="resource._source.accesstype == 'Restricted access'">
+                locker
+            </div>
+            <div>
+                <md-button class="md-primary" aria-label="Use Android" ng-href="#/{{resource._source.resourceid}}">
+                    {{'READ_MORE' | translate}}
+                </md-button>
             </div>
         </div>
-    </a>
+    </div>
 </div>
