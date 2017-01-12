@@ -63,10 +63,8 @@
             },
             link: function($scope) {
                 // Add a listener on the current language to translate resource title and description
-                $scope.$watch(function() {
-                    return $translate.use();
-                }, function() {
-                    switch ($translate.use()) {
+                $scope.$watch('$parent.currentLanguage', function(lang) {
+                    switch (lang) {
                         case 'fr':
                             $scope.resourceTitle = $scope.resource._source.title_fr;
                             $scope.resourceDescription = $scope.resource._source.description_fr;
