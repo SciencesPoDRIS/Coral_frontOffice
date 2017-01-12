@@ -24,7 +24,7 @@
                             break;
                         case 'en':
                             $scope.languageLabel = 'LANGUAGE_EN';
-                            $scope.currentLanguage = 'en';
+                            $scope.currentLanguage = 'fr';
                             $scope.dateFormat = 'dd/MM/yyyy';
                             $translate.use('fr');
                             break;
