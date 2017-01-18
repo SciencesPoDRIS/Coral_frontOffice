@@ -3,10 +3,9 @@
     <div class="title layout-fill">
         <div>
             <h1>{{'ELECTRONIC_RESOURCES' | translate}}</h1>
-            <md-input-container class="md-block search-bar" flex-gt-sm style="background-color: white;">
-                <label>{{'SEARCH' | translate}}</label>
+            <md-input-container md-no-float class="md-block search-bar" flex-gt-sm style="background-color: white;">
                 <md-icon class="search-icon">search</md-icon>
-                <input ng-model="query" ng-keyup="$event.keyCode == 13 && search()">
+                <input ng-model="query" ng-keyup="$event.keyCode == 13 && search()" placeholder="{{'SEARCH' | translate}}">
             </md-input-container>
             <div class="pull-right usage-convention">{{'USAGE_CONVENTION' | translate}} > </div>
         </div>
