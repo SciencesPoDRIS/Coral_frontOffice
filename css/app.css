@@ -300,19 +300,6 @@ my-language-switcher {
 }
 
 
-/* Search part */
-
-.letter {
-    margin: 5px;
-}
-
-.icon {
-    vertical-align: middle;
-    max-height: 20px;
-    max-width: 20px;
-}
-
-
 /* Image on the right column */
 
 .copyright {
