@@ -300,20 +300,6 @@ my-language-switcher {
 }
 
 
-/* Image on the right column */
-
-.copyright {
-    color: grey;
-    font-size: 13px;
-}
-
-.my_resource_card {
-    border: 1px solid grey;
-    border-radius: 15px;
-    padding: 5px;
-}
-
-
 /* Side tiles */
 
 my-side-tiles {
