@@ -36,24 +36,6 @@
         }
     }]);
 
-    app.directive('mySearchBar', [function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'partials/mySearchBar.html',
-            scope: {
-                query: '='
-            },
-            link: function($scope) {
-                $scope.search = function() {
-                    // If the searched term is not empty, add searched term to the url
-                    if ($scope.query && ($scope.query != '')) {
-                        $scope.$parent.addFilterToUrl('query', $scope.query);
-                    }
-                }
-            }
-        }
-    }]);
-
     app.directive('myResourceCard', ['$translate', function($translate) {
         return {
             restrict: 'E',
