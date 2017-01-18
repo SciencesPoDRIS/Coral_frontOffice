@@ -34,10 +34,10 @@
     });
 
     // Routes configuration
-    app.config(['$routeProvider', '$locationProvider', 
+    app.config(['$routeProvider', '$locationProvider',
         function($routeProvider, $locationProvider) {
             $routeProvider.
-            // Welcome Page
+                // Welcome Page
             when('/', {
                 templateUrl: 'views/welcome.html',
                 controller: 'WelcomeController'
@@ -51,5 +51,11 @@
             });
         }
     ]);
+
+    app.config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('grey')
+            .accentPalette('red');
+    });
 
 })();
