@@ -78,10 +78,10 @@
         }
     }]);
 
-    app.directive('mySearchBar2', ['addFilterToUrl', function(addFilterToUrl) {
+    app.directive('mySearchBar', ['addFilterToUrl', function(addFilterToUrl) {
         return {
             restrict: 'E',
-            templateUrl: 'partials/mySearchBar2.html',
+            templateUrl: 'partials/mySearchBar.html',
             scope: {},
             link: function($scope) {
                 $scope.search = function() {
