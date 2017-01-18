@@ -71,13 +71,6 @@
         }
     }]);
 
-    app.directive('myResourceHighlighted', [function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'partials/myResourceHighlighted.html'
-        }
-    }]);
-
     app.directive('mySearchBar', ['addFilterToUrl', function(addFilterToUrl) {
         return {
             restrict: 'E',
