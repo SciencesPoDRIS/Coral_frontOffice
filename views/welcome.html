@@ -1,11 +1,21 @@
 <md-tabs md-selected="selectedTab" md-dynamic-height md-center-tabs md-border-bottom>
     <md-tab label="{{'TAB_HOME' | translate}}">
-        <div layout="row" layout-margin>
-            <div flex="70">
-                <div ng-if="highlighted.length > 0">
-                    <div>{{'MOST_USED' | translate}}</div>
-                    <my-resource-highlighted ng-repeat="resource in highlighted" resource="resource" />
+        <div layout="column" layout-margin>
+            <div ng-if="highlighted.length > 0">
+                <div layout="row">
+                    <div flex="20">
+                        {{'MOST_USED' | translate}}
+                    </div>
+                    <div ng-repeat="resource in highlighted track by $index" flex="20" ng-if="$index %2 == 0">
+                        <div ng-repeat="i in [$index, $index + 1]">
+                            <a href="{{highlighted[i]._source.resourceurl}}" target="_blank">
+                                    {{highlighted[i]._source.title_fr}}
+                                </a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div>
                 <div ng-if="trial.length > 0">
                     <div>{{'TRIAL' | translate}}</div>
                     <my-resource-card ng-repeat="resource in trial" resource="resource" />
@@ -13,18 +23,6 @@
                 <div ng-if="new.length > 0">
                     <div>{{'NEW' | translate}}</div>
                     <my-resource-card ng-repeat="resource in new" resource="resource" />
-                </div>
-            </div>
-            <div layout="column" flex="30">
-                <div>
-                    <img src="images/image_01.jpg">
-                </div>
-                <div class="copyright">© M. Nascimento / Sciences Po</div>
-                <div>
-                    <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">{{'USAGE_CONVENTION' | translate}}</a>
-                </div>
-                <div>
-                    <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">{{'CGU' | translate}}</a>
                 </div>
             </div>
         </div>
@@ -102,20 +100,21 @@
                 <div>
                     <h3>{{'CONTENT_TYPE' | translate}}</h3>
                     <!-- <div class="types" layout="column"> -->
-                        <ul class="nav nav-list types" eui-aggregation="ejs.TermsAggregation('types').field('types').size(types.size)" layout="column">
-                            <!-- <md-checkbox ng-repeat="value in types.values" ng-if="$index < types.size" ng-model="value.selected">
+                    <ul class="nav nav-list types" eui-aggregation="ejs.TermsAggregation('types').field('types').size(types.size)" layout="column">
+                        <!-- <md-checkbox ng-repeat="value in types.values" ng-if="$index < types.size" ng-model="value.selected">
                                 {{value.key | translate}} <span class="muted">({{value.doc_count}})</span>
                             </md-checkbox> -->
-                            <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index < types.size" ng-model="value.selected">
-                                {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
-                            </md-checkbox>
-                            <!-- <li ng-repeat="bucket in aggResult.buckets">
+                        <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index < types.size" ng-model="value.selected">
+                            {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
+                        </md-checkbox>
+                        <!-- <li ng-repeat="bucket in aggResult.buckets">
                                 <label class="checkbox" eui-filter="ejs.TermsFilter('types', bucket.key)">
                                     <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
                                 </label>
                             </li> -->
-                            <md-button class="more" ng-click="typesToogle()"><md-icon>{{types.icon}}</md-icon> {{types.label}}</md-button>
-                        </ul>
+                        <md-button class="more" ng-click="typesToogle()">
+                            <md-icon>{{types.icon}}</md-icon> {{types.label}}</md-button>
+                    </ul>
                     <!-- </div> -->
                 </div>
                 <div>
