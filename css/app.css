@@ -249,13 +249,53 @@ ul#menu_appli li:last-child a::after {
 }
 
 
+/* Header */
+
+.header {
+    position: relative;
+}
+.header .title {
+    position: absolute;
+    top: 0;
+}
+.header .title > div {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 50%;
+}
+.header .title > div > h1 {
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+.header .title .search-bar .search-icon {
+    color: #e6142d;
+    top: 5px;
+    left: 5px;
+}
+.header .title .search-bar input {
+    border: none;
+}
+.header .title .search-bar .md-errors-spacer {
+    display: none;
+}
+.header .title .usage-convention {
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+    text-align: right;
+}
+
+
 /* Language switcher */
 
 my-language-switcher {
     outline: none;
     position: absolute;
-    right: 48px;
-    top: 77px;
+    right: 348px;
+    top: 0;
     z-index: 2;
 }
 

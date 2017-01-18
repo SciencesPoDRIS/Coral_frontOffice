@@ -1,0 +1,15 @@
+<div class="header col-md-12">
+    <img src="images/header.jpg" class="layout-fill" />
+    <div class="title layout-fill">
+        <div>
+            <h1>{{'ELECTRONIC_RESOURCES' | translate}}</h1>
+            <md-input-container class="md-block search-bar" flex-gt-sm style="background-color: white;">
+                <label>{{'SEARCH' | translate}}</label>
+                <md-icon class="search-icon">search</md-icon>
+                <!-- <input ng-model="query" ng-keyup="$event.keyCode == 13 && search()"> -->
+                <input ng-keyup="$event.keyCode == 13 && search()">
+            </md-input-container>
+            <div class="pull-right usage-convention">{{'USAGE_CONVENTION' | translate}} > </div>
+        </div>
+    </div>
+</div>

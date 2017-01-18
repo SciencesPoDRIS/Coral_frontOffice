@@ -1,5 +1,5 @@
 {
-    "ELECTRONIC_RESOURCES" : "Ressources électroniques",
+    "ELECTRONIC_RESOURCES" : "Ressources numériques",
     "LANGUAGE_FR" : "Français",
     "LANGUAGE_EN" : "English",
     "en" : "Anglais",
@@ -68,7 +68,7 @@
     "TAB_SUBJECTS" : "Sujets",
     "TAB_ALL": "Tout",
     "MOST_USED" : "Les plus utilisées",
-    "SEARCH" : "Rechercher",
+    "SEARCH" : "Rechercher une ressource",
     "TRIAL" : "En test",
     "NEW" : "Nouveauté",
     "CAMPUS" : "Campus",

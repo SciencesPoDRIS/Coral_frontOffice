@@ -96,4 +96,22 @@
         }
     }]);
 
+    app.directive('mySearchBar2', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/mySearchBar2.html',
+            scope: {},
+            link: function($scope) {
+                $scope.search = function() {
+                    console.log("Search");
+                    console.log($scope);
+                    // If the searched term is not empty, add searched term to the url
+                    if ($scope.query && ($scope.query != '')) {
+                        $scope.$parent.addFilterToUrl('query', $scope.query);
+                    }
+                }
+            }
+        }
+    }]);
+
 })();
