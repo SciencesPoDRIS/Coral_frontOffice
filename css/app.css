@@ -303,11 +303,11 @@ my-language-switcher {
 
 .welcome .highlighted-resources,
 .welcome .trial-and-new-resources {
-    color: white;
     padding: 40px 15%;
 }
 .welcome .highlighted-resources {
     background-color: black;
+    color: white;
     margin: 0;
 }
 .welcome .highlighted-resources a {
@@ -336,4 +336,41 @@ my-side-tiles .tile {
 
 my-side-tiles .tile:hover {
     background-color: red;
+}
+
+
+/* Resource Card */
+
+.my-resource-card {
+    border: 1px solid grey;
+}
+
+.my-resource-card .logo {
+    text-align: center;
+}
+
+.my-resource-card .logo img {
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.my-resource-card .resource-content {
+    padding-bottom: 35px;
+    position: relative;
+}
+
+.my-resource-card .resource-content .status,
+.my-resource-card .resource-content .read-more {
+    color: red;
+    font-style: italic;
+}
+
+.my-resource-card .resource-content .title {
+    font-weight: bold;
+}
+
+.my-resource-card .resource-content .read-more {
+    bottom: 0;
+    position: absolute;
 }
