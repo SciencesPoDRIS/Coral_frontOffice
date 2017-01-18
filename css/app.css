@@ -268,7 +268,6 @@ ul#menu_appli li:last-child a::after {
 .header .title > div > h1 {
     color: white;
     text-align: center;
-    text-transform: uppercase;
 }
 .header .title .search-bar .search-icon {
     color: #e6142d;
@@ -297,6 +296,25 @@ my-language-switcher {
     right: 348px;
     top: 0;
     z-index: 2;
+}
+
+
+/* Welcome Page */
+
+.welcome .highlighted-resources,
+.welcome .trial-and-new-resources {
+    color: white;
+    padding: 40px 15%;
+}
+.welcome .highlighted-resources {
+    background-color: black;
+    margin: 0;
+}
+.welcome .highlighted-resources a {
+    color: white;
+    font-size: 16px;
+    font-style: italic;
+    text-decoration: none;
 }
 
 
