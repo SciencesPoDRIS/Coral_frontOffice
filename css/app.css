@@ -34,6 +34,14 @@ footer {
     margin: 48px 0;
 }
 
+
+/* General */
+
+.icon {
+    width: 15px;
+}
+
+
 /* Remove outline for Chrome Browser */
 *:focus {
     outline-style: none;
@@ -349,10 +357,20 @@ my-side-tiles .tile:hover {
     text-align: center;
 }
 
-.my-resource-card .logo img {
+.my-resource-card .logo a {
+    display: block;
+    height: 100%;
+    position: relative;
+}
+
+.my-resource-card .logo a img {
+    left: 50%;
     margin: auto;
     max-height: 100%;
     max-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .my-resource-card .resource-content {
@@ -373,4 +391,16 @@ my-side-tiles .tile:hover {
 .my-resource-card .resource-content .read-more {
     bottom: 0;
     position: absolute;
+}
+
+.my-resource-card .resource-content .access-restricted {
+    padding-left: 20px;
+    position: relative;
+}
+
+.my-resource-card .resource-content .access-restricted img {
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }

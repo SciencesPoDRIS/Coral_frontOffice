@@ -1,6 +1,8 @@
 <div layout="row" layout-margin class="my-resource-card">
     <div flex="33" class="logo">
-        <img ng-src="../../dris_devdoc/Coral/resources/logo/{{resource._source.logo}}" alt="Logo" />
+        <a href="{{resource._source.resourceurl}}" target="_blank">
+            <img ng-src="../../dris_devdoc/Coral/resources/logo/{{resource._source.logo}}" alt="Logo" />
+        </a>
     </div>
     <div class="resource-content">
         <div ng-if="resource._source.status == 'trial'" class="status">
@@ -9,14 +11,27 @@
         <div ng-if="resource._source.status == 'new'" class="status">
             {{'NEW' | translate}}
         </div>
+        <div ng-if="resource._source.downtimes > 0" class="status">
+            {{'OUT_OF_ORDER' | translate}}
+        </div>
+        <div ng-if="resource._source.accesstype == 'Restricted access'" class="access-restricted">
+            <img src="images/access_restricted.png" alt="Locker" class="icon" />
+            {{'Restricted access' | translate}}
+        </div>
         <div class="title">
-            {{resourceTitle | limitTo: 50 | uppercase}}
+            <a href="{{resource._source.resourceurl}}" target="_blank">
+                {{resourceTitle | limitTo: 50 | uppercase}}
+            </a>
         </div>
         <div>
-            {{resourceDescription | limitTo: 150}}
+            <a href="#/{{resource._source.resourceid}}">
+                {{resourceDescription | limitTo: 150}}
+            </a>
         </div>
         <div class="read-more">
-            {{'READ_MORE' | translate}} >
+            <a href="#/{{resource._source.resourceid}}">
+                {{'READ_MORE' | translate}} >
+            </a>
         </div>
     </div>
 </div>
