@@ -378,6 +378,11 @@ my-side-tiles .tile:hover {
     position: relative;
 }
 
+.my-resource-card .resource-content a {
+    color: black;
+    text-decoration: none;
+}
+
 .my-resource-card .resource-content .status,
 .my-resource-card .resource-content .read-more {
     color: red;
