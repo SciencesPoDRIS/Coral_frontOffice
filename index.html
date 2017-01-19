@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html lang="en" ng-app="eResources" ng-class="['no-js', 'lt-ie9', 'lt-ie8']"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="eResources" ng-class="['no-js', 'lt-ie9']"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" ng-app="eResources" ng-class="['no-js']">
+<html lang="en" ng-class="['no-js']">
 
 <head>
     <meta charset='utf-8'>
@@ -15,7 +15,7 @@
     <link type="text/css" rel="stylesheet" media="screen" href="css/app.css">
 </head>
 
-<body class="index" eui-index="'resource'">
+<body class="index" eui-index="'resource'" ng-app="eResources" ng-cloak>
     <my-side-tiles></my-side-tiles>
     <div layout="column">
         <div ng-include="'partials/header.html'"></div>

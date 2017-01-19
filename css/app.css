@@ -307,10 +307,9 @@ my-language-switcher {
 }
 
 
-/* Welcome Page */
+/* Welcome Page | Tab Home */
 
-.welcome .highlighted-resources,
-.welcome .trial-and-new-resources {
+.welcome .page-content {
     padding: 40px 15%;
 }
 .welcome .highlighted-resources {
@@ -323,6 +322,18 @@ my-language-switcher {
     font-size: 16px;
     font-style: italic;
     text-decoration: none;
+}
+
+
+/* Welcome Page | Tab Subjects */
+
+.subject-name {
+    font-weight: bold;
+}
+
+.subject-link {
+    height: 100%;
+    padding: 5px;
 }
 
 
@@ -378,7 +389,8 @@ my-side-tiles .tile:hover {
     position: relative;
 }
 
-.my-resource-card .resource-content a {
+.my-resource-card .resource-content a,
+.subject-link {
     color: black;
     text-decoration: none;
 }

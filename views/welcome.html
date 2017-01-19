@@ -1,7 +1,7 @@
-<md-tabs class="welcome" md-selected="selectedTab" md-dynamic-height md-center-tabs>
+<md-tabs class="welcome" md-selected="selectedTab" md-dynamic-height md-center-tabs md-no-ink>
     <md-tab label="{{'TAB_HOME' | translate}}">
         <div layout="column">
-            <div ng-if="highlighted.length > 0" class="highlighted-resources">
+            <div ng-if="highlighted.length > 0" class="page-content highlighted-resources">
                 <div layout="row">
                     <div flex="20">
                         {{'MOST_USED' | translate | uppercase}}
@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="trial-and-new-resources">
+            <div class="page-content">
                 <div ng-if="trial.length > 0">
                     <my-resource-card ng-repeat="resource in trial" resource="resource" />
                 </div>
@@ -25,28 +25,18 @@
             </div>
         </div>
     </md-tab>
-    <md-tab label="{{'TAB_SUBJECTS' | translate}}">
-        <div layout="row" layout-margin>
-            <div flex="70">
-                <div>
-                    <div ng-repeat="subject in subjects.facets">
-                        <a href="#/?subjects={{subject.key | rewriteUrl}}">
-                            <span ng-bind-html="subject.key | translate"></span> ({{subject.doc_count}})
+    <md-tab label="{{'TAB_SUBJECTS' | translate}}" class="subjects">
+        <div layout="column">
+            <div class="page-content">
+                <md-grid-list md-cols-xs="1" md-cols-xs="2" md-cols-md="4" md-cols-gt-md="4" md-row-height="200px">
+                    <md-grid-tile ng-repeat="subject in subjects.facets" md-colspan="1" md-rowspan="1" layout="row">
+                        <a href="#/?subjects={{subject.key | rewriteUrl}}" class="subject-link" layout="column" layout-fill>
+                            <img src="images/subjects/{{subject.key}}.jpg" flex></img>
+                            <div class="subject-name" flex="none">{{subject.key | translate | uppercase}}</div>
+                            <div flex="none">{{subject.doc_count}} {{'RESOURCES' | translate}}</div>
                         </a>
-                    </div>
-                </div>
-            </div>
-            <div layout="column" flex="30">
-                <div>
-                    <img src="images/image_01.jpg">
-                </div>
-                <div class="copyright">© M. Nascimento / Sciences Po</div>
-                <div>
-                    <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">{{'USAGE_CONVENTION' | translate}}</a>
-                </div>
-                <div>
-                    <a href="http://www.sciencespo.fr/bibliotheque/fr/emprunter/acces-distant-eressources#sous_titre3" target="_blank">{{'CGU' | translate}}</a>
-                </div>
+                    </md-grid-tile>
+                </md-grid-list>
             </div>
         </div>
     </md-tab>
