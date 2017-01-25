@@ -337,6 +337,63 @@ my-language-switcher {
 }
 
 
+/* Welcome Page | Tab All */
+
+.letters {
+    background-color: lightgrey;
+}
+
+.letter {
+    border-bottom: 3px solid transparent;
+    margin: auto;
+}
+
+.letter.selected {
+    border-bottom: 3px solid red;
+}
+
+.facet {
+    padding: 15px 0 10px 0;
+}
+
+.facet:first-child {
+    padding-top: 0;
+}
+
+.facet h3,
+.facet ul,
+.facet li {
+    margin: 0;
+    padding: 0;
+}
+
+.facet h3 {
+    padding-bottom: 15px;
+}
+
+.facet li {
+    list-style: none;
+    padding-bottom: 5px;
+}
+
+.facet li label {
+    width: 100%;
+}
+
+.facet li .count {
+    background-color: lightgrey;
+    border-radius: 7px;
+    float: right;
+    padding: 0 15px;
+}
+
+.facet .more {
+    font-style: italic;
+    padding-top: 10px;
+    text-align: center;
+}
+
+
 /* Side tiles */
 
 my-side-tiles {
@@ -362,6 +419,10 @@ my-side-tiles .tile:hover {
 
 .my-resource-card {
     border: 1px solid grey;
+}
+
+my-resource-card:nth-child(1) > div {
+    margin-top: 0;
 }
 
 .my-resource-card .logo {
@@ -390,7 +451,9 @@ my-side-tiles .tile:hover {
 }
 
 .my-resource-card .resource-content a,
-.subject-link {
+.subject-link,
+.letter a,
+.facet li a {
     color: black;
     text-decoration: none;
 }
