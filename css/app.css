@@ -41,10 +41,13 @@ footer {
     width: 15px;
 }
 
-
 /* Remove outline for Chrome Browser */
 *:focus {
     outline-style: none;
+}
+
+.font-red {
+    color: red;
 }
 
 
@@ -391,6 +394,12 @@ my-language-switcher {
     font-style: italic;
     padding-top: 10px;
     text-align: center;
+}
+
+.count-results {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 8px 8px 16px 8px;
 }
 
 

@@ -10,6 +10,8 @@
     "mul" : "Multilingue",
     "RESOURCE" : "ressource",
     "RESOURCES" : "ressources",
+    "AVAILABLE" : "disponible",
+    "AVAILABLES" : "disponibles",
     "NEED_HELP" : "Besoin d'aide",
     "USAGE_CONVENTION" : "Charte d'utilisation des ressources numériques",
     "SUBJECTS" : "Sujets",

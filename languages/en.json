@@ -10,6 +10,8 @@
     "mul" : "Multilingual",
     "RESOURCE" : "resource",
     "RESOURCES" : "resources",
+    "AVAILABLE" : "available",
+    "AVAILABLES" : "available",
     "NEED_HELP" : "Ask a librarian",
     "USAGE_CONVENTION" : "User charter for electronic resources",
     "SUBJECTS" : "Subjects",

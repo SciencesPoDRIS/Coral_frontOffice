@@ -9,8 +9,8 @@
                     <div ng-repeat="resource in highlighted track by $index" flex="25" ng-if="$index %2 == 0">
                         <div ng-repeat="i in [$index, $index + 1]">
                             <a href="{{highlighted[i]._source.resourceurl}}" target="_blank" ng-if="highlighted[i]">
-                                    {{highlighted[i]._source.title_fr}} >
-                                </a>
+                                {{highlighted[i]._source.title_fr}} >
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -61,13 +61,18 @@
                         <ul class="nav nav-list subjects" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(subjects.size)" layout="column">
                             <li ng-repeat="bucket in aggResult.buckets">
                                 <label eui-filter="ejs.TermsFilter('subjects', bucket.key)">
-                                    <span ng-if="!filter.enabled">
-                                    <a href ng-click="filter.enabled=true">
-                                        <span class="key">{{bucket.key | translate}}</span>
-                                        <span class="muted count">{{bucket.doc_count}}</span>
-                                    </a>
+                                    <!-- <span ng-if="!filter.enabled" ng-class="{'filter-enable' : filter.enabled, 'filter-disable' : !filter.enabled}"> -->
+                                    <span ng-class="{'filter-enable' : filter.enabled, 'filter-disable' : !filter.enabled}" ng-click="enableFilter(bucket.key, filter)">
+                                        <!-- <a href ng-click="filter.enabled=true"> -->
+                                            <span class="key">{{bucket.key | translate}}</span>
+                                            <span class="muted count">{{bucket.doc_count}}</span>
+                                        <!-- </a> -->
                                     </span>
-                                    <span ng-if="filter.enabled">{{bucket.key | translate}} <a href ng-click="filter.enabled=false" class="facet-remove">x</a></span>
+                                    <!-- <span ng-if="filter.enabled">
+                                        <span>{{bucket.key | translate}}</span>
+                                        <span class="muted count">{{bucket.doc_count}}</span>
+                                        <a href ng-click="filter.enabled=false" class="facet-remove">x</a> -->
+                                    </span>
                                 </label>
                             </li>
                             <div class="more" ng-click="subjectsToogle()">
@@ -131,6 +136,14 @@
                     </div>
                 </div>
                 <div flex="70">
+                    <div class="count-results">
+                        <span class="font-red">
+                            {{indexVM.results.hits.total}}
+                            <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;RESOURCE&quot; | translate | uppercase}}', '1' : '{{&quot;RESOURCE&quot; | translate | uppercase}}', 'other' : '{{&quot;RESOURCES&quot; | translate | uppercase}}'}"></ng-pluralize>
+                        </span>
+                        <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;AVAILABLE&quot; | translate | uppercase}}', '1' : '{{&quot;AVAILABLE&quot; | translate | uppercase}}', 'other' : '{{&quot;AVAILABLES&quot; | translate | uppercase}}'}"></ng-pluralize>
+                    </div>
+                    <!-- <md-divider></md-divider> -->
                     <my-resource-card ng-repeat="resource in indexVM.results.hits.hits" resource="resource" />
                 </div>
             </div>
