@@ -61,17 +61,10 @@
                         <ul class="nav nav-list subjects" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(subjects.size)" layout="column">
                             <li ng-repeat="bucket in aggResult.buckets">
                                 <label eui-filter="ejs.TermsFilter('subjects', bucket.key)">
-                                    <!-- <span ng-if="!filter.enabled" ng-class="{'filter-enable' : filter.enabled, 'filter-disable' : !filter.enabled}"> -->
-                                    <span ng-class="{'filter-enable' : filter.enabled, 'filter-disable' : !filter.enabled}" ng-click="enableFilter(bucket.key, filter)">
-                                        <!-- <a href ng-click="filter.enabled=true"> -->
-                                            <span class="key">{{bucket.key | translate}}</span>
-                                            <span class="muted count">{{bucket.doc_count}}</span>
-                                        <!-- </a> -->
-                                    </span>
-                                    <!-- <span ng-if="filter.enabled">
-                                        <span>{{bucket.key | translate}}</span>
+                                    <span ng-class="{'filter-enable' : filter.enabled, 'filter-disable' : !filter.enabled}" ng-click="clickOnFacet('subjects', bucket.key, filter.enabled)">
+                                        <span class="key">{{bucket.key | translate}}</span>
                                         <span class="muted count">{{bucket.doc_count}}</span>
-                                        <a href ng-click="filter.enabled=false" class="facet-remove">x</a> -->
+                                    </span>
                                     </span>
                                 </label>
                             </li>

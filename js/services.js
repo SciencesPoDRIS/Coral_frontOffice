@@ -8,6 +8,8 @@
     app.factory('addFilterToUrl', [
         function() {
             return function(facet, value) {
+                // Config
+                var filterSeparator = ':';
                 // Extract the parameters part of the url
                 var parameters = window.location.href.split('?').length == 1 ? '' : window.location.href.split('?')[1];
                 // Transform this parameters into a JSON Object
@@ -22,6 +24,9 @@
                             break;
                         case 'query':
                             parametersJSON[facet] = value;
+                            break;
+                        case 'subjects':
+                            parametersJSON[facet] += filterSeparator + value;
                             break;
                         default:
                             console.log('Error : this facet is not taken into consideration : ' + facet);

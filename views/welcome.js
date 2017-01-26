@@ -76,14 +76,27 @@
                 }, 0);
             }
 
+            $scope.clickOnFacet = function(facet, value, isActivated) {
+                if (isActivated) {
+                    // Disable this filter by removing it from url
+                    $scope.removeFilterFromUrl(facet, value);
+                } else {
+                    // Enable this filter by adding it to url
+                    $scope.addFilterToUrl(facet, value);
+                }
+            }
+
             // Reset the query's filter
             var tmp_json = {};
             var index, obj, key, val;
             for (index in $scope.$parent.filters.jsonObjects) {
-                obj = JSON.parse($scope.$parent.filters.jsonObjects[index]).terms;
-                key = Object.keys(obj)[0];
-                val = obj[key][0];
-                tmp_json[key] = val;
+                // Have to do this, don't know why
+                if (index != "_sfl") {
+                    obj = JSON.parse($scope.$parent.filters.jsonObjects[index]).terms;
+                    key = Object.keys(obj)[0];
+                    val = obj[key][0];
+                    tmp_json[key] = val;
+                }
             }
             for (index in tmp_json) {
                 $scope.$parent.indexVM.filters.remove(ejs.TermsFilter(index, tmp_json[index]));
@@ -177,15 +190,23 @@
                     $scope.subjects.facets = response.aggregations.subjects.buckets;
                 });
 
-            $scope.removeFilterFromUrl = function(facet) {
+            $scope.removeFilterFromUrl = function(facet, value) {
+                var value = value || null;
                 // Extract the parameters part of the url
                 var parameters = window.location.href.split('?').length == 1 ? '' : window.location.href.split('?')[1];
                 // Transform this parameters into a JSON Object
                 var parametersJSON = parameters ? JSON.parse('{"' + parameters.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) {
                     return key === "" ? value : decodeURIComponent(value)
                 }) : {};
-                delete parametersJSON[facet]
-                    // Force to rest on the tab 'All'
+                if(value === null) {
+                    delete parametersJSON[facet];
+                } else {
+                    parametersJSON[facet] = parametersJSON[facet].replace(value + filterSeparator, '').replace(filterSeparator + value, '').replace(value, '');
+                    if(parametersJSON[facet] == '') {
+                        delete parametersJSON[facet];
+                    }
+                }
+                // Force to rest on the tab 'All'
                 parametersJSON['tab'] = 2;
                 parameters = Object.keys(parametersJSON).map(function(k) {
                     return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k])

@@ -389,6 +389,10 @@ my-language-switcher {
     float: right;
     padding: 0 15px;
 }
+.facet li .filter-enable .count {
+    background-color: red;
+    color: white;
+}
 
 .facet .more {
     font-style: italic;
