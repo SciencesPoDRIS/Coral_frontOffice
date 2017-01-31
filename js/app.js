@@ -42,7 +42,7 @@
                 templateUrl: 'views/welcome.html',
                 controller: 'WelcomeController'
             }).
-            when('/:resourceId', {
+            when('/resource/:resourceId', {
                 templateUrl: 'views/resource.html',
                 controller: 'ResourceController'
             }).
