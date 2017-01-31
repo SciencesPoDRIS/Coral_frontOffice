@@ -12,6 +12,7 @@
         'eResources.services',
         'eResources.welcome',
         'eResources.subjects',
+        'eResources.resources',
         'eResources.resource'
     ]);
 
@@ -47,6 +48,11 @@
             when('/subjects', {
                 templateUrl: 'views/subjects.html',
                 controller: 'SubjectsController'
+            }).
+            // Resources page
+            when('/resources', {
+                templateUrl: 'views/resources.html',
+                controller: 'ResourcesController'
             }).
             when('/resource/:resourceId', {
                 templateUrl: 'views/resource.html',
