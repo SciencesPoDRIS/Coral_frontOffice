@@ -346,7 +346,11 @@ my-language-switcher {
 }
 
 
-/* Welcome Page | Tab All */
+/* Resources Page */
+
+.resources .page-content {
+    padding: 40px 15%;
+}
 
 .letters {
     background-color: lightgrey;
