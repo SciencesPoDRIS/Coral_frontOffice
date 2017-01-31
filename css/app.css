@@ -310,16 +310,18 @@ my-language-switcher {
 }
 
 
-/* Welcome Page | Tab Home */
+/* Welcome Page */
 
 .welcome .page-content {
     padding: 40px 15%;
 }
+
 .welcome .highlighted-resources {
     background-color: black;
     color: white;
     margin: 0;
 }
+
 .welcome .highlighted-resources a {
     color: white;
     font-size: 16px;
@@ -328,7 +330,11 @@ my-language-switcher {
 }
 
 
-/* Welcome Page | Tab Subjects */
+/* Subjects Page */
+
+.subjects .page-content {
+    padding: 40px 15%;
+}
 
 .subject-name {
     font-weight: bold;
