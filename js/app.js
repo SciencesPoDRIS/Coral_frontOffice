@@ -11,6 +11,7 @@
         'eResources.directives',
         'eResources.services',
         'eResources.welcome',
+        'eResources.subjects',
         'eResources.resource'
     ]);
 
@@ -37,10 +38,15 @@
     app.config(['$routeProvider', '$locationProvider',
         function($routeProvider, $locationProvider) {
             $routeProvider.
-                // Welcome Page
+            // Welcome Page
             when('/', {
                 templateUrl: 'views/welcome.html',
                 controller: 'WelcomeController'
+            }).
+            // Subjects page
+            when('/subjects', {
+                templateUrl: 'views/subjects.html',
+                controller: 'SubjectsController'
             }).
             when('/resource/:resourceId', {
                 templateUrl: 'views/resource.html',
