@@ -12,3 +12,8 @@ bower_components
 # Images folder
 #
 images
+
+#
+# Font files
+#
+css/*.ttf
