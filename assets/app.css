@@ -1,0 +1,451 @@
+/* Base styles */
+body {
+  color: #444444;
+  font-family: "Arial";
+  font-size: 18px;
+  line-height: 24px;
+}
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 24px;
+  margin-top: 24px;
+}
+li + li {
+  margin-top: 0px;
+}
+.container {
+  margin: 0px auto;
+  width: 100%;
+}
+header {
+  margin: 48px 0;
+}
+section {
+  margin: 48px 0;
+}
+footer {
+  margin: 48px 0;
+}
+/* Fonts */
+@font-face {
+  font-family: georgia;
+  font-family: inconsolata-bold;
+  font-family: inconsolata-regular;
+  font-family: opensans-regular;
+  src: url(Inconsolata-Bold.ttf);
+  src: url(Inconsolata-Regular.ttf);
+  src: url(OpenSans-Regular.ttf);
+  src: url(georgia.ttf);
+}
+/* General */
+.icon {
+  width: 15px;
+}
+/* Remove outline for Chrome Browser */
+*:focus {
+  outline-style: none;
+}
+.font-red {
+  color: red;
+}
+/* Tool class */
+.fill {
+  max-height: 100%;
+  max-width: 100%;
+}
+.no-border {
+  border: none !important;
+}
+.header-buttons > a {
+  border-radius: 0;
+  border-right: 1px solid #eaeaed;
+  margin: 10px 0;
+  padding: 0 50px;
+}
+.header-buttons > a:last-child {
+  border: none;
+}
+.header-buttons > a > span {
+  font-family: inconsolata-bold;
+  font-size: 20px;
+}
+.header-buttons .vertical-divider {
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-width: 0;
+  height: 100%;
+}
+/* Header */
+.menu {
+  list-style: none;
+  padding: 0 0 0.5em;
+}
+.menu > li {
+  display: inline;
+}
+.menu > li:nth-child(1) before {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  #cata_ent {
+    height: 165px !important;
+  }
+  #header-inmedia_1 {
+    height: auto;
+  }
+  #logo-tools {
+    position: initial;
+  }
+  .desc-appli {
+    position: initial;
+  }
+  .logo_scpo img {
+    margin: 0;
+  }
+  .logo_scpo {
+    float: left;
+  }
+  .menu > li {
+    float: left;
+  }
+  .navbar {
+    margin: 0 10px;
+    margin: 6px;
+    padding-bottom: 5px;
+    padding: 0;
+    position: initial;
+    text-align: center;
+  }
+  ul#menu_appli li a::after {
+    content: "";
+  }
+  ul#menu_appli {
+    margin: 0 0 5px 0;
+    width: 100%;
+    width: initial;
+  }
+}
+@media screen and (min-width: 768px) {
+  .navbar-nav > li {
+    float: none;
+  }
+}
+#header-inmedia_1 {
+  background-color: white;
+  height: 68px;
+  margin-bottom: 3px;
+}
+#logo-tools {
+  border-bottom: 3px solid #e6142d;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+}
+.logo_scpo {
+  padding: 0 15px;
+  width: 11%;
+}
+.logo_scpo img {
+  height: 29px;
+  margin-bottom: 17px;
+  margin-left: 18px;
+  margin-top: 17px;
+}
+ul#menu_appli {
+  float: left;
+  margin-right: 5px;
+  position: relative;
+  top: 5px;
+  width: 450px;
+}
+ul#menu_appli li a {
+  color: #e6142d;
+  display: inline;
+  padding: 0;
+}
+ul#menu_appli li a::after {
+  color: #343333;
+  content: " |";
+}
+ul#menu_appli li:last-child a::after {
+  content: "";
+}
+.navbar {
+  background-color: transparent;
+  font-family: Roboto Condensed, sans-sefir;
+  font-size: 0.8em;
+  left: 67px;
+  top: 8px;
+}
+#cata_ent {
+  border-radius: 5px;
+  font-size: 14px;
+  height: 45px !important;
+  padding: 3px;
+  position: relative;
+  width: 585px;
+}
+#cata_ent > a {
+  float: left;
+  height: 32px;
+  width: 100%;
+}
+#social {
+  float: left;
+  position: relative;
+  top: 10px;
+}
+.desc-appli {
+  height: 68px;
+  position: fixed;
+  right: 30px;
+  top: -5px;
+  width: 250px;
+}
+.horaire_bloc {
+  background-size: 25px 25px;
+  background: #f6f4f3 url('http://sciencespo.fr/bibliotheque/sites/sciencespo.fr.bibliotheque/files/icones/schedule.png') no-repeat right top;
+  border-radius: 5px;
+  border: 1px solid #dbdbdb;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+  padding: 5px 2px 2px 3px;
+  width: 228px;
+}
+.horaire_bloc h2 {
+  left: -100000000000px;
+  position: absolute;
+}
+.horaire_bloc a {
+  color: #e6142d;
+  font-style: italic;
+  font-weight: bold;
+}
+/* Header */
+.header {
+  position: relative;
+}
+.header .title {
+  position: absolute;
+  top: 0;
+}
+.header .title .search-bar .search-icon {
+  color: #e6142d;
+  left: 5px;
+  top: 5px;
+}
+.header .title .search-bar input {
+  border: none;
+  font-family: opensans-regular;
+  font-size: 12px;
+}
+.header .title .search-bar .md-errors-spacer {
+  display: none;
+}
+.header .title .usage-convention {
+  color: white;
+  font-family: georgia;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: bold;
+  line-height: 5px;
+  text-align: right;
+}
+.header .title > div {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 50%;
+}
+.header .title > div > h1 {
+  color: white;
+  font-family: inconsolata-bold;
+  font-size: 42px;
+  text-align: center;
+}
+/* Language switcher */
+my-language-switcher {
+  outline: none;
+  position: absolute;
+  right: 348px;
+  top: 0;
+  z-index: 2;
+}
+/* Welcome Page */
+.welcome .page-content {
+  padding: 40px 15%;
+}
+.welcome .highlighted-resources {
+  background-color: black;
+  color: white;
+  margin: 0;
+}
+.welcome .highlighted-resources .most-used {
+  font-family: inconsolata-bold;
+  font-size: 32px;
+  margin: auto 0;
+}
+.welcome .highlighted-resources .separator {
+  color: #de152d;
+  font-size: 60px;
+  line-height: 60px;
+  margin: auto 25px auto 5px;
+}
+.welcome .highlighted-resources a {
+  color: white;
+  font-family: georgia;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: none;
+}
+/* Subjects Page */
+.subjects .page-content {
+  padding: 40px 15%;
+}
+.subject-name {
+  font-weight: bold;
+}
+.subject-link {
+  height: 100%;
+  padding: 5px;
+}
+/* Resources Page */
+.resources .page-content {
+  padding: 40px 15%;
+}
+.letters {
+  background-color: lightgrey;
+}
+.letter {
+  border-bottom: 3px solid transparent;
+  margin: auto;
+}
+.letter.selected {
+  border-bottom: 3px solid red;
+}
+.facet {
+  padding: 15px 0 10px 0;
+}
+.facet:first-child {
+  padding-top: 0;
+}
+.facet h3 {
+  margin: 0;
+  padding-bottom: 15px;
+  padding: 0;
+}
+.facet ul {
+  margin: 0;
+  padding: 0;
+}
+.facet li {
+  list-style: none;
+  margin: 0;
+  padding-bottom: 5px;
+  padding: 0;
+}
+.facet li label {
+  width: 100%;
+}
+.facet li .count {
+  background-color: lightgrey;
+  border-radius: 7px;
+  float: right;
+  padding: 0 15px;
+}
+.facet li .filter-enable .count {
+  background-color: red;
+  color: white;
+}
+.facet .more {
+  font-style: italic;
+  padding-top: 10px;
+  text-align: center;
+}
+.count-results {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 8px 8px 16px 8px;
+}
+/* Side tiles */
+my-side-tiles {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+my-side-tiles .tile {
+  height: 62px;
+  margin-bottom: 3px;
+  width: 62px;
+}
+my-side-tiles .tile:hover {
+  background-color: red;
+}
+/* Resource Card */
+.my-resource-card {
+  border: 1px solid grey;
+}
+.my-resource-card .logo {
+  text-align: center;
+}
+.my-resource-card .logo a {
+  display: block;
+  height: 100%;
+  position: relative;
+}
+.my-resource-card .logo a img {
+  left: 50%;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.my-resource-card .resource-content {
+  padding-bottom: 35px;
+  position: relative;
+}
+.my-resource-card .resource-content .status {
+  color: red;
+  font-style: italic;
+}
+.my-resource-card .resource-content .read-more {
+  bottom: 0;
+  color: red;
+  font-style: italic;
+  position: absolute;
+}
+.my-resource-card .resource-content .title {
+  font-weight: bold;
+}
+.my-resource-card .resource-content .access-restricted {
+  padding-left: 20px;
+  position: relative;
+}
+.my-resource-card .resource-content .access-restricted img {
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+my-resource-card:nth-child(1) > div {
+  margin-top: 0;
+}
+.my-resource-card .resource-content a,
+.subject-link,
+.letter a,
+.facet li a {
+  color: black;
+  text-decoration: none;
+}
