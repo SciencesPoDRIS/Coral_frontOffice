@@ -1,154 +1,25 @@
-<md-tabs class="welcome" md-selected="selectedTab" md-dynamic-height md-center-tabs md-no-ink>
-    <md-tab label="{{'TAB_HOME' | translate}}">
-        <div layout="column">
-            <div ng-if="highlighted.length > 0" class="page-content highlighted-resources">
-                <div layout="row">
-                    <div flex="20">
-                        {{'MOST_USED' | translate | uppercase}}
-                    </div>
-                    <div ng-repeat="resource in highlighted track by $index" flex="25" ng-if="$index %2 == 0">
-                        <div ng-repeat="i in [$index, $index + 1]">
-                            <a href="{{highlighted[i]._source.resourceurl}}" target="_blank" ng-if="highlighted[i]">
-                                {{highlighted[i]._source.title_fr}} >
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<div layout="column" class="welcome">
+    <div ng-if="highlighted.length > 0" class="page-content highlighted-resources">
+        <div layout="row">
+            <div flex="20" class="most-used">
+                {{'MOST_USED' | translate | uppercase}}
             </div>
-            <div class="page-content">
-                <div ng-if="trial.length > 0">
-                    <my-resource-card ng-repeat="resource in trial" resource="resource" />
-                </div>
-                <div ng-if="new.length > 0">
-                    <my-resource-card ng-repeat="resource in new" resource="resource" />
-                </div>
-            </div>
-        </div>
-    </md-tab>
-    <md-tab label="{{'TAB_SUBJECTS' | translate}}" class="subjects">
-        <div layout="column">
-            <div class="page-content">
-                <md-grid-list md-cols-xs="1" md-cols-xs="2" md-cols-md="4" md-cols-gt-md="4" md-row-height="200px">
-                    <md-grid-tile ng-repeat="subject in subjects.facets" md-colspan="1" md-rowspan="1" layout="row">
-                        <a href="#/?subjects={{subject.key | rewriteUrl}}" class="subject-link" layout="column" layout-fill>
-                            <img ng-src="images/subjects/{{subject.key}}.jpg" flex></img>
-                            <div class="subject-name" flex="none">{{subject.key | translate | uppercase}}</div>
-                            <div flex="none">{{subject.doc_count}} {{'RESOURCES' | translate}}</div>
-                        </a>
-                    </md-grid-tile>
-                </md-grid-list>
-            </div>
-        </div>
-    </md-tab>
-    <md-tab label="{{'TAB_ALL' | translate}}">
-        <div layout="column">
-            <div layout="row" class="page-content letters">
-                <div class="letter" ng-class="{'selected' : selectedLetter == ''}">
-                    <a href ng-click="removeFilterFromUrl('letter');">
-                        {{'ALL' | translate | uppercase}}
-                    </a>
-                </div>
-                <div ng-repeat="letter in alphabet" class="letter" ng-class="{'selected' : selectedLetter == letter}">
-                    <a ng-click="addFilterToUrl('letter', letter);">
-                        {{letter}}
+            <div class="separator">/</div>
+            <div ng-repeat="resource in highlighted track by $index" flex="25" ng-if="$index %2 == 0" class="resource">
+                <div ng-repeat="i in [$index, $index + 1]">
+                    <a href="{{highlighted[i]._source.resourceurl}}" target="_blank" ng-if="highlighted[i]">
+                        {{highlighted[i]._source.title_fr}} >
                     </a>
                 </div>
             </div>
-            <div layout="row" class="page-content">
-                <div layout="column" flex="30">
-                    <div class="facet subjects-facet">
-                        <h3>{{'SUBJECTS' | translate | uppercase}}</h3>
-                        <ul class="nav nav-list subjects" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(subjects.size)" layout="column">
-                            <li ng-repeat="bucket in aggResult.buckets">
-                                <label eui-filter="ejs.TermsFilter('subjects', bucket.key)">
-                                    <span ng-class="{'filter-enable' : filter.enabled, 'filter-disable' : !filter.enabled}" ng-click="clickOnFacet('subjects', bucket.key, filter.enabled)">
-                                        <span class="key">{{bucket.key | translate}}</span>
-                                        <span class="muted count">{{bucket.doc_count}}</span>
-                                    </span>
-                                    </span>
-                                </label>
-                            </li>
-                            <div class="more" ng-click="subjectsToogle()">
-                                {{subjects.label}}
-                                <md-icon>{{subjects.icon}}</md-icon>
-                            </div>
-                        </ul>
-                    </div>
-                    <md-divider></md-divider>
-                    <div class="facet">
-                        <h3>{{'CONTENT_TYPE' | translate | uppercase}}</h3>
-                        <!-- <div class="types" layout="column"> -->
-                        <ul class="nav nav-list types" eui-aggregation="ejs.TermsAggregation('types').field('types').size(types.size)" layout="column">
-                            <!-- <md-checkbox ng-repeat="value in types.values" ng-if="$index < types.size" ng-model="value.selected">
-                                {{value.key | translate}} <span class="muted">({{value.doc_count}})</span>
-                            </md-checkbox> -->
-                            <md-checkbox ng-repeat="bucket in aggResult.buckets" ng-if="$index < types.size" ng-model="value.selected">
-                                {{bucket.key | translate}} <span class="muted">({{bucket.doc_count}})</span>
-                            </md-checkbox>
-                            <!-- <li ng-repeat="bucket in aggResult.buckets">
-                                <label class="checkbox" eui-filter="ejs.TermsFilter('types', bucket.key)">
-                                    <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
-                                </label>
-                            </li> -->
-                            <md-button class="more" ng-click="typesToogle()">
-                                {{types.label}}
-                                <md-icon>{{types.icon}}</md-icon>
-                            </md-button>
-                        </ul>
-                        <!-- </div> -->
-                    </div>
-                    <md-divider></md-divider>
-                    <div class="facet">
-                        <h3>{{'CAMPUS' | translate | uppercase}}</h3>
-                        <div class="sites" layout="column">
-                            <!-- <ul class="nav nav-list sites" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(sites.size)" layout="column"> -->
-                            <md-checkbox ng-repeat="value in sites.values" ng-if="$index < sites.size" ng-model="value.selected">
-                                {{value.key | translate}} <span class="muted">({{value.doc_count}})</span>
-                            </md-checkbox>
-                            <md-button class="more" ng-click="sitesToogle()">
-                                {{sites.label}}
-                                <md-icon>{{sites.icon}}</md-icon>
-                            </md-button>
-                            <!--
-                        <div ng-show="sites.show" layout="column">
-                            <md-checkbox ng-repeat="value in sites.values" ng-if="$index >= 5">
-                                {{value.key | translate}} <span class="muted">({{value.doc_count}})</span>
-                            </md-checkbox>
-                        </div>
-                        -->
-                            <!--
-                        <li ng-repeat="bucket in aggResult.buckets">
-                            <label class="checkbox" eui-filter="ejs.TermsFilter('sites', bucket.key)">
-                                <input type="checkbox" ng-model="filter.enabled"> {{bucket.key | translate}} ({{bucket.doc_count}})
-                            </label>
-                        </li>
-                        <md-button class="more" ng-click="sitesToogle()"><md-icon>{{sites.icon}}</md-icon> {{sites.label}}</md-button>
-                        -->
-                            <!-- </ul> -->
-                        </div>
-                    </div>
-                </div>
-                <div flex="70">
-                    <div class="count-results">
-                        <span class="font-red">
-                            {{indexVM.results.hits.total}}
-                            <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;RESOURCE&quot; | translate | uppercase}}', '1' : '{{&quot;RESOURCE&quot; | translate | uppercase}}', 'other' : '{{&quot;RESOURCES&quot; | translate | uppercase}}'}"></ng-pluralize>
-                        </span>
-                        <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;AVAILABLE&quot; | translate | uppercase}}', '1' : '{{&quot;AVAILABLE&quot; | translate | uppercase}}', 'other' : '{{&quot;AVAILABLES&quot; | translate | uppercase}}'}"></ng-pluralize>
-                    </div>
-                    <!-- <md-divider></md-divider> -->
-                    <my-resource-card ng-repeat="resource in indexVM.results.hits.hits" resource="resource" />
-                </div>
-            </div>
-            <!-- <div flex="70">
-                <div layout="row">
-                    <div>
-                        {{indexVM.results.hits.total}}
-                        <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;RESOURCE&quot; | translate}}', '1' : '{{&quot;RESOURCE&quot; | translate}}', 'other' : '{{&quot;RESOURCES&quot; | translate}}'}"></ng-pluralize>
-                    </div>
-                </div>
-                
-            </div> -->
         </div>
-    </md-tab>
-</md-tabs>
+    </div>
+    <div class="page-content">
+        <div ng-if="trial.length > 0">
+            <my-resource-card ng-repeat="resource in trial" resource="resource" />
+        </div>
+        <div ng-if="new.length > 0">
+            <my-resource-card ng-repeat="resource in new" resource="resource" />
+        </div>
+    </div>
+</div>
