@@ -7,8 +7,8 @@
         </div>
         <div ng-repeat="letter in alphabet" class="letter" ng-class="{'selected' : selectedLetter == letter}">
             <a ng-click="addFilterToUrl('letter', letter);">
-                        {{letter}}
-                    </a>
+                {{letter}}
+            </a>
         </div>
     </div>
     <div layout="row" class="page-content">
@@ -25,20 +25,20 @@
                             </span>
                         </label>
                     </li>
-                    <div class="more" ng-click="subjectsToogle()">
+                    <md-button class="more" ng-click="subjectsToogle()" md-no-ink>
                         {{subjects.label}}
                         <md-icon>{{subjects.icon}}</md-icon>
-                    </div>
+                    </md-button>
                 </ul>
             </div>
             <md-divider></md-divider>
             <div class="facet">
                 <h3>{{'CONTENT_TYPE' | translate | uppercase}}</h3>
                 <div class="nav nav-list types" eui-aggregation="ejs.TermsAggregation('types').field('types').size(types.size)" layout="column">
-                    <md-checkbox ng-repeat="type in types.values" ng-model="type.selected" aria-label="{{type.key | translate}}" ng-change="checkboxChanges('types', type.key, type.selected)">
+                    <md-checkbox ng-repeat="type in types.values" ng-model="type.selected" aria-label="{{type.key | translate}}" ng-change="checkboxChanges('types', type.key, type.selected)" md-no-ink>
                         {{type.key | translate}} <span class="muted">({{type.doc_count}})</span>
                     </md-checkbox>
-                    <md-button class="more" ng-click="typesToogle()">
+                    <md-button class="more" ng-click="typesToogle()" md-no-ink>
                         {{types.label}}
                         <md-icon>{{types.icon}}</md-icon>
                     </md-button>
@@ -49,10 +49,10 @@
                 <h3>{{'CAMPUS' | translate | uppercase}}</h3>
                 <div class="sites" layout="column">
                     <!-- <ul class="nav nav-list sites" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(sites.size)" layout="column"> -->
-                    <md-checkbox ng-repeat="value in sites.values" ng-if="$index < sites.size" ng-model="value.selected">
+                    <md-checkbox ng-repeat="value in sites.values" ng-if="$index < sites.size" ng-model="value.selected" md-no-ink>
                         {{value.key | translate}} <span class="muted">({{value.doc_count}})</span>
                     </md-checkbox>
-                    <md-button class="more" ng-click="sitesToogle()">
+                    <md-button class="more" ng-click="sitesToogle()" md-no-ink>
                         {{sites.label}}
                         <md-icon>{{sites.icon}}</md-icon>
                     </md-button>
