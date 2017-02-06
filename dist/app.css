@@ -115,8 +115,6 @@ footer {
     float: left;
   }
   .navbar {
-    margin: 0 10px;
-    margin: 6px;
     padding-bottom: 5px;
     padding: 0;
     position: initial;
@@ -127,7 +125,6 @@ footer {
   }
   ul#menu_appli {
     margin: 0 0 5px 0;
-    width: 100%;
     width: initial;
   }
 }
@@ -310,12 +307,20 @@ my-language-switcher {
 .subjects .page-content {
   padding: 40px 15%;
 }
-.subject-name {
-  font-weight: bold;
-}
-.subject-link {
+.subjects .subject-link {
   height: 100%;
+  font-size: 14px;
+  line-height: 20px;
   padding: 5px;
+}
+.subjects .subject-link img {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+.subjects .subject-link .subject-name {
+  font-weight: bold;
 }
 /* Resources Page */
 .resources .page-content {

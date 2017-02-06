@@ -2,11 +2,20 @@ var concat = require('gulp-concat'),
     gulp = require('gulp'),
     less = require('gulp-less'),
     uglify = require('gulp-uglify'),
+    // browserify = require('browserify'),
+    // ngAnnotate = require('browserify-ngannotate'),
+    ngAnnotate = require('gulp-ng-annotate'),
     browserSync = require('browser-sync').create();
     // ngAnnotate = require('gulp-ng-annotate'),
 
 // Concat all JS libraries
 gulp.task('js', function() {
+    // var b = browserify({
+    //   entries: './js/app.js',
+    //   debug: true,
+    //   paths: ['./js/controllers', './js/services', './js/directives'],
+    //   transform: [ngAnnotate]
+    // });
     return gulp.src([
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/angular/angular.min.js',
@@ -19,13 +28,23 @@ gulp.task('js', function() {
       'bower_components/angular-translate/angular-translate.min.js',
       'bower_components/angular-translate-loader-url/angular-translate-loader-url.min.js',
       'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
-      'bower_components/angular-sanitize/angular-sanitize.min.js'
-      ],
+      'bower_components/angular-sanitize/angular-sanitize.min.js',
+      'js/elasticui.min.js',
+      // 'js/app.js',
+      'js/filters.js',
+      'js/directives.js',
+      'js/services.js',
+      'views/welcome.js',
+      'views/subjects.js',
+      // 'views/resources.js',
+      'views/resource.js'
+     ],
       {base: 'bower_components/'}
     )
     .pipe(concat('all.min.js'))
+    .pipe(ngAnnotate())
     .pipe(uglify())
-    .pipe(gulp.dest('assets'));
+    .pipe(gulp.dest('dist'));
 });
 
 // Concat all CSS files from libs
@@ -48,15 +67,15 @@ gulp.task('js', function() {
 gulp.task('less', function() {
     return gulp.src('css/*.less')
       .pipe(less())
-      .pipe(gulp.dest('assets'))
+      .pipe(gulp.dest('dist'))
       .pipe(browserSync.stream());
 });
 
 // Launch server with livereload
 gulp.task('serve', function() {
     browserSync.init({ server: '.' });
-    gulp.watch('css/app.less', 'less');
-    gulp.watch('assets/app.css').on('change', browserSync.reload);
+    gulp.watch('css/app.less', ['less']);
+    gulp.watch('dist/app.css').on('change', browserSync.reload);
     gulp.watch(['js/*.js', 'views/*.js']).on('change', browserSync.reload);
     gulp.watch(['partials/*.html', 'views/*.html']).on('change', browserSync.reload);
 });
