@@ -1,6 +1,3 @@
-(function() {
-    'use strict';
-
     var app = angular.module('eResources', [
         'ngMaterial',
         'ngRoute',
@@ -20,20 +17,22 @@
     app.constant('euiHost', 'http://localhost:9200/coral');
 
     // Localization configuration
-    app.config(function($translateProvider) {
-        // Enable localStorage to save on bandwidth and loading costs
-        // $translateProvider.useLocalStorage();
-        // Add internationalization by downloading static files
-        $translateProvider.useStaticFilesLoader({
-            prefix: 'languages/',
-            suffix: '.json'
-        });
-        // Default language is french
-        $translateProvider
-            .preferredLanguage('fr')
-            .fallbackLanguage('fr')
-            .useSanitizeValueStrategy(null);
-    });
+    app.config(['$translateProvider',
+        function($translateProvider) {
+            // Enable localStorage to save on bandwidth and loading costs
+            // $translateProvider.useLocalStorage();
+            // Add internationalization by downloading static files
+            $translateProvider.useStaticFilesLoader({
+                prefix: 'languages/',
+                suffix: '.json'
+            });
+            // Default language is french
+            $translateProvider
+                .preferredLanguage('fr')
+                .fallbackLanguage('fr')
+                .useSanitizeValueStrategy(null);
+        }
+    ]);
 
     // Routes configuration
     app.config(['$routeProvider', '$locationProvider',
@@ -64,10 +63,10 @@
         }
     ]);
 
-    app.config(function($mdThemingProvider) {
-        $mdThemingProvider.theme('default')
-            .primaryPalette('grey')
-            .accentPalette('red');
-    });
-
-})();
+    app.config(['$mdThemingProvider',
+        function($mdThemingProvider) {
+            $mdThemingProvider.theme('default')
+                .primaryPalette('grey')
+                .accentPalette('red');
+        }
+    ]);
