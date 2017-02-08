@@ -1,9 +1,9 @@
 <div layout="column" class="resources">
-    <div layout="row" class="page-content letters">
+    <div layout="row" class="page-content grey-band">
         <div class="letter" ng-class="{'selected' : selectedLetter == ''}">
-            <a href ng-click="removeFilterFromUrl('letter');">
-                        {{'ALL' | translate | uppercase}}
-                    </a>
+            <a href ng-click="removeFilterFromUrl('letter')">
+                {{'ALL' | translate | uppercase}}
+            </a>
         </div>
         <div ng-repeat="letter in alphabet" class="letter" ng-class="{'selected' : selectedLetter == letter}">
             <a ng-click="addFilterToUrl('letter', letter);">
