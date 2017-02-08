@@ -86,20 +86,6 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
             }
         }
 
-        $scope.checkboxChanges = function(facet, value, isSelected) {
-            if(isSelected) {
-                $scope.addFilterToUrl(facet, value);
-            } else {
-                $scope.removeFilterFromUrl(facet, value);
-            }
-        }
-
-        $scope.lalilou = function(e) {
-            console.log('LALILOU');
-            console.log(e);
-            e.preventDefault();
-        }
-
         $scope.removeFilterFromUrl = function(facet, value) {
             var value = value || null;
             // Extract the parameters part of the url
@@ -116,8 +102,6 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                     delete parametersJSON[facet];
                 }
             }
-            // Force to rest on the tab 'All'
-            parametersJSON['tab'] = 2;
             parameters = Object.keys(parametersJSON).map(function(k) {
                 return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k])
             }).join('&');
@@ -151,8 +135,6 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
         $scope.selectedLetter = '';
         // Fill the filters object according to the route params
         if ($routeParams.letter || $routeParams.query || $routeParams.sites || $routeParams.subjects || $routeParams.types) {
-            // Set the "All" tab as selected
-            $scope.selectedTab = 2;
             // Fill the query's filters attribute
             if ($routeParams.letter && $routeParams.letter != '') {
                 // Only one letter is allowed in the request
@@ -186,8 +168,6 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                 $scope.query = $routeParams.query;
                 $scope.$parent.indexVM.query = ejs.BoolQuery().should(ejs.QueryStringQuery(['title_en', 'title_fr', 'description_en', 'description_fr', 'alias']).query('*' + $scope.query + '*'));
             }
-        } else if ($routeParams.tab && ['0', '1', '2'].includes($routeParams.tab)) {
-            $scope.selectedTab = $routeParams.tab;
         }
     }
 ]);

@@ -25,6 +25,12 @@ app.factory('addFilterToUrl', [
                     case 'subjects':
                         parametersJSON[facet] += filterSeparator + value;
                         break;
+                    case 'types':
+                        parametersJSON[facet] += filterSeparator + value;
+                        break;
+                    case 'sites':
+                        parametersJSON[facet] += filterSeparator + value;
+                        break;
                     default:
                         console.log('Error : this facet is not taken into consideration : ' + facet);
                         break;
