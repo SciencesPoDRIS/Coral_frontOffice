@@ -8,7 +8,7 @@
             <div ng-repeat="resource in highlighted track by $index" flex="25" ng-if="$index %2 == 0" class="resource">
                 <div ng-repeat="i in [$index, $index + 1]">
                     <a href="{{highlighted[i]._source.resourceurl}}" target="_blank" ng-if="highlighted[i]">
-                        {{highlighted[i]._source.title_fr}} >
+                        {{highlighted[i]._source.title_fr}} <md-icon>keyboard_arrow_right</md-icon>
                     </a>
                 </div>
             </div>
