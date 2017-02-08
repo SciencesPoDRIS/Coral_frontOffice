@@ -1,9 +1,14 @@
 // Constants
-@color0: #e6142d;
+@red: #e6142d;
+@lightgrey: #eaeaed;
 @100: 100%;
 @height5: 68px;
 
 /* Base styles */
+
+a {
+    cursor: pointer;
+}
 
 body {
     color: #444444;
@@ -66,6 +71,10 @@ footer {
     width: 15px;
 }
 
+.black-icon {
+    color: black;
+}
+
 
 /* Remove outline for Chrome Browser */
 
@@ -76,7 +85,7 @@ footer {
 }
 
 .font-red {
-    color: red;
+    color: @red;
 }
 
 
@@ -93,7 +102,7 @@ footer {
 
 .header-buttons > a {
     border-radius: 0;
-    border-right: 1px solid #eaeaed;
+    border-right: 1px solid @lightgrey;
     margin: 10px 0;
     padding: 0 50px;
     &:last-child {
@@ -182,7 +191,7 @@ footer {
 }
 
 #logo-tools {
-    border-bottom: 3px solid @color0;
+    border-bottom: 3px solid @red;
     margin: 0;
     position: absolute;
     width: @100;
@@ -207,7 +216,7 @@ ul#menu_appli {
     width: 450px;
     li {
         a {
-            color: @color0;
+            color: @red;
             display: inline;
             padding: 0;
             &::after {
@@ -276,7 +285,7 @@ ul#menu_appli {
         position: absolute;
     }
     a {
-        color: @color0;
+        color: @red;
         font-style: italic;
         font-weight: bold;
     }
@@ -292,7 +301,7 @@ ul#menu_appli {
         top: 0;
         .search-bar {
             .search-icon {
-                color: @color0;
+                color: @red;
                 left: 5px;
                 top: 5px;
             }
@@ -339,6 +348,13 @@ my-language-switcher {
     right: 348px;
     top: 0;
     z-index: 2;
+}
+
+
+/* Multiple pages */
+
+.grey-band {
+    background-color: @lightgrey;
 }
 
 
@@ -405,67 +421,112 @@ my-language-switcher {
     .page-content {
         padding: 40px 15%;
     }
-}
-
-.letters {
-    background-color: lightgrey;
-}
-
-.letter {
-    border-bottom: 3px solid transparent;
-    margin: auto;
-}
-
-.letter.selected {
-    border-bottom: 3px solid red;
-}
-
-.facet {
-    padding: 15px 0 10px 0;
-    &:first-child {
-        padding-top: 0;
+    .letter {
+        border-bottom: 3px solid transparent;
+        margin: auto;
     }
-    h3 {
-        margin: 0;
-        padding-bottom: 15px;
-        padding: 0;
+    .letter.selected {
+        border-bottom: 3px solid @red;
     }
-    ul {
-        margin: 0;
-        padding: 0;
-    }
-    li {
-        list-style: none;
-        margin: 0;
-        padding-bottom: 5px;
-        padding: 0;
-        label {
-            width: @100;
+    .facet {
+        padding: 15px 0 10px 0;
+        &:first-child {
+            padding-top: 0;
         }
-        .count {
-            background-color: lightgrey;
-            border-radius: 7px;
-            float: right;
-            padding: 0 15px;
+        h3 {
+            margin: 0;
+            padding-bottom: 15px;
         }
-        .filter-enable {
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+            margin: 0;
+            padding-bottom: 5px;
+            label {
+                width: @100;
+            }
             .count {
-                background-color: red;
-                color: white;
+                background-color: @lightgrey;
+                border-radius: 7px;
+                float: right;
+                padding: 0 15px;
+            }
+            .filter-enable {
+                .key {
+                    font-weight: bold;
+                }
+                .count {
+                    background-color: @red;
+                    color: white;
+                }
+            }
+        }
+        .more {
+            font-style: italic;
+            padding-top: 10px;
+            text-align: center;
+        }
+    }
+    .count-results {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 8px 8px 16px 8px;
+    }
+}
+
+
+/* Resource Page */
+
+.resource {
+    .grey-band {
+        padding: 40px 15%;
+        text-align: center;
+        .go-back {
+            color: black;
+            text-decoration: none;
+        }
+    }
+    .page-content {
+        padding: 20px 15%;
+        .logo,
+        .title,
+        .description {
+            text-align: center;
+        }
+        .title,
+        .access {
+            padding: 25px 0;
+        }
+        .access > div {
+            border:  1px solid @lightgrey;
+            margin: 0 10px;
+            padding: 25px 0;
+            text-align: center;
+            .subtitle {
+                padding: 10px 0;
+            }
+            .language,
+            .access-type {
+                background-color: @lightgrey;
+                border-radius: 7px;
+                margin: auto;
+                padding: 0 15px;
+                width: 70%;
+            }
+            .tutorial a {
+                color: @red;
+                font-style: italic;
+                text-decoration: none;
+                md-icon {
+                    color: @red;
+                    font-style: italic;
+                }
             }
         }
     }
-    .more {
-        font-style: italic;
-        padding-top: 10px;
-        text-align: center;
-    }
-}
-
-.count-results {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 8px 8px 16px 8px;
 }
 
 
@@ -482,7 +543,7 @@ my-side-tiles {
         margin-bottom: 3px;
         width: 62px;
         &:hover {
-            background-color: red;
+            background-color: @red;
         }
     }
 }
@@ -491,7 +552,7 @@ my-side-tiles {
 /* Resource Card */
 
 .my-resource-card {
-    border: 1px solid grey;
+    border: 1px solid @lightgrey;
     .logo {
         text-align: center;
         a {
@@ -513,12 +574,12 @@ my-side-tiles {
         padding-bottom: 35px;
         position: relative;
         .status {
-            color: red;
+            color: @red;
             font-style: italic;
         }
         .read-more {
             bottom: 0;
-            color: red;
+            color: @red;
             font-style: italic;
             position: absolute;
         }

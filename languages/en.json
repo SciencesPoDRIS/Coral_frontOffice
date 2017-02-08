@@ -89,5 +89,7 @@
     "Maintenance" : "Maintenance",
     "Blocked by abusive use" : "Blocked by abusive use",
     "Internal problem" : "Internal problem",
-    "Technical problem with remote access" : "Technical problem with remote access"
+    "Technical problem with remote access" : "Technical problem with remote access",
+    "Access" : "Access",
+    "Tutorials" : "Tutorials"
 }

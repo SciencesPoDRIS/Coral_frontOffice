@@ -89,5 +89,7 @@
     "Maintenance" : "Accès coupé pour maintenance",
     "Blocked by abusive use" : "Accès coupé pour cause de téléchargement abusif",
     "Internal problem" : "Accès coupé en raison d'un problème interne",
-    "Technical problem with remote access" : "Accès coupé à distance uniquement"
+    "Technical problem with remote access" : "Accès coupé à distance uniquement",
+    "Access" : "Accès",
+    "Tutorials" : "Tutoriels"
 }
