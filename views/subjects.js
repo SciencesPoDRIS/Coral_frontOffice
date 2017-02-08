@@ -2,6 +2,9 @@ var app = angular.module('eResources.subjects', []);
 
 app.controller('SubjectsController', ['$scope', 'es',
     function($scope, es) {
+        // Set selected tab
+        $scope.$parent.selectedTab = 'subjects';
+
         // Get all subjects
         es.client.search({
                 index: 'resource',

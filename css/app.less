@@ -100,22 +100,23 @@ footer {
     border: none !important;
 }
 
-.header-buttons > a {
-    border-radius: 0;
-    border-right: 1px solid @lightgrey;
-    margin: 10px 0;
-    padding: 0 50px;
-    &:last-child {
-        border: none;
-    }
-}
-
-.header-buttons > a > span {
-    font-family: inconsolata-bold;
-    font-size: 20px;
-}
-
 .header-buttons {
+    & > a {
+        border-radius: 0;
+        border-right: 1px solid @lightgrey;
+        margin: 10px 0 0 0;
+        padding: 0 50px;
+        &:last-child {
+            border: none;
+        }
+        &.selected {
+            border-bottom: 3px solid @red;
+        }
+        & > span {
+            font-family: inconsolata-bold;
+            font-size: 20px;
+        }
+    }
     .vertical-divider {
         border-right-style: solid;
         border-right-width: 1px;
@@ -322,6 +323,10 @@ ul#menu_appli {
             font-weight: bold;
             line-height: 5px;
             text-align: right;
+            md-icon {
+                color: white;
+                font-style: italic;
+            }
         }
     }
     .title > div {
@@ -386,6 +391,10 @@ my-language-switcher {
             font-style: italic;
             font-weight: bold;
             text-decoration: none;
+            md-icon {
+                color: white;
+                font-style: italic;
+            }
         }
     }
 }

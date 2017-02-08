@@ -7,14 +7,22 @@
                 <md-icon class="search-icon">search</md-icon>
                 <input ng-model="query" ng-keyup="$event.keyCode == 13 && search()" placeholder="{{'SEARCH' | translate}}">
             </md-input-container>
-            <div class="pull-right usage-convention">{{'USAGE_CONVENTION' | translate}} > </div>
+            <div class="pull-right usage-convention">
+                {{'USAGE_CONVENTION' | translate}} <md-icon>keyboard_arrow_right</md-icon>
+            </div>
         </div>
     </div>
 </div>
 <div layout="row" layout-align="center center" class="header-buttons">
-    <md-button md-no-ink ng-href="#/" class="home">{{'TAB_HOME' | translate}}</md-button>
+    <md-button md-no-ink ng-href="#/" class="welcome" ng-class="{'selected' : $parent.selectedTab == 'welcome'}">
+        {{'TAB_HOME' | translate}}
+    </md-button>
     <md-divider class="vertical-divider"></md-divider>
-    <md-button md-no-ink ng-href="#/subjects" class="subjects">{{'TAB_SUBJECTS' | translate}}</md-button>
+    <md-button md-no-ink ng-href="#/subjects" class="subjects" ng-class="{'selected' : $parent.selectedTab == 'subjects'}">
+        {{'TAB_SUBJECTS' | translate}}
+    </md-button>
     <md-divider class="vertical-divider"></md-divider>
-    <md-button md-no-ink ng-href="#/resources" class="resources">{{'TAB_ALL' | translate}}</md-button>
+    <md-button md-no-ink ng-href="#/resources" class="resources" ng-class="{'selected' : $parent.selectedTab == 'resources'}">
+        {{'TAB_ALL' | translate}}
+    </md-button>
 </div>

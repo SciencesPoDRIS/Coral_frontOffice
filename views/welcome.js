@@ -2,6 +2,8 @@ var app = angular.module('eResources.welcome', ['ngSanitize']);
 
 app.controller('WelcomeController', ['$scope', 'es',
     function($scope, es) {
+        // Set selected tab
+        $scope.$parent.selectedTab = 'welcome';
 
         // Get all resources 'highlight' order by title
         es.client.search({

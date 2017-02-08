@@ -2,6 +2,9 @@ var app = angular.module('eResources.resource', []);
 
 app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'es',
     function($scope, $translate, $routeParams, es) {
+        // Set selected tab
+        $scope.$parent.selectedTab = 'resource';
+
         // Get information about this resource
         $scope.indexVM.query = ejs.MatchQuery('resourceid', $routeParams.resourceId);
 

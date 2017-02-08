@@ -6,6 +6,9 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
         var filterSeparator = ':';
         $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
+        // Set selected tab
+        $scope.$parent.selectedTab = 'resources';
+
         // Set page size to 1.000 in order to display all the results
         $scope.$parent.indexVM.pageSize = 1000;
 
