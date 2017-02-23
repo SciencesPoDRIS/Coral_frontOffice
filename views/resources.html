@@ -65,17 +65,7 @@
                         </span>
                 <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;AVAILABLE&quot; | translate | uppercase}}', '1' : '{{&quot;AVAILABLE&quot; | translate | uppercase}}', 'other' : '{{&quot;AVAILABLES&quot; | translate | uppercase}}'}"></ng-pluralize>
             </div>
-            <!-- <md-divider></md-divider> -->
             <my-resource-card ng-repeat="resource in indexVM.results.hits.hits" resource="resource" />
         </div>
     </div>
-    <!-- <div flex="70">
-                <div layout="row">
-                    <div>
-                        {{indexVM.results.hits.total}}
-                        <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;RESOURCE&quot; | translate}}', '1' : '{{&quot;RESOURCE&quot; | translate}}', 'other' : '{{&quot;RESOURCES&quot; | translate}}'}"></ng-pluralize>
-                    </div>
-                </div>
-                
-            </div> -->
 </div>
