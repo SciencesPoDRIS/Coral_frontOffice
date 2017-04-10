@@ -91,5 +91,10 @@
     "Internal problem" : "Internal problem",
     "Technical problem with remote access" : "Technical problem with remote access",
     "Access" : "Access",
-    "Tutorials" : "Tutorials"
+    "Tutorials" : "Tutorials",
+    "FROM" : "from",
+    "TO" : "to",
+    "UPDATE" : "Last update",
+    "ACCESS" : "Access",
+    "DOWNTIME" : "Downtimes"
 }

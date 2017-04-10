@@ -5,26 +5,53 @@
         </a>
     </div>
     <div class="page-content">
-        <div class="logo">
-            <img ng-src="../../dris_devdoc/Coral/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
-        </div>
-        <!-- French title -->
-        <div class="title" ng-if="currentLanguage == 'fr'">
-            {{indexVM.results.hits.hits[0]._source.title_fr | uppercase}}
-        </div>
-        <!-- English title -->
-        <div class="title" ng-if="currentLanguage == 'en'">
-            {{indexVM.results.hits.hits[0]._source.title_en | uppercase}}
-        </div>
+        <a href="{{indexVM.results.hits.hits[0]._source.resourceurl}}" target="_blank">
+            <div class="logo">
+                <img ng-src="../../dris_devdoc/Coral/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
+            </div>
+            <!-- French title -->
+            <div class="title" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.title_fr">
+                {{indexVM.results.hits.hits[0]._source.title_fr | uppercase}}
+            </div>
+            <!-- English title -->
+            <div class="title" ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.title_en">
+                {{indexVM.results.hits.hits[0]._source.title_en | uppercase}}
+            </div>
+        </a>
         <!-- French description -->
-        <div class="description" ng-if="currentLanguage == 'fr'">
+        <div class="description" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.description_fr">
             {{indexVM.results.hits.hits[0]._source.description_fr}}
+            <br />
+            <br />
         </div>
         <!-- English description -->
-        <div class="description" ng-if="currentLanguage == 'en'">
+        <div class="description" ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.description_en">
             {{indexVM.results.hits.hits[0]._source.description_en}}
+            <br />
+            <br />
         </div>
-        <div layout="row" class="access">
+        <!-- French general note -->
+        <div class="description" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.notegeneral_fr">
+            {{indexVM.results.hits.hits[0]._source.notegeneral_fr}}
+            <br />
+            <br />
+        </div>
+        <!-- English general note -->
+        <div class="description" ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.notegeneral_en">
+            {{indexVM.results.hits.hits[0]._source.notegeneral_en}}
+            <br />
+            <br />
+        </div>
+        <!-- French access note -->
+        <div class="description" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.noteaccess_fr">
+            {{indexVM.results.hits.hits[0]._source.noteaccess_fr}}
+        </div>
+        <!-- English access note -->
+        <div class="description" ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.noteaccess_en">
+            {{indexVM.results.hits.hits[0]._source.noteaccess_en}}
+        </div>
+        <div layout="row" class="columns">
+            <!-- Languages -->
             <div flex="33">
                 <div>
                     image
@@ -36,17 +63,19 @@
                     {{language | translate}}
                 </div>
             </div>
+            <!-- Subjects -->
             <div flex="33">
                 <div>
                     image
                 </div>
                 <div class="subtitle">
-                    {{'Access' | translate | uppercase}}
+                    {{'SUBJECTS' | translate | uppercase}}
                 </div>
-                <div class="access-type">
-                    {{indexVM.results.hits.hits[0]._source.accesstype | translate}}
+                <div class="subject" ng-repeat="subject in indexVM.results.hits.hits[0]._source.subjects">
+                    {{subject | translate}}
                 </div>
             </div>
+            <!-- Tutorials -->
             <div flex="33">
                 <div>
                     image
@@ -59,22 +88,14 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div>
-        <!-- Status -->
-        <div ng-if="indexVM.results.hits.hits[0]._source.status != null">
-            {{indexVM.results.hits.hits[0]._source.status | uppercase | translate}}
+        <!-- Access -->
+        <div ng-if="indexVM.results.hits.hits[0]._source.accesstype != null" class="access">
+            <b>{{'ACCESS' | translate}}</b>
             <br />
-        </div>
-        <!-- Downtimes / Issues -->
-        <div ng-show="downtimes.length > 0">
-            {{'OUT_OF_ORDER' | translate}} : {{downtimes[0]._source.shortname | translate}} du {{downtimes[0]._source.startdate | date : $parent.dateFormat}} au {{downtimes[0]._source.enddate | date : $parent.dateFormat}}.
+            <img ng-src="images/{{indexVM.results.hits.hits[0]._source.accesstype | getAccessTypeIcon}}"/>
+            {{indexVM.results.hits.hits[0]._source.accesstype | translate}}
             <br />
-        </div>
-        <!-- Subjects -->
-        <div ng-repeat="subject in indexVM.results.hits.hits[0]._source.subjects">
-            {{subject | translate}}
+            <br />
         </div>
         <!-- Accessibility -->
         <div ng-if="indexVM.results.hits.hits[0]._source.accessibility == 1">
@@ -82,45 +103,24 @@
             <br />
             <br />
         </div>
-        <!-- Url -->
-        <div>
-            {{indexVM.results.hits.hits[0]._source.resourceurl}}
+        <!-- Downtimes / Issues -->
+        <div ng-show="downtimes.length > 0">
+            <b>{{'DOWNTIME' | translate}}</b>
             <br />
-            <br />
-        </div>
-        <!-- French general note -->
-        <div ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.notegeneral_fr != null">
-            {{indexVM.results.hits.hits[0]._source.notegeneral_fr}}
-            <br />
-            <br />
-        </div>
-        <!-- English general note -->
-        <div ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.notegeneral_en != null">
-            {{indexVM.results.hits.hits[0]._source.notegeneral_en}}
-            <br />
-            <br />
-        </div>
-        <!-- French access note -->
-        <div ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.noteaccess_fr != null">
-            {{indexVM.results.hits.hits[0]._source.noteaccess_fr}}
-            <br />
-            <br />
-        </div>
-        <!-- English access note -->
-        <div ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.noteaccess_en != null">
-            {{indexVM.results.hits.hits[0]._source.noteaccess_en}}
-            <br />
-            <br />
-        </div>
-        <!-- Update -->
-        <div>
-            {{indexVM.results.hits.hits[0]._source.updatedate | date : $parent.dateFormat}}
+            {{'OUT_OF_ORDER' | translate}} : {{downtimes[0]._source.shortname | translate}} {{'FROM' | translate}} {{downtimes[0]._source.startdate | date : $parent.dateFormat}} {{'TO' | translate}} {{downtimes[0]._source.enddate | date : $parent.dateFormat}}.
             <br />
             <br />
         </div>
         <!-- User limitation -->
         <div ng-if="indexVM.results.hits.hits[0]._source.userlimitid != null">
             {{indexVM.results.hits.hits[0]._source.userlimitid}}
+        </div>
+        <!-- Update -->
+        <div>
+            <b>{{'UPDATE' | translate}}</b>
+            <br />{{indexVM.results.hits.hits[0]._source.updatedate | date : $parent.dateFormat}}
+            <br />
+            <br />
         </div>
     </div>
 </div>

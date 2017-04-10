@@ -91,5 +91,10 @@
     "Internal problem" : "Accès coupé en raison d'un problème interne",
     "Technical problem with remote access" : "Accès coupé à distance uniquement",
     "Access" : "Accès",
-    "Tutorials" : "Tutoriels"
+    "Tutorials" : "Tutoriels",
+    "FROM" : "du",
+    "TO" : "au",
+    "UPDATE" : "Date de mise à jour",
+    "ACCESS" : "Accès",
+    "DOWNTIME" : "Arrêts de service"
 }
