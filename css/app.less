@@ -6,6 +6,10 @@
 
 /* Base styles */
 
+html {
+    background-color: white;
+}
+
 a {
     cursor: pointer;
 }
@@ -73,6 +77,9 @@ footer {
 
 .black-icon {
     color: black;
+}
+.red-icon {
+    color: @red;
 }
 
 
@@ -506,10 +513,10 @@ my-language-switcher {
             text-align: center;
         }
         .title,
-        .access {
+        .columns {
             padding: 25px 0;
         }
-        .access > div {
+        .columns > div {
             border:  1px solid @lightgrey;
             margin: 0 10px;
             padding: 25px 0;
@@ -518,10 +525,10 @@ my-language-switcher {
                 padding: 10px 0;
             }
             .language,
-            .access-type {
+            .subject {
                 background-color: @lightgrey;
                 border-radius: 7px;
-                margin: auto;
+                margin: 5px auto;
                 padding: 0 15px;
                 width: 70%;
             }
@@ -534,6 +541,10 @@ my-language-switcher {
                     font-style: italic;
                 }
             }
+        }
+        .access img {
+            vertical-align: sub;
+            width: 30px;
         }
     }
 }
@@ -589,9 +600,11 @@ my-side-tiles {
         }
         .read-more {
             bottom: 0;
-            color: @red;
             font-style: italic;
             position: absolute;
+            a {
+                color: @red;
+            }
         }
         .title {
             font-weight: bold;
