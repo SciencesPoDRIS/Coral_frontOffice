@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('eResources.resources', []);
 
 app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$routeParams', 'addFilterToUrl',
@@ -110,7 +112,7 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
         }
 
         $scope.addFilterToUrl = function(facet, value) {
-            addFilterToUrl(facet, value)
+            addFilterToUrl(facet, value);
         }
 
         // Reset the query's filter
@@ -130,7 +132,8 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
         }
         // Reset the query's term
         $scope.$parent.indexVM.query = ejs.MatchAllQuery();
-
+        // Sort results by title
+        $scope.$parent.indexVM.sort = ejs.Sort('title_fr_notanalyzed').order('asc')
         // Set "All" as default selected letter
         $scope.selectedLetter = '';
         // Fill the filters object according to the route params
@@ -143,13 +146,6 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                     $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', $scope.selectedLetter).type('phrase_prefix');
                 }
             }
-            if ($routeParams.sites && $routeParams.sites != '') {
-                $.map($routeParams.sites.split(filterSeparator), function(site) {
-                    if (site != '') {
-                        $scope.$parent.indexVM.filters.add(ejs.TermsFilter('sites', site));
-                    }
-                });
-            }
             if ($routeParams.subjects && $routeParams.subjects != '') {
                 $.map($routeParams.subjects.split(filterSeparator), function(subject) {
                     if (subject != '') {
@@ -161,6 +157,13 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                 $.map($routeParams.types.split(filterSeparator), function(type) {
                     if (type != '') {
                         $scope.$parent.indexVM.filters.add(ejs.TermsFilter('types', type));
+                    }
+                });
+            }
+            if ($routeParams.sites && $routeParams.sites != '') {
+                $.map($routeParams.sites.split(filterSeparator), function(site) {
+                    if (site != '') {
+                        $scope.$parent.indexVM.filters.add(ejs.TermsFilter('sites', site));
                     }
                 });
             }
