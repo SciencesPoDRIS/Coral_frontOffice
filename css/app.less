@@ -1,5 +1,6 @@
 // Constants
 @red: #e6142d;
+@grey: #444;
 @lightgrey: #eaeaed;
 @100: 100%;
 @height5: 68px;
@@ -15,7 +16,7 @@ a {
 }
 
 body {
-    color: #444444;
+    color: @grey;
     font-family: "Arial";
     font-size: 18px;
     line-height: 24px;
@@ -76,7 +77,7 @@ footer {
 }
 
 .black-icon {
-    color: black;
+    color: @grey;
 }
 .red-icon {
     color: @red;
@@ -501,12 +502,24 @@ my-language-switcher {
         padding: 40px 15%;
         text-align: center;
         .go-back {
-            color: black;
+            color: @grey;
             text-decoration: none;
         }
     }
     .page-content {
         padding: 20px 15%;
+        a {
+            color: @grey;
+            text-decoration: none;
+        }
+        .left-column {
+            margin-right: 15px;
+            text-align: left;
+        }
+        .right-column {
+            margin-left: 15px;
+            text-align: right;
+        }
         .logo,
         .title,
         .description {
@@ -632,6 +645,6 @@ my-resource-card {
 .subject-link,
 .letter a,
 .facet li a {
-    color: black;
+    color: @grey;
     text-decoration: none;
 }

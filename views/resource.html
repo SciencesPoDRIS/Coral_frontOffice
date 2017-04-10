@@ -5,17 +5,29 @@
         </a>
     </div>
     <div class="page-content">
-        <a href="{{indexVM.results.hits.hits[0]._source.resourceurl}}" target="_blank">
-            <div class="logo">
-                <img ng-src="admin/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
+        <a href="{{indexVM.results.hits.hits[0]._source.resourceurl}}" target="_blank" layout="row">
+            <div flex="25" class="left-column">
             </div>
-            <!-- French title -->
-            <div class="title" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.title_fr">
-                {{indexVM.results.hits.hits[0]._source.title_fr | uppercase}}
+            <div flex="50">
+                <div class="logo">
+                    <img ng-src="admin/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
+                </div>
+                <!-- French title -->
+                <div class="title" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.title_fr">
+                    {{indexVM.results.hits.hits[0]._source.title_fr | uppercase}}
+                </div>
+                <!-- English title -->
+                <div class="title" ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.title_en">
+                    {{indexVM.results.hits.hits[0]._source.title_en | uppercase}}
+                </div>
             </div>
-            <!-- English title -->
-            <div class="title" ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.title_en">
-                {{indexVM.results.hits.hits[0]._source.title_en | uppercase}}
+            <div flex="25" class="right-column">
+                <div ng-if="indexVM.results.hits.hits[0]._source.status == 'trial'" class="status">
+                    {{'TRIAL' | translate}}
+                </div>
+                <div ng-if="indexVM.results.hits.hits[0]._source.status == 'new'" class="status">
+                    {{'NEW' | translate}}
+                </div>
             </div>
         </a>
         <!-- French description -->
