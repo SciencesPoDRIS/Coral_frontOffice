@@ -7,7 +7,7 @@
     <div class="page-content">
         <a href="{{indexVM.results.hits.hits[0]._source.resourceurl}}" target="_blank">
             <div class="logo">
-                <img ng-src="../../dris_devdoc/Coral/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
+                <img ng-src="admin/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
             </div>
             <!-- French title -->
             <div class="title" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.title_fr">
