@@ -2,20 +2,12 @@ var concat = require('gulp-concat'),
     gulp = require('gulp'),
     less = require('gulp-less'),
     uglify = require('gulp-uglify'),
-    // browserify = require('browserify'),
-    // ngAnnotate = require('browserify-ngannotate'),
     ngAnnotate = require('gulp-ng-annotate'),
-    browserSync = require('browser-sync').create();
-    // ngAnnotate = require('gulp-ng-annotate'),
+    browserSync = require('browser-sync').create(),
+    cleanCSS = require('gulp-clean-css');
 
-// Concat all JS libraries
+// Concat and minify all JS libraries
 gulp.task('js', function() {
-    // var b = browserify({
-    //   entries: './js/app.js',
-    //   debug: true,
-    //   paths: ['./js/controllers', './js/services', './js/directives'],
-    //   transform: [ngAnnotate]
-    // });
     return gulp.src([
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/angular/angular.min.js',
@@ -30,13 +22,11 @@ gulp.task('js', function() {
       'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
       'bower_components/angular-sanitize/angular-sanitize.min.js',
       'js/elasticui.min.js',
-      // 'js/app.js',
       'js/filters.js',
       'js/directives.js',
       'js/services.js',
       'views/welcome.js',
       'views/subjects.js',
-      // 'views/resources.js',
       'views/resource.js'
      ],
       {base: 'bower_components/'}
@@ -44,31 +34,46 @@ gulp.task('js', function() {
     .pipe(concat('all.min.js'))
     .pipe(ngAnnotate())
     .pipe(uglify())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/js'));
 });
-
-// Concat all CSS files from libs
-// gulp.task('css', function() {
-//     gulp.src('app/img/layers.png').pipe(gulp.dest('./app/assets/css/images/'))
-//     gulp.src('bower_components/font-awesome/fonts/*.*').pipe(gulp.dest('./app/assets/fonts'))
-//     return gulp.src([
-//         'bower_components/angular-ui-select/dist/select.css',
-//         'bower_components/leaflet/dist/leaflet.css',
-//         'bower_components/angular-ui-grid/ui-grid.css',
-//         'bower_components/font-awesome/css/font-awesome.min.css'
-//       ],
-//       {base: 'bower_components/'}
-//     )
-//     .pipe(concat('allcss.css'))
-//     .pipe(gulp.dest('./app/assets/css/'));
-// });
 
 // Compile less file into CSS
 gulp.task('less', function() {
     return gulp.src('css/*.less')
       .pipe(less())
-      .pipe(gulp.dest('dist'))
+      .pipe(gulp.dest('css'))
       .pipe(browserSync.stream());
+});
+
+// Concat and minify all CSS files
+gulp.task('css', ['less'], function() {
+    return gulp.src([
+        'bower_components/angular-material/angular-material.min.css',
+        'bower_components/material-design-icons/iconfont/material-icons.css',
+        'css/app.css'
+    ])
+    .pipe(concat('all.min.css'))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('dist/css'));
+});
+
+// Copy one image and the fonts into the assets folder
+gulp.task('assets', function() {
+    // Translation files
+    gulp.src('languages/*.json')
+      .pipe(gulp.dest('dist/languages'));
+    // Angular Material fonts
+    gulp.src([
+      'bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff',
+      'bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff2',
+      'bower_components/material-design-icons/iconfont/MaterialIcons-Regular.ttf',
+      'fonts/georgia.ttf'
+    ]).pipe(gulp.dest('dist/css'));
+    // Other JS files that cannot be concatened
+    gulp.src([
+      'js/app.js',
+      'views/resources.js'
+    ]).pipe(gulp.dest('dist/js'));
 });
 
 // Launch server with livereload
@@ -81,14 +86,5 @@ gulp.task('serve', function() {
     gulp.watch(['partials/*.html', 'views/*.html']).on('change', browserSync.reload);
 });
 
-// gulp.task('prod', function() {
-//     return gulp.src(['app/app.js', 'app/controllers/*.js', 'app/services/*.js', 'app/directives/*.js'])
-//       .pipe(concat('app.js'))
-//       .pipe(ngAnnotate())
-//       .pipe(uglify())
-//       .pipe(gulp.dest('./app/assets/js'));
-// });
-
-// Default task that launch concat js, css & less then launch server
-// gulp.task('default', ['js', 'css', 'less', 'serve']);
-gulp.task('default', ['js', 'less', 'serve']);
+// Default task that launch concat js and css, then copy some assets and launch server
+gulp.task('default', ['js', 'css', 'assets', 'serve']);

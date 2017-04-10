@@ -22,3 +22,8 @@ images
 # Dist folder
 #
 dist
+
+#
+# Generated CSS file
+#
+css/app.css
