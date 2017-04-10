@@ -1,5 +1,7 @@
 /* Filters */
 
+'use strict';
+
 var app = angular.module('eResources.filters', []);
 
 app.filter('getAccessTypeIcon', [function() {

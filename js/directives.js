@@ -1,5 +1,7 @@
 /* Directives */
 
+'use strict';
+
 var app = angular.module('eResources.directives', []);
 
 app.directive('myLanguageSwitcher', ['$translate', function($translate) {

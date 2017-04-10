@@ -1,5 +1,7 @@
 /* Services */
 
+'use strict';
+
 var app = angular.module('eResources.services', []);
 
 app.factory('addFilterToUrl', [

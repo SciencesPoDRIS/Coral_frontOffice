@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('eResources.resource', []);
 
 app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'es',

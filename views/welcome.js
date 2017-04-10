@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('eResources.welcome', ['ngSanitize']);
 
 app.controller('WelcomeController', ['$scope', 'es',
