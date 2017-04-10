@@ -24,6 +24,11 @@ images
 dist
 
 #
+# Fonts folder
+#
+fonts
+
+#
 # Generated CSS file
 #
 css/app.css
