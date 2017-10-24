@@ -2,18 +2,16 @@
 
 var app = angular.module('eResources.resource', []);
 
-app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'es',
-    function($scope, $translate, $routeParams, es) {
+app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'es', 'store',
+    function($scope, $translate, $routeParams, es, store) {
         // Set selected tab
         $scope.$parent.selectedTab = 'resource';
 
         // Get information about this resource
         $scope.indexVM.query = ejs.MatchQuery('resourceid', $routeParams.resourceId);
 
-        // Navigate back to the previous page, the search one
-        $scope.goBack = function() {
-            window.history.back();
-        }
+        // Get previousUrl through store service
+        $scope.previousUrl = store.get('previousUrl');
 
         $scope.init = function() {
             es.client.search({

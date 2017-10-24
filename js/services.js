@@ -49,3 +49,25 @@ app.factory('addFilterToUrl', [
         }
     }
 ]);
+
+app.factory('store', [function() {
+    var savedData = {};
+
+    function set(key, value) {
+        savedData[key] = value;
+    }
+
+    function get(key) {
+        return savedData[key];
+    }
+
+    function remove(key) {
+        return delete savedData[key];
+    }
+
+    return {
+        set: set,
+        get: get,
+        remove: remove
+    }
+}]);

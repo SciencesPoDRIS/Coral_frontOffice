@@ -2,8 +2,8 @@
 
 var app = angular.module('eResources.resources', []);
 
-app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$routeParams', 'addFilterToUrl',
-    function($scope, es, $filter, $timeout, $routeParams, addFilterToUrl) {
+app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$routeParams', 'addFilterToUrl', 'store',
+    function($scope, es, $filter, $timeout, $routeParams, addFilterToUrl, store) {
         // Config
         var filterSeparator = ':';
         $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -13,6 +13,9 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
 
         // Set page size to 1.000 in order to display all the results
         $scope.$parent.indexVM.pageSize = 1000;
+
+        // Set previousUrl into store service
+        store.set('previousUrl', window.location.href);
 
         // Init default search with an empty term
         $scope.query = '';
