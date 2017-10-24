@@ -130,7 +130,9 @@
         <!-- Update -->
         <div>
             <b>{{'UPDATE' | translate}}</b>
-            <br />{{indexVM.results.hits.hits[0]._source.updatedate | date : $parent.dateFormat}}
+            <br />
+            <span ng-if="indexVM.results.hits.hits[0]._source.updatedate">{{indexVM.results.hits.hits[0]._source.updatedate | date : $parent.dateFormat}}</span>
+            <span ng-if="!indexVM.results.hits.hits[0]._source.updatedate">{{indexVM.results.hits.hits[0]._source.createdate | date : $parent.dateFormat}}</span>
             <br />
             <br />
         </div>
