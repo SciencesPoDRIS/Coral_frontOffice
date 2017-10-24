@@ -96,5 +96,6 @@
     "TO" : "to",
     "UPDATE" : "Last update",
     "ACCESS" : "Access",
-    "DOWNTIME" : "Downtimes"
+    "DOWNTIME" : "Downtimes",
+    "simultaneous users limit" : "Simultaneous users limit"
 }

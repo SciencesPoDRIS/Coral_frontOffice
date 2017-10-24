@@ -124,8 +124,12 @@
             <br />
         </div>
         <!-- User limitation -->
-        <div ng-if="indexVM.results.hits.hits[0]._source.userlimitid != null">
-            {{indexVM.results.hits.hits[0]._source.userlimitid}}
+        <div ng-if="indexVM.results.hits.hits[0]._source.userlimit != null">
+            <b>{{'simultaneous users limit' | translate}}</b>
+            <br />
+            {{indexVM.results.hits.hits[0]._source.userlimit}}
+            <br />
+            <br />
         </div>
         <!-- Update -->
         <div>
