@@ -88,7 +88,7 @@
                 </div>
             </div>
             <!-- Tutorials -->
-            <div flex="33">
+            <div flex="33" ng-if="indexVM.results.hits.hits[0]._source.tutosrank.length > 0">
                 <div>
                     <img ng-src="images/tutos.png" alt="{{'Tutorials' | translate}}" class="fill">
                 </div>
