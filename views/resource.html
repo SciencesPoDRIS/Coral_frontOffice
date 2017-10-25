@@ -116,11 +116,13 @@
             <br />
         </div>
         <!-- Downtimes / Issues -->
-        <div ng-show="downtimes.length > 0">
+        <div ng-if="downtimes.length > 0">
             <b>{{'DOWNTIME' | translate}}</b>
             <br />
-            {{'OUT_OF_ORDER' | translate}} : {{downtimes[0]._source.shortname | translate}} {{'FROM' | translate}} {{downtimes[0]._source.startdate | date : $parent.dateFormat}} {{'TO' | translate}} {{downtimes[0]._source.enddate | date : $parent.dateFormat}}.
-            <br />
+            <span ng-repeat="downtime in downtimes">
+                {{'OUT_OF_ORDER' | translate}} : {{downtime._source.shortname | translate}} {{'FROM' | translate}} {{downtime._source.startdate | date : $parent.dateFormat}} {{'TO' | translate}} {{downtime._source.enddate | date : $parent.dateFormat}}.
+                <br/ >
+            </span>
             <br />
         </div>
         <!-- User limitation -->
