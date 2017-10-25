@@ -35,7 +35,7 @@ app.directive('myLanguageSwitcher', ['$translate', function($translate) {
     }
 }]);
 
-app.directive('myResourceCard', ['$translate', function($translate) {
+app.directive('myResourceCard', ['$translate', 'es', '$timeout', function($translate, es, $timeout) {
     return {
         restrict: 'E',
         templateUrl: 'partials/myResourceCard.html',
@@ -43,6 +43,28 @@ app.directive('myResourceCard', ['$translate', function($translate) {
             resource: '='
         },
         link: function($scope) {
+            $timeout(function() {
+                es.client.search({
+                    index: 'downtime',
+                    size: 1000,
+                    body: ejs.Request()
+                        .query(ejs.MatchAllQuery())
+                        .filter(
+                            ejs.AndFilter([
+                                ejs.TermsFilter('entityid', $scope.resource._id),
+                                ejs.RangeFilter('startdate').lte('now'),
+                                ejs.RangeFilter('enddate').gte('now')
+                            ]))
+                }, function(error, response) {
+                    if(typeof error === 'undefined') {
+                        $scope.count = response.hits.hits.length;
+                    } else {
+                        $scope.count = 0;
+                        console.log(error);
+                    }
+                });
+            }, 0);
+
             // Add a listener on the current language to translate resource title and description
             $scope.$watch('$parent.currentLanguage', function(lang) {
                 switch (lang) {

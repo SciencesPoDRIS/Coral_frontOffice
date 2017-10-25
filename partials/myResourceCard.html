@@ -11,7 +11,7 @@
         <div ng-if="resource._source.status == 'new'" class="status">
             {{'NEW' | translate}}
         </div>
-        <div ng-if="resource._source.downtimes > 0" class="status">
+        <div ng-if="count > 0" class="status">
             {{'OUT_OF_ORDER' | translate}}
         </div>
         <div ng-if="resource._source.accesstype == 'Restricted access'" class="access-restricted">
