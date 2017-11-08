@@ -1,0 +1,36 @@
+{
+  "name": "coral_frontoffice",
+  "version": "1.0.0",
+  "description": "FrontOffice to plug on Coral",
+  "main": "index.html",
+  "dependencies": {
+    "gulp": "latest"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-less": "^3.3.2",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-uglify": "^3.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SciencesPoDRIS/Coral_frontOffice.git"
+  },
+  "keywords": [
+    "angular",
+    "coral",
+    "frontoffice",
+    "resource"
+  ],
+  "author": "SciencesPoDRIS, annelhote",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/SciencesPoDRIS/Coral_frontOffice/issues"
+  },
+  "homepage": "https://github.com/SciencesPoDRIS/Coral_frontOffice#readme"
+}
