@@ -86,5 +86,5 @@ gulp.task('serve', function() {
     gulp.watch(['partials/*.html', 'views/*.html']).on('change', browserSync.reload);
 });
 
-// Default task that launch concat js and css, then copy some assets and launch server
+// Default task that launch concat js and css, then copy some assets and launch the server with livereload
 gulp.task('default', ['js', 'css', 'assets', 'serve']);
