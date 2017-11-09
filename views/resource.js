@@ -11,7 +11,7 @@ app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'e
         $scope.indexVM.query = ejs.MatchQuery('resourceid', $routeParams.resourceId);
 
         // Get previousUrl through store service
-        $scope.previousUrl = store.get('previousUrl');
+        $scope.previousUrl = (typeof store.get('previousUrl') == 'undefined' ? '#/resources' : store.get('previousUrl'));
 
         $scope.init = function() {
             es.client.search({
