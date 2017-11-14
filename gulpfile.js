@@ -79,11 +79,10 @@ gulp.task('assets', function() {
 // Launch server with livereload
 gulp.task('serve', function() {
     browserSync.init({ server: '.' });
-    gulp.watch('css/app.less', ['less']);
-    gulp.watch('dist/app.css').on('change', browserSync.reload);
-    gulp.watch(['js/*.js', 'views/*.js'], ['js']);
-    gulp.watch(['js/app.js', 'views/resources.js', 'dist/all.min.js']).on('change', browserSync.reload);
-    gulp.watch(['partials/*.html', 'views/*.html']).on('change', browserSync.reload);
+    gulp.watch(['js/*.js', 'views/*.js', '!js/app.js', '!views/resources.js'], ['js']);
+    gulp.watch('css/app.less', ['css']);
+    gulp.watch(['js/app.js', 'views/resources.js', 'languages/*.json'], ['assets']);
+    gulp.watch(['partials/*.html', 'views/*.html', 'dist/**/*']).on('change', browserSync.reload);
 });
 
 // Default task that launch concat js and css, then copy some assets and launch the server with livereload
