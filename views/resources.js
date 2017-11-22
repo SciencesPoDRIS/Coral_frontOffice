@@ -136,7 +136,7 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
         // Reset the query's term
         $scope.$parent.indexVM.query = ejs.MatchAllQuery();
         // Sort results by title
-        $scope.$parent.indexVM.sort = ejs.Sort('title_fr_notanalyzed').order('asc')
+        $scope.$parent.indexVM.sort = ejs.Sort('title_fr_notanalyzed').asc();
         // Set "All" as default selected letter
         $scope.selectedLetter = '';
         // Fill the filters object according to the route params
