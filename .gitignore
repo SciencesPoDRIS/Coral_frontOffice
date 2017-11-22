@@ -4,12 +4,12 @@
 .DS_Store
 
 #
-# Bower components directory
+# Bower components folder
 #
 bower_components
 
 #
-# Node modules directory
+# Node modules folder
 #
 node_modules
 
@@ -27,6 +27,11 @@ dist
 # Fonts folder
 #
 fonts
+
+#
+# Admin folder (Coral Backoffice)
+#
+admin
 
 #
 # Generated CSS file
