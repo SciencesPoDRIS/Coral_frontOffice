@@ -4,6 +4,8 @@
 @lightgrey: #eaeaed;
 @100: 100%;
 @height5: 68px;
+@almostblack: #2e2d2d;
+@dieanothergrey: #666666;
 
 /* Base styles */
 
@@ -115,6 +117,8 @@ footer {
     & > a {
         border-radius: 0;
         border-right: 1px solid @lightgrey;
+        font-family: inconsolata-bold;
+        font-size: 22px;
         margin: 10px 0 0 0;
         padding: 0 50px;
         &:last-child {
@@ -320,7 +324,7 @@ ul#menu_appli {
             input {
                 border: none;
                 font-family: opensans-regular;
-                font-size: 12px;
+                font-size: 14px;
             }
             .md-errors-spacer {
                 display: none;
@@ -329,7 +333,7 @@ ul#menu_appli {
         .usage-convention {
             color: white;
             font-family: georgia;
-            font-size: 14px;
+            font-size: 12px;
             font-style: italic;
             font-weight: bold;
             line-height: 5px;
@@ -429,7 +433,16 @@ my-language-switcher {
             width: auto;
         }
         .subject-name {
+            font-family: inconsolata-bold;
+            font-size: 18px;
             font-weight: bold;
+            margin: 15px 0 0 10px;
+        }
+        .subject-quantity {
+            color: @dieanothergrey;
+            font-family: opensans-regular;
+            font-size: 13px;
+            margin-left: 10px;
         }
     }
 }
@@ -608,22 +621,40 @@ my-side-tiles {
         }
     }
     .resource-content {
+        margin: 25px 30px 20px 20px;
         padding-bottom: 35px;
         position: relative;
         .status {
-            color: @red;
+            font-family: georgia;
+            font-size: 14px;
             font-style: italic;
+            font-weight: bold;
         }
         .read-more {
             bottom: 0;
+            font-family: georgia;
+            font-size: 14px;
             font-style: italic;
+            font-weight: bold;
             position: absolute;
             a {
                 color: @red;
             }
         }
         .title {
+            font-family: inconsolata-bold;
+            font-size: 32px;
             font-weight: bold;
+            margin: 30px 0 20px 0;
+            a {
+                color: #2e2d2d;
+            }
+        }
+        .content {
+            color: @dieanothergrey;
+            font-family: opensans-regular;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
         .access-restricted {
             padding-left: 20px;
@@ -648,6 +679,6 @@ my-resource-card {
 .subject-link,
 .letter a,
 .facet li a {
-    color: @grey;
+    color: @almostblack;
     text-decoration: none;
 }

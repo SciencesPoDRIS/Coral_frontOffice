@@ -5,10 +5,10 @@
         </a>
     </div>
     <div class="resource-content">
-        <div ng-if="resource._source.status == 'trial'" class="status">
+        <div ng-if="resource._source.status == 'trial'" class="status font-red">
             {{'TRIAL' | translate}}
         </div>
-        <div ng-if="resource._source.status == 'new'" class="status">
+        <div ng-if="resource._source.status == 'new'" class="status font-red">
             {{'NEW' | translate}}
         </div>
         <div ng-if="count > 0" class="status">
@@ -23,13 +23,13 @@
                 {{resourceTitle | limitTo: 50 | uppercase}}
             </a>
         </div>
-        <div>
+        <div class="content">
             <a href="#/resource/{{resource._source.resourceid}}">
                 {{resourceDescription | limitTo: 150}}
             </a>
         </div>
         <div class="read-more">
-            <a href="#/resource/{{resource._source.resourceid}}">
+            <a href="#/resource/{{resource._source.resourceid}}" class="font-red">
                 {{'READ_MORE' | translate}} <md-icon class="red-icon">keyboard_arrow_right</md-icon>
             </a>
         </div>

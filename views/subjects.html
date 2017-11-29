@@ -1,11 +1,11 @@
 <div layout="column" class="subjects">
     <div class="page-content">
-        <md-grid-list md-cols-xs="1" md-cols-xs="2" md-cols-md="4" md-cols-gt-md="4" md-row-height="225px">
+        <md-grid-list md-cols-xs="1" md-cols-xs="2" md-cols-md="4" md-cols-gt-md="4" md-row-height="265px">
             <md-grid-tile ng-repeat="subject in subjects" md-colspan="1" md-rowspan="1" layout="row">
                 <a href="#/resources?subjects={{subject.key | rewriteUrl}}" class="subject-link" layout="column" layout-fill>
                     <img ng-src="images/subjects/{{subject.key}}.jpg"></img>
                     <div class="subject-name" flex="none">{{subject.key | translate | uppercase}}</div>
-                    <div flex="none">{{subject.doc_count}} {{'RESOURCES' | translate}}</div>
+                    <div class="subject-quantity" flex="none">{{subject.doc_count}} {{'RESOURCES' | translate}}</div>
                 </a>
             </md-grid-tile>
         </md-grid-list>
