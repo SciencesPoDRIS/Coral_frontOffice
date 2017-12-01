@@ -35,7 +35,8 @@
                 <h3>{{'CONTENT_TYPE' | translate | uppercase}}</h3>
                 <div class="nav nav-list types" eui-aggregation="ejs.TermsAggregation('types').field('types').size(types.size)" layout="column">
                     <md-checkbox ng-repeat="type in aggResult.buckets" eui-filter="ejs.TermsFilter('types', type.key)" ng-model="filter.enabled" aria-label="{{type.key | translate}}" ng-click="clickOnFacet('types', type.key, filter.enabled)" md-no-ink>
-                        {{type.key | translate}} <span class="muted">({{type.doc_count}})</span>
+                        <span class="key">{{type.key | translate}}</span>
+                        <span class="muted count">{{type.doc_count}}</span>
                     </md-checkbox>
                     <md-button class="more" ng-click="typesToogle()" md-no-ink>
                         {{types.label}}
@@ -48,7 +49,8 @@
                 <h3>{{'CAMPUS' | translate | uppercase}}</h3>
                 <div class="nav nav-list sites" eui-aggregation="ejs.TermsAggregation('sites').field('sites').size(sites.size)" layout="column">
                     <md-checkbox ng-repeat="site in aggResult.buckets" eui-filter="ejs.TermsFilter('sites', site.key)" ng-model="filter.enabled" aria-label="{{site.key | translate}}" ng-click="clickOnFacet('sites', site.key, filter.enabled)" md-no-ink>
-                        {{site.key | translate}} <span class="muted">({{site.doc_count}})</span>
+                        <span class="key">{{site.key | translate}}</span>
+                        <span class="muted count">{{site.doc_count}}</span>
                     </md-checkbox>
                     <md-button class="more" ng-click="sitesToogle()" md-no-ink>
                         {{sites.label}}

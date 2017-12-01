@@ -65,10 +65,10 @@ footer {
     font-family: inconsolata-bold;
     font-family: inconsolata-regular;
     font-family: opensans-regular;
+    src: url(georgia.ttf);
     src: url(Inconsolata-Bold.ttf);
     src: url(Inconsolata-Regular.ttf);
     src: url(OpenSans-Regular.ttf);
-    src: url(georgia.ttf);
 }
 
 
@@ -456,17 +456,30 @@ my-language-switcher {
     }
     .letter {
         border-bottom: 3px solid transparent;
+        font-family: inconsolata-bold;;
+        font-size: 32px;
         margin: auto;
     }
     .letter.selected {
         border-bottom: 3px solid @red;
+        padding-bottom: 5px;
     }
     .facet {
         padding: 15px 0 10px 0;
         &:first-child {
             padding-top: 0;
         }
+        .count {
+            background-color: @lightgrey;
+            border-radius: 7px;
+            float: right;
+            padding: 0;
+            text-align: center;
+            width: 17%;
+        }
         h3 {
+            font-family: inconsolata-bold;
+            font-size: 22px;
             margin: 0;
             padding-bottom: 15px;
         }
@@ -479,13 +492,9 @@ my-language-switcher {
             margin: 0;
             padding-bottom: 5px;
             label {
+                font-family: opensans-regular;
+                font-size: 14px;
                 width: @100;
-            }
-            .count {
-                background-color: @lightgrey;
-                border-radius: 7px;
-                float: right;
-                padding: 0 15px;
             }
             .filter-enable {
                 .key {
@@ -494,17 +503,45 @@ my-language-switcher {
                 .count {
                     background-color: @red;
                     color: white;
+                    font-weight: bold;
                 }
             }
         }
+        md-checkbox {
+            margin-right: 0;
+            font-family: opensans-regular;
+            font-size: 14px;
+            margin-bottom: 5px;
+            &.md-checked {
+                .count {
+                    background-color: @red;
+                    color: white;
+                    font-weight: bold;
+                }
+            }
+            .md-label {
+                margin-left: 0;
+                padding-left: 30px;
+                width: 100%;
+            }
+        }
         .more {
+            font-family: georgia;
+            font-size: 14px;
             font-style: italic;
             padding-top: 10px;
             text-align: center;
+            text-transform: none;
+
+            .material-icons {
+                font-size: 17px;
+                line-height: 22px;
+            }
         }
     }
     .count-results {
-        font-size: 24px;
+        font-family: inconsolata-bold;
+        font-size: 32px;
         font-weight: bold;
         margin: 8px 8px 16px 8px;
     }
