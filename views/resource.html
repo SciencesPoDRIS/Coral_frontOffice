@@ -33,26 +33,18 @@
         <!-- French description -->
         <div class="description" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.description_fr">
             {{indexVM.results.hits.hits[0]._source.description_fr}}
-            <br />
-            <br />
         </div>
         <!-- English description -->
         <div class="description" ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.description_en">
             {{indexVM.results.hits.hits[0]._source.description_en}}
-            <br />
-            <br />
         </div>
         <!-- French general note -->
         <div class="description" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.notegeneral_fr">
             {{indexVM.results.hits.hits[0]._source.notegeneral_fr}}
-            <br />
-            <br />
         </div>
         <!-- English general note -->
         <div class="description" ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.notegeneral_en">
             {{indexVM.results.hits.hits[0]._source.notegeneral_en}}
-            <br />
-            <br />
         </div>
         <!-- French access note -->
         <div class="description" ng-if="currentLanguage == 'fr' && indexVM.results.hits.hits[0]._source.noteaccess_fr">

@@ -585,6 +585,14 @@ my-language-switcher {
         .columns {
             padding: 25px 0;
         }
+        .description {
+            white-space: -moz-pre-line; /* Mozilla, supported since 1999 */
+            white-space: -pre-line; /* Opera */
+            white-space: -o-pre-line; /* Opera */
+            white-space: pre-line; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+            word-wrap: break-word; /* IE 5.5+ */
+
+        }
         .columns > div {
             border:  1px solid @lightgrey;
             margin: 0 10px;
