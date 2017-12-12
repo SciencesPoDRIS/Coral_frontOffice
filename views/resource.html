@@ -87,8 +87,8 @@
                 <div class="subtitle">
                     {{'Tutorials' | translate | uppercase}}
                 </div>
-                <div class="tutorial" ng-repeat="(key, value) in indexVM.results.hits.hits[0]._source.tutosrank">
-                    <a href="{{indexVM.results.hits.hits[0]._source.tutosurl[key]}}" target="_blank">{{indexVM.results.hits.hits[0]._source.tutosname[key]}}<md-icon>keyboard_arrow_right</md-icon></a>
+                <div class="tutorial" ng-repeat="tuto in tutos | orderBy:'rank'">
+                    <a href="{{tuto.url}}" target="_blank">{{tuto.name}}<md-icon>keyboard_arrow_right</md-icon></a>
                 </div>
             </div>
         </div>

@@ -34,7 +34,19 @@ app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'e
                     }
                 });
             });
-        }
+        };
+        $scope.$watch('indexVM.results.hits.hits', function() {
+            if($scope.indexVM && $scope.indexVM.results && $scope.indexVM.results.hits && $scope.indexVM.results.hits.hits) {
+                $scope.tutos = [];
+                $scope.indexVM.results.hits.hits[0]._source.tutosrank.forEach(function(rank, index) {
+                    $scope.tutos.push({
+                        "rank" : $scope.indexVM.results.hits.hits[0]._source.tutosrank[index],
+                        "name" : $scope.indexVM.results.hits.hits[0]._source.tutosname[index],
+                        "url" : $scope.indexVM.results.hits.hits[0]._source.tutosurl[index]
+                    });
+                });
+            }
+        }, true);
         $scope.init();
     }
 ]);
