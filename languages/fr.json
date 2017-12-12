@@ -97,5 +97,6 @@
     "UPDATE" : "Date de mise à jour",
     "ACCESS" : "Accès",
     "DOWNTIME" : "Arrêts de service",
-    "simultaneous users limit" : "Limite d'utilisateurs simultanés"
+    "simultaneous users limit" : "Limite d'utilisateurs simultanés",
+    "researchblogs" : "Blogs de recherche"
 }

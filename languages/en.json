@@ -97,5 +97,6 @@
     "UPDATE" : "Last update",
     "ACCESS" : "Access",
     "DOWNTIME" : "Downtimes",
-    "simultaneous users limit" : "Simultaneous users limit"
+    "simultaneous users limit" : "Simultaneous users limit",
+    "researchblogs" : "Research blogs"
 }
