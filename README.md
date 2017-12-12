@@ -3,6 +3,7 @@ FrontOffice based on an instance of Coral to display the electronic resources.
 
 ## Install
 In a terminal, launch :
+
 `> npm install`
 
 `> bower install`
