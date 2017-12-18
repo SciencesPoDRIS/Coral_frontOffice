@@ -6,6 +6,8 @@ var app = angular.module('eResources', [
     'pascalprecht.translate',
     'elasticsearch',
     'elasticui',
+    'angulartics',
+    'angulartics.google.analytics',
     'eResources.filters',
     'eResources.directives',
     'eResources.services',
@@ -16,7 +18,8 @@ var app = angular.module('eResources', [
 ]);
 
 // Set to my local cluster address
-app.constant('euiHost', 'http://localhost:9200/coral');
+app.constant('euiHost', 'http://webserver07.sciences-po.fr/bibliotheque/fr/rechercher/eressources/coral');
+// app.constant('euiHost', 'http://localhost:9200/coral');
 
 // Localization configuration
 app.config(['$translateProvider',
@@ -72,3 +75,7 @@ app.config(['$mdThemingProvider',
             .accentPalette('red');
     }
 ]);
+
+app.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.hashPrefix('');
+}]);

@@ -21,6 +21,8 @@ gulp.task('js', function() {
       'bower_components/angular-translate-loader-url/angular-translate-loader-url.min.js',
       'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
       'bower_components/angular-sanitize/angular-sanitize.min.js',
+      'bower_components/angulartics/dist/angulartics.min.js',
+      'bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js',
       'js/elasticui.min.js',
       'js/filters.js',
       'js/directives.js',
