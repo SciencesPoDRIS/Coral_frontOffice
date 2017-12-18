@@ -45,7 +45,7 @@ app.factory('addFilterToUrl', [
                 return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k])
             }).join('&');
             // Redirect to the new url with the added facet
-            window.location.href = window.location.href.split('?')[0] + '?' + parameters;
+            window.location.href = location.protocol + '//' + location.host + location.pathname + '#/resources' + '?' + parameters;
         }
     }
 ]);
