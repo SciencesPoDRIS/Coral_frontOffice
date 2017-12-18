@@ -14,6 +14,7 @@
     "AVAILABLES" : "available",
     "NEED_HELP" : "Ask a librarian",
     "USAGE_CONVENTION" : "User charter for electronic resources",
+    "USAGE_CONVENTION_LINK" : "http://www.sciencespo.fr/bibliotheque/en/borrow/eresources-remote-access#sous_titre3",
     "SUBJECTS" : "Subjects",
     "CONTENT_TYPE" : "Resources type",
     "ACCESS_TYPE" : "Access type",
