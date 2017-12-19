@@ -175,5 +175,9 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                 $scope.$parent.indexVM.query = ejs.BoolQuery().should(ejs.QueryStringQuery(['title_en', 'title_fr', 'description_en', 'description_fr', 'alias']).query('*' + $scope.query + '*'));
             }
         }
+        // Scroll to tabs for each search
+        $('html, body').animate({
+            scrollTop: $(".header-buttons").offset().top
+        }, 500);
     }
 ]);
