@@ -231,20 +231,18 @@ ul#menu_appli {
     top: 5px;
     width: 450px;
     li {
+        &::after {
+            color: #343333;
+            content: " |";
+        }
         a {
             color: @red;
             display: inline;
             padding: 0;
-            &::after {
-                color: #343333;
-                content: " |";
-            }
         }
         &:last-child {
-            a {
-                &::after {
-                    content: "";
-                }
+            &::after {
+                content: "";
             }
         }
     }
@@ -255,7 +253,11 @@ ul#menu_appli {
     font-family: Roboto Condensed, sans-sefir;
     font-size: 0.8em;
     left: 67px;
+    line-height: 100%;
     top: 8px;
+    #twitter {
+        text-decoration: none;
+    }
 }
 
 #cata_ent {
@@ -373,6 +375,8 @@ ul#menu_appli {
 /* Language switcher */
 
 my-language-switcher {
+    height: @height5;
+    line-height: @height5;
     outline: none;
     position: absolute;
     right: 348px;

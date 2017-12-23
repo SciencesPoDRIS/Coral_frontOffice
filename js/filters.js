@@ -32,3 +32,9 @@ app.filter('rewriteUrl', [function() {
         return window.encodeURIComponent(input);
     }
 }]);
+
+app.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}]);
