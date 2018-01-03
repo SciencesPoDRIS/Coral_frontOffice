@@ -66,17 +66,17 @@ app.directive('myResourceCard', ['$translate', 'es', '$timeout', function($trans
             }, 0);
 
             // Add a listener on the current language to translate resource title and description
+            // Default language is French
             $scope.$watch('$parent.currentLanguage', function(lang) {
                 switch (lang) {
-                    case 'fr':
-                        $scope.resourceTitle = $scope.resource._source.title_fr;
-                        $scope.resourceDescription = $scope.resource._source.description_fr;
-                        break;
-                    case 'en':
+                    case 'en' :
                         $scope.resourceTitle = $scope.resource._source.title_en;
                         $scope.resourceDescription = $scope.resource._source.description_en;
                         break;
-                    default:
+                    case 'fr' :
+                    default :
+                        $scope.resourceTitle = $scope.resource._source.title_fr;
+                        $scope.resourceDescription = $scope.resource._source.description_fr;
                         break;
                 }
             });
@@ -101,6 +101,7 @@ app.directive('mySearchBar', ['addFilterToUrl', function(addFilterToUrl) {
             $scope.search = function() {
                 // If the searched term is not empty, add searched term to the url
                 if ($scope.query && ($scope.query != '')) {
+
                     addFilterToUrl('query', $scope.query);
                 }
             }
