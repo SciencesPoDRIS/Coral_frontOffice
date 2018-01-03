@@ -135,20 +135,61 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
         }
         // Reset the query's term
         $scope.$parent.indexVM.query = ejs.MatchAllQuery();
-        // Sort results by title
-        $scope.$parent.indexVM.sort = ejs.Sort('title_fr_notanalyzed').asc();
         // Set "All" as default selected letter
         $scope.selectedLetter = '';
-        // Fill the filters object according to the route params
-        if ($routeParams.letter || $routeParams.query || $routeParams.sites || $routeParams.subjects || $routeParams.types) {
-            // Fill the query's filters attribute
-            if ($routeParams.letter && $routeParams.letter != '') {
-                // Only one letter is allowed in the request
-                $scope.selectedLetter = $routeParams.letter.split(filterSeparator)[0].toUpperCase();
-                if ($.inArray($scope.selectedLetter, $scope.alphabet) != -1) {
-                    $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', $scope.selectedLetter).type('phrase_prefix');
+        // Add a listener on the current language to adapt the search on resources titles and description
+        // Default language is French
+        $scope.$watch('$parent.currentLanguage', function(newValue) {
+            switch(newValue) {
+                case 'en' :
+                $scope.$parent.indexVM.sort = ejs.Sort('title_en_notanalyzed').asc();
+                if($routeParams.letter && $routeParams.letter != '' && $routeParams.query && $routeParams.query != '') {
+                    $scope.selectedLetter = $routeParams.letter.split(filterSeparator)[0].toUpperCase();
+                    $scope.query = $routeParams.query;
+                    $scope.$parent.indexVM.query = ejs.BoolQuery()
+                        .must(ejs.MatchQuery('title_en_notanalyzed', $scope.selectedLetter).type('phrase_prefix'))
+                        .must(ejs.BoolQuery()
+                            .should(ejs.MatchQuery('title_en', $scope.query))
+                            .should(ejs.MatchQuery('description_en', $scope.query))
+                            .should(ejs.MatchQuery('alias', $scope.query)));
+                } else if ($routeParams.letter && $routeParams.letter != '') {
+                    $scope.selectedLetter = $routeParams.letter.split(filterSeparator)[0].toUpperCase();
+                    $scope.$parent.indexVM.query = ejs.MatchQuery('title_en_notanalyzed', $scope.selectedLetter).type('phrase_prefix');
+                } else if ($routeParams.query && $routeParams.query != '') {
+                    $scope.query = $routeParams.query;
+                    ejs.BoolQuery()
+                        .should(ejs.MatchQuery('title_en', $scope.query))
+                        .should(ejs.MatchQuery('description_en', $scope.query))
+                        .should(ejs.MatchQuery('alias', $scope.query));
                 }
+                case 'fr' :
+                default :
+                    $scope.$parent.indexVM.sort = ejs.Sort('title_fr_notanalyzed').asc();
+                    if($routeParams.letter && $routeParams.letter != '' && $routeParams.query && $routeParams.query != '') {
+                        $scope.selectedLetter = $routeParams.letter.split(filterSeparator)[0].toUpperCase();
+                        $scope.query = $routeParams.query;
+                        $scope.$parent.indexVM.query = ejs.BoolQuery()
+                            .must(ejs.MatchQuery('title_fr_notanalyzed', $scope.selectedLetter).type('phrase_prefix'))
+                            .must(ejs.BoolQuery()
+                                .should(ejs.MatchQuery('title_fr', $scope.query))
+                                .should(ejs.MatchQuery('description_fr', $scope.query))
+                                .should(ejs.MatchQuery('alias', $scope.query)));
+                    } else if ($routeParams.letter && $routeParams.letter != '') {
+                        $scope.selectedLetter = $routeParams.letter.split(filterSeparator)[0].toUpperCase();
+                        $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', $scope.selectedLetter).type('phrase_prefix');
+                    } else if ($routeParams.query && $routeParams.query != '') {
+                        $scope.query = $routeParams.query;
+                        ejs.BoolQuery()
+                            .should(ejs.MatchQuery('title_fr', $scope.query))
+                            .should(ejs.MatchQuery('description_fr', $scope.query))
+                            .should(ejs.MatchQuery('alias', $scope.query));
+                    }
+                    break;
             }
+        });
+        // Fill the filters object according to the route params
+        if ($routeParams.sites || $routeParams.subjects || $routeParams.types) {
+            // Fill the query's filters attribute
             if ($routeParams.subjects && $routeParams.subjects != '') {
                 $.map($routeParams.subjects.split(filterSeparator), function(subject) {
                     if (subject != '') {
@@ -169,10 +210,6 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                         $scope.$parent.indexVM.filters.add(ejs.TermsFilter('sites', site));
                     }
                 });
-            }
-            if ($routeParams.query && $routeParams.query != '') {
-                $scope.query = $routeParams.query;
-                $scope.$parent.indexVM.query = ejs.BoolQuery().should(ejs.QueryStringQuery(['title_en', 'title_fr', 'description_en', 'description_fr', 'alias']).query('*' + $scope.query + '*'));
             }
         }
         // Scroll to tabs for each search
