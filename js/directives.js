@@ -92,16 +92,18 @@ app.directive('mySideTiles', [function() {
     }
 }]);
 
-app.directive('mySearchBar', ['addFilterToUrl', function(addFilterToUrl) {
+app.directive('mySearchBar', ['addFilterToUrl', 'removeFilterFromUrl', function(addFilterToUrl, removeFilterFromUrl) {
     return {
         restrict: 'E',
         templateUrl: 'partials/mySearchBar.html',
         scope: {},
         link: function($scope) {
             $scope.search = function() {
+                // If the searched term is empty, remove searched term from the url
+                if ($scope.query == '') {
+                    removeFilterFromUrl('query', null);
                 // If the searched term is not empty, add searched term to the url
-                if ($scope.query && ($scope.query != '')) {
-
+                } else {
                     addFilterToUrl('query', $scope.query);
                 }
             }

@@ -50,6 +50,33 @@ app.factory('addFilterToUrl', [
     }
 ]);
 
+app.factory('removeFilterFromUrl', [
+    function() {
+        return function(facet, value) {
+            var value = value || null;
+            // Extract the parameters part of the url
+            var parameters = window.location.href.split('?').length == 1 ? '' : window.location.href.split('?')[1];
+            // Transform this parameters into a JSON Object
+            var parametersJSON = parameters ? JSON.parse('{"' + parameters.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) {
+                return key === "" ? value : decodeURIComponent(value)
+            }) : {};
+            if(value === null) {
+                delete parametersJSON[facet];
+            } else {
+                parametersJSON[facet] = parametersJSON[facet].replace(value + filterSeparator, '').replace(filterSeparator + value, '').replace(value, '');
+                if(parametersJSON[facet] == '') {
+                    delete parametersJSON[facet];
+                }
+            }
+            parameters = Object.keys(parametersJSON).map(function(k) {
+                return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k])
+            }).join('&');
+            // Redirect to the new url with the added facet
+            window.location.href = window.location.href.split('?')[0] + '?' + parameters;
+        }
+    }
+]);
+
 app.factory('store', [function() {
     var savedData = {};
 

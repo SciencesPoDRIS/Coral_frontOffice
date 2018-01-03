@@ -2,8 +2,8 @@
 
 var app = angular.module('eResources.resources', []);
 
-app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$routeParams', 'addFilterToUrl', 'store',
-    function($scope, es, $filter, $timeout, $routeParams, addFilterToUrl, store) {
+app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$routeParams', 'addFilterToUrl', 'removeFilterFromUrl', 'store',
+    function($scope, es, $filter, $timeout, $routeParams, addFilterToUrl, removeFilterFromUrl, store) {
         // Config
         var filterSeparator = ':';
         $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -92,26 +92,7 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
         }
 
         $scope.removeFilterFromUrl = function(facet, value) {
-            var value = value || null;
-            // Extract the parameters part of the url
-            var parameters = window.location.href.split('?').length == 1 ? '' : window.location.href.split('?')[1];
-            // Transform this parameters into a JSON Object
-            var parametersJSON = parameters ? JSON.parse('{"' + parameters.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function(key, value) {
-                return key === "" ? value : decodeURIComponent(value)
-            }) : {};
-            if(value === null) {
-                delete parametersJSON[facet];
-            } else {
-                parametersJSON[facet] = parametersJSON[facet].replace(value + filterSeparator, '').replace(filterSeparator + value, '').replace(value, '');
-                if(parametersJSON[facet] == '') {
-                    delete parametersJSON[facet];
-                }
-            }
-            parameters = Object.keys(parametersJSON).map(function(k) {
-                return encodeURIComponent(k) + '=' + encodeURIComponent(parametersJSON[k])
-            }).join('&');
-            // Redirect to the new url with the added facet
-            window.location.href = window.location.href.split('?')[0] + '?' + parameters;
+            removeFilterFromUrl(facet, value);
         }
 
         $scope.addFilterToUrl = function(facet, value) {
