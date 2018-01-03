@@ -1,7 +1,23 @@
 # Coral_frontOffice
 FrontOffice based on an instance of Coral to display the electronic resources.
 
-## Install
+## Load data
+Delete existing index
+
+`> curl -X DELETE 'http://localhost:9200/INDEX_NAME/'`
+
+Recreate index with mapping
+
+`> curl -X PUT http://localhost:9200/INDEX_NAME -d @mapping.json`
+
+Populate database via logstatsh
+
+`> cd /path/to/logstash/bin`
+
+`> ./logstash -f /path/to/logstash/conf/get-data.conf`
+
+
+## Install Project
 In a terminal, launch :
 
 `> npm install`
