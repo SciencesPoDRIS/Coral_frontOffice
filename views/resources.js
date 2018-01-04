@@ -17,9 +17,6 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
         // Set previousUrl into store service
         store.set('previousUrl', window.location.href);
 
-        // Init default search with an empty term
-        $scope.query = '';
-
         // Init default facets
         $scope.getAggreagtion = function(facet) {
             $timeout(function() {
@@ -127,7 +124,6 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                     if($routeParams.letter && $routeParams.letter != '' && $routeParams.query && $routeParams.query != '') {
                         // Build query to set a "AND" operatoor between the query terms
                         $scope.selectedLetter = $routeParams.letter.split(filterSeparator)[0].toUpperCase();
-                        $scope.query = $routeParams.query;
                         var q = ejs.BoolQuery().must(ejs.MatchQuery('title_en_notanalyzed', $scope.selectedLetter).type('phrase_prefix'));
                         var s = $routeParams.query.split(' ');
                         for(var i in s) {
@@ -139,13 +135,14 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                         $scope.$parent.indexVM.query = ejs.MatchQuery('title_en_notanalyzed', $scope.selectedLetter).type('phrase_prefix');
                     } else if ($routeParams.query && $routeParams.query != '') {
                         // Build query to set a "AND" operatoor between the query terms
-                        $scope.query = $routeParams.query;
                         var q = ejs.BoolQuery();
                         var s = $routeParams.query.split(' ');
                         for(var i in s) {
                             q.must(ejs.MultiMatchQuery(['title_en', 'description_en', 'alias']).query(s[i]));
                         }
                         $scope.$parent.indexVM.query = q;
+                    } else if(!$routeParams.query || $routeParams.query == '') {
+                        $scope.$parent.query = '';
                     }
                     break;
                 case 'fr' :
@@ -154,7 +151,6 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                     if($routeParams.letter && $routeParams.letter != '' && $routeParams.query && $routeParams.query != '') {
                         // Build query to set a "AND" operatoor between the query terms
                         $scope.selectedLetter = $routeParams.letter.split(filterSeparator)[0].toUpperCase();
-                        $scope.query = $routeParams.query;
                         var q = ejs.BoolQuery().must(ejs.MatchQuery('title_fr_notanalyzed', $scope.selectedLetter).type('phrase_prefix'));
                         var s = $routeParams.query.split(' ');
                         for(var i in s) {
@@ -166,13 +162,14 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                         $scope.$parent.indexVM.query = ejs.MatchQuery('title_fr_notanalyzed', $scope.selectedLetter).type('phrase_prefix');
                     } else if ($routeParams.query && $routeParams.query != '') {
                         // Build query to set a "AND" operatoor between the query terms
-                        $scope.query = $routeParams.query;
                         var q = ejs.BoolQuery();
                         var s = $routeParams.query.split(' ');
                         for(var i in s) {
                             q.must(ejs.MultiMatchQuery(['title_fr', 'description_fr', 'alias']).query(s[i]));
                         }
                         $scope.$parent.indexVM.query = q;
+                    } else if(!$routeParams.query || $routeParams.query == '') {
+                        $scope.$parent.query = '';
                     }
                     break;
             }

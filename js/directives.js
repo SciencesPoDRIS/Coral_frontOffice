@@ -15,19 +15,18 @@ app.directive('myLanguageSwitcher', ['$translate', function($translate) {
             $scope.dateFormat = 'dd/MM/yyyy';
             $scope.changeLanguage = function() {
                 switch ($translate.use()) {
-                    case 'fr':
-                        $scope.languageLabel = 'LANGUAGE_FR';
-                        $scope.currentLanguage = 'en';
-                        $scope.dateFormat = 'MM/dd/yyyy';
-                        $translate.use('en');
-                        break;
-                    case 'en':
+                    case 'en' :
                         $scope.languageLabel = 'LANGUAGE_EN';
                         $scope.currentLanguage = 'fr';
                         $scope.dateFormat = 'dd/MM/yyyy';
                         $translate.use('fr');
                         break;
-                    default:
+                    case 'fr' :
+                    default :
+                        $scope.languageLabel = 'LANGUAGE_FR';
+                        $scope.currentLanguage = 'en';
+                        $scope.dateFormat = 'MM/dd/yyyy';
+                        $translate.use('en');
                         break;
                 }
             };
@@ -96,7 +95,9 @@ app.directive('mySearchBar', ['addFilterToUrl', 'removeFilterFromUrl', function(
     return {
         restrict: 'E',
         templateUrl: 'partials/mySearchBar.html',
-        scope: {},
+        scope: {
+            query: '=query'
+        },
         link: function($scope) {
             $scope.search = function() {
                 // If the searched term is empty, remove searched term from the url
