@@ -147,7 +147,7 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
             if($routeParams.query && $routeParams.query != '') {
                 s = $routeParams.query.split(' ');
                 for(i in s) {
-                    q.must(ejs.MultiMatchQuery(searchFields).query(s[i]));
+                    q.must(ejs.QueryStringQuery(searchFields).query('*' + s[i] + '*'));
                 }
                 $scope.$parent.indexVM.query = q;
             } else {
