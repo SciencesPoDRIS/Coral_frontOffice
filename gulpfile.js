@@ -11,8 +11,7 @@ var concat = require('gulp-concat'),
 gulp.task('conf', function () {
     gulp.src('conf/conf.json')
     .pipe(gulpNgConfig('eResources.config', {
-        environment: 'development',
-        pretty: 4
+        environment: 'development'
     }))
     .pipe(gulp.dest('js/'))
 });

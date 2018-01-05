@@ -76,3 +76,8 @@ app.config(['$mdThemingProvider',
 app.config(['$locationProvider', function($locationProvider) {
     $locationProvider.hashPrefix('');
 }]);
+
+// Set the Google Analytics UA to plug
+app.config(['$analyticsProvider', 'GA_UA', function($analyticsProvider, GA_UA) {
+    $analyticsProvider.settings.ga.account = GA_UA;
+}]);
