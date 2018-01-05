@@ -4,7 +4,18 @@ var concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     ngAnnotate = require('gulp-ng-annotate'),
     browserSync = require('browser-sync').create(),
-    cleanCSS = require('gulp-clean-css');
+    cleanCSS = require('gulp-clean-css'),
+    gulpNgConfig = require('gulp-ng-config');
+
+// Generate a constant file for the app conf
+gulp.task('conf', function () {
+    gulp.src('conf/conf.json')
+    .pipe(gulpNgConfig('eResources.config', {
+        environment: 'development',
+        pretty: 4
+    }))
+    .pipe(gulp.dest('js/'))
+});
 
 // Concat and minify all JS libraries
 gulp.task('js', function() {
@@ -23,9 +34,10 @@ gulp.task('js', function() {
       'bower_components/angular-sanitize/angular-sanitize.min.js',
       'bower_components/angulartics/dist/angulartics.min.js',
       'bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js',
+      'js/conf.js',
+      'js/directives.js',
       'js/elasticui.min.js',
       'js/filters.js',
-      'js/directives.js',
       'js/services.js',
       'views/welcome.js',
       'views/subjects.js',
@@ -87,5 +99,5 @@ gulp.task('serve', function() {
     gulp.watch(['partials/*.html', 'views/*.html', 'dist/**/*']).on('change', browserSync.reload);
 });
 
-// Default task that launch concat js and css, then copy some assets and launch the server with livereload
-gulp.task('default', ['js', 'css', 'assets', 'serve']);
+// Default task that generate conf file, launch concat js and css, then copy some assets and launch the server with livereload
+gulp.task('default', ['conf', 'js', 'css', 'assets', 'serve']);

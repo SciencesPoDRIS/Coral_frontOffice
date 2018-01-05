@@ -1,6 +1,6 @@
 #
 # Mac files
-# 
+#
 .DS_Store
 
 #
@@ -37,3 +37,14 @@ admin
 # Generated CSS file
 #
 css/app.css
+
+#
+# Generated conf file
+#
+js/conf.js
+
+#
+# Conf files but the default one
+#
+conf/*
+!conf/conf.default.json

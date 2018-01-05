@@ -8,18 +8,15 @@ var app = angular.module('eResources', [
     'elasticui',
     'angulartics',
     'angulartics.google.analytics',
-    'eResources.filters',
+    'eResources.config',
     'eResources.directives',
-    'eResources.services',
-    'eResources.welcome',
-    'eResources.subjects',
+    'eResources.filters',
+    'eResources.resource',
     'eResources.resources',
-    'eResources.resource'
+    'eResources.services',
+    'eResources.subjects',
+    'eResources.welcome'
 ]);
-
-// Set to my local cluster address
-app.constant('euiHost', 'http://webserver07.sciences-po.fr/bibliotheque/fr/rechercher/eressources/coral');
-// app.constant('euiHost', 'http://localhost:9200/coral');
 
 // Localization configuration
 app.config(['$translateProvider',
@@ -31,7 +28,7 @@ app.config(['$translateProvider',
             prefix: 'dist/languages/',
             suffix: '.json'
         });
-        // Default language is french
+        // Default language is French
         $translateProvider
             .preferredLanguage('fr')
             .fallbackLanguage('fr')
