@@ -53,6 +53,8 @@ app.factory('addFilterToUrl', [
 app.factory('removeFilterFromUrl', [
     function() {
         return function(facet, value) {
+            // Config
+            var filterSeparator = ':';
             var value = value || null;
             // Extract the parameters part of the url
             var parameters = window.location.href.split('?').length == 1 ? '' : window.location.href.split('?')[1];
