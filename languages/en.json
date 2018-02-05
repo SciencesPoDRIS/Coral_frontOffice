@@ -126,5 +126,6 @@
     "HEADER_FACEBOOK_LOGO" : "Logo Facebook",
     "HEADER_FACEBOOK_LOGO_TITLE" : "Join us on Facebook",
     "HEADER_SCHEDULE" : "Schedule",
-    "HEADER_SCHEDULE_LINK" : "http://www.sciencespo.fr/bibliotheque/en/search/inmedia"
+    "HEADER_SCHEDULE_LINK" : "http://www.sciencespo.fr/bibliotheque/en/search/inmedia",
+    "RESET_FILTERS" : "Reset filters"
 }

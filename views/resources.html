@@ -60,12 +60,17 @@
             </div>
         </div>
         <div flex="70">
-            <div class="count-results">
-                <span class="font-red">
-                            {{indexVM.results.hits.total}}
-                            <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;RESOURCE&quot; | translate | uppercase}}', '1' : '{{&quot;RESOURCE&quot; | translate | uppercase}}', 'other' : '{{&quot;RESOURCES&quot; | translate | uppercase}}'}"></ng-pluralize>
-                        </span>
-                <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;AVAILABLE&quot; | translate | uppercase}}', '1' : '{{&quot;AVAILABLE&quot; | translate | uppercase}}', 'other' : '{{&quot;AVAILABLES&quot; | translate | uppercase}}'}"></ng-pluralize>
+            <div class="results-header">
+                <div class="count-results">
+                    <span class="font-red">
+                        {{indexVM.results.hits.total}}
+                        <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;RESOURCE&quot; | translate | uppercase}}', '1' : '{{&quot;RESOURCE&quot; | translate | uppercase}}', 'other' : '{{&quot;RESOURCES&quot; | translate | uppercase}}'}"></ng-pluralize>
+                    </span>
+                    <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;AVAILABLE&quot; | translate | uppercase}}', '1' : '{{&quot;AVAILABLE&quot; | translate | uppercase}}', 'other' : '{{&quot;AVAILABLES&quot; | translate | uppercase}}'}"></ng-pluralize>
+                </div>
+                <div class="search-filters">
+                    <button mat-button>{{'RESET_FILTERS' | translate}}</button>
+                </div>
             </div>
             <my-resource-card ng-repeat="resource in indexVM.results.hits.hits" resource="resource" />
         </div>
