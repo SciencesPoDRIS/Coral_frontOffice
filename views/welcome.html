@@ -1,10 +1,12 @@
 <div layout="column" class="welcome">
     <div ng-if="highlighted.length > 0" class="page-content highlighted-resources">
-        <div layout="row">
-            <div flex="20" class="most-used">
-                {{'MOST_USED' | translate | uppercase}}
+        <div layout="column" layout-gt-sm="row">
+            <div flex="20" layout="row" layout sm="row" layout-xs="row">
+                <div flex class="most-used">
+                    {{'MOST_USED' | translate | uppercase}}
+                </div>
+                <div flex="10" class="separator">/</div>
             </div>
-            <div class="separator">/</div>
             <div ng-repeat="resource in highlighted track by $index" flex="25" ng-if="$index %2 == 0" class="resource">
                 <div ng-repeat="i in [$index, $index + 1]">
                     <a href="{{highlighted[i]._source.resourceurl}}" target="_blank" ng-if="highlighted[i]">
