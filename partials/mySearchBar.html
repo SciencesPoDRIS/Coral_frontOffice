@@ -1,11 +1,11 @@
-<div class="header col-md-12">
+<div class="header">
     <img src="images/header.jpg" class="layout-fill" />
     <div class="title layout-fill">
         <div>
             <h1>
                 <a href="#/">{{'ELECTRONIC_RESOURCES' | translate | uppercase}}</a>
             </h1>
-            <md-input-container md-no-float class="md-block search-bar" flex-gt-sm>
+            <md-input-container md-no-float class="md-block search-bar">
                 <md-icon class="search-icon">search</md-icon>
                 <input ng-model="query" ng-keyup="$event.keyCode == 13 && search()" placeholder="{{'SEARCH' | translate}}">
             </md-input-container>
