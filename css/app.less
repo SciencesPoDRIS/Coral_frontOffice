@@ -317,9 +317,22 @@ ul#menu_appli {
     .title {
         position: absolute;
         top: 0;
-        h1 a {
-            color: white;
-            text-decoration: none;
+        > div {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            width: 50%;
+            > h1 {
+                text-align: center;
+                a {
+                    color: white;
+                    font-family: inconsolata-bold;
+                    font-size: 42px;
+                    line-height: 30px;
+                    text-decoration: none;
+                }
+            }
         }
         .search-bar {
             background-color: white;
@@ -354,19 +367,6 @@ ul#menu_appli {
                 font-style: italic;
             }
         }
-    }
-    .title > div {
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%) translateX(-50%);
-        width: 50%;
-    }
-    .title > div > h1 {
-        color: white;
-        font-family: inconsolata-bold;
-        font-size: 42px;
-        text-align: center;
     }
 }
 
