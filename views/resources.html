@@ -74,7 +74,7 @@
                     <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;AVAILABLE&quot; | translate | uppercase}}', '1' : '{{&quot;AVAILABLE&quot; | translate | uppercase}}', 'other' : '{{&quot;AVAILABLES&quot; | translate | uppercase}}'}"></ng-pluralize>
                 </div>
                 <div class="search-filters">
-                    <md-button>{{'RESET_FILTERS' | translate}}</md-button>
+                    <md-button href="#/resources">{{'RESET_FILTERS' | translate}}</md-button>
                 </div>
             </div>
             <my-resource-card ng-repeat="resource in indexVM.results.hits.hits" resource="resource" />
