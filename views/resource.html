@@ -5,10 +5,8 @@
         </a>
     </div>
     <div class="page-content">
-        <a href="{{indexVM.results.hits.hits[0]._source.resourceurl}}" target="_blank" layout="row">
-            <div flex="25" class="left-column">
-            </div>
-            <div flex="50">
+        <a href="{{indexVM.results.hits.hits[0]._source.resourceurl}}" target="_blank" layout="column" layout-gt-sm="row">
+            <div flex="100" flex-offset="0" flex-gt-sm="50" flex-offset-gt-sm="25">
                 <div class="logo">
                     <img ng-src="admin/resources/logo/{{indexVM.results.hits.hits[0]._source.logo}}" alt="Logo" class="fill">
                 </div>
@@ -21,7 +19,7 @@
                     {{indexVM.results.hits.hits[0]._source.title_en | uppercase}}
                 </div>
             </div>
-            <div flex="25" class="right-column">
+            <div flex="0" flex-gt-sm="25" class="right-column">
                 <div ng-if="indexVM.results.hits.hits[0]._source.status == 'trial'" class="status font-red">
                     {{'TRIAL' | translate}}
                 </div>
@@ -54,7 +52,7 @@
         <div class="description" ng-if="currentLanguage == 'en' && indexVM.results.hits.hits[0]._source.noteaccess_en">
             {{indexVM.results.hits.hits[0]._source.noteaccess_en}}
         </div>
-        <div layout="row" class="columns">
+        <div layout="column" layout-gt-sm="row" class="columns">
             <!-- Languages -->
             <div flex="33">
                 <div>

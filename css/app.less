@@ -631,13 +631,12 @@ my-language-switcher {
             color: @grey;
             text-decoration: none;
         }
-        .left-column {
-            margin-right: 15px;
-            text-align: left;
-        }
         .right-column {
             margin-left: 15px;
             text-align: right;
+            @media screen and (max-width: 960px) {
+                text-align: center;
+            }
         }
         .logo,
         .title,
@@ -647,6 +646,14 @@ my-language-switcher {
         .title,
         .columns {
             padding: 25px 0;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 30px;
+            @media screen and (max-width: 960px) {
+                padding: 0;
+            }
         }
         .description {
             white-space: -moz-pre-line; /* Mozilla, supported since 1999 */
@@ -659,12 +666,18 @@ my-language-switcher {
         .logo {
             margin: auto;
             width: 50%;
+            @media screen and (max-width: 960px) {
+                width: 100%;
+            }
         }
         .columns > div {
             border:  1px solid @lightgrey;
             margin: 0 10px;
             padding: 25px 0;
             text-align: center;
+            @media screen and (max-width: 960px) {
+                margin-bottom: 10px;
+            }
             .subtitle {
                 padding: 10px 0;
             }
@@ -742,6 +755,9 @@ my-side-tiles {
         margin: 25px 30px 20px 20px;
         padding-bottom: 35px;
         position: relative;
+        @media screen and (max-width: 960px) {
+            margin: 15px;
+        }
         .status {
             font-family: georgia;
             font-size: 14px;
@@ -765,8 +781,11 @@ my-side-tiles {
             font-weight: bold;
             line-height: 32px;
             margin: 0 0 20px 0;
+            @media screen and (max-width: 960px) {
+                margin: 0;
+            }
             a {
-                color: #2e2d2d;
+                color: @almostblack;
             }
         }
         .content {
@@ -774,6 +793,9 @@ my-side-tiles {
             font-family: opensans-regular;
             font-size: 16px;
             margin-bottom: 20px;
+            @media screen and (max-width: 960px) {
+                margin-bottom: 7px;
+            }
         }
         .access-restricted {
             padding-left: 20px;
@@ -781,7 +803,7 @@ my-side-tiles {
             img {
                 left: 0;
                 position: absolute;
-                top: 50%;
+                top: 40%;
                 transform: translateY(-50%);
             }
         }
