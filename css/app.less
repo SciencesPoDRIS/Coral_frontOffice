@@ -88,21 +88,13 @@ footer {
     color: @red;
 }
 
-
-/* Remove outline for Chrome Browser */
-
-* {
-    &:focus {
-        outline-style: none;
-    }
-}
-
 .font-red {
     color: @red;
 }
 
-
-/* Tool class */
+.font-bold {
+    font-weight: bold;
+}
 
 .fill {
     max-height: @100;
@@ -112,6 +104,18 @@ footer {
 .no-border {
     border: none !important;
 }
+
+
+/* Remove outline for Chrome Browser */
+
+* {
+    &:focus {
+        outline-style: none;
+    }
+}
+
+
+/* Header */
 
 .header-buttons {
     > a {
@@ -145,9 +149,6 @@ footer {
         height: @100;
     }
 }
-
-
-/* Header */
 
 .menu {
     list-style: none;
@@ -630,6 +631,9 @@ my-language-switcher {
         a {
             color: @grey;
             text-decoration: none;
+        }
+        .downtimes {
+            margin-bottom: 20px;
         }
         .right-column {
             margin-left: 15px;

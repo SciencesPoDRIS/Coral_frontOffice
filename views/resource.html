@@ -5,6 +5,16 @@
         </a>
     </div>
     <div class="page-content">
+        <!-- Downtimes / Issues -->
+        <div ng-if="downtimes.length > 0" class="font-red downtimes" layout="column" layout-gt-sm="row">
+            <div class="font-bold" flex="100" flex-gt-sm="20">
+                {{'DOWNTIME' | translate}}
+            </div>
+            <div ng-repeat="downtime in downtimes">
+                {{'OUT_OF_ORDER' | translate}} : {{downtime._source.shortname | translate}} {{'FROM' | translate}} {{downtime._source.startdate | date : $parent.dateFormat}} {{'TO' | translate}} {{downtime._source.enddate | date : $parent.dateFormat}}.
+                <br/ >
+            </div>
+        </div>
         <a href="{{indexVM.results.hits.hits[0]._source.resourceurl}}" target="_blank" layout="column" layout-gt-sm="row">
             <div flex="100" flex-offset="0" flex-gt-sm="50" flex-offset-gt-sm="25">
                 <div class="logo">
@@ -103,16 +113,6 @@
         <div ng-if="indexVM.results.hits.hits[0]._source.accessibility == 1">
             <img ng-src="images/accessibility.png" alt="Accessibility" class="icon-lg">
             <br />
-            <br />
-        </div>
-        <!-- Downtimes / Issues -->
-        <div ng-if="downtimes.length > 0">
-            <b>{{'DOWNTIME' | translate}}</b>
-            <br />
-            <span ng-repeat="downtime in downtimes">
-                {{'OUT_OF_ORDER' | translate}} : {{downtime._source.shortname | translate}} {{'FROM' | translate}} {{downtime._source.startdate | date : $parent.dateFormat}} {{'TO' | translate}} {{downtime._source.enddate | date : $parent.dateFormat}}.
-                <br/ >
-            </span>
             <br />
         </div>
         <!-- User limitation -->
