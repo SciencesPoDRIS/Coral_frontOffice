@@ -114,13 +114,19 @@ footer {
 }
 
 .header-buttons {
-    & > a {
+    > a {
         border-radius: 0;
         border-right: 1px solid @lightgrey;
         font-family: inconsolata-bold;
         font-size: 22px;
         margin: 10px 0 0 0;
         padding: 0 50px;
+        @media screen and (max-width: 960px) {
+            font-size: 18px;
+            margin: 0;
+            min-height: 30px;
+            padding: 0 20px;
+        }
         &:last-child {
             border: none;
         }
@@ -483,16 +489,27 @@ my-language-switcher {
 .resources {
     .page-content {
         padding: 35px 15%;
-    }
-    .letter {
-        border-bottom: 3px solid transparent;
-        font-family: inconsolata-bold;;
-        font-size: 32px;
-        margin: auto;
-        padding-bottom: 5px;
-    }
-    .letter.selected {
-        border-bottom: 3px solid @red;
+        &.grey-band {
+            @media screen and (max-width: 960px) {
+                padding: 15px 5%;
+            }
+        }
+        .letter-container {
+            margin: auto;
+            @media screen and (max-width: 960px) {
+                padding: 5px 0;
+            }
+            .letter {
+                border-bottom: 3px solid transparent;
+                font-family: inconsolata-bold;;
+                font-size: 32px;
+                margin: 0 10px;
+                padding-bottom: 5px;
+                &.selected {
+                    border-bottom: 3px solid @red;
+                }
+            }
+        }
     }
     .facet {
         padding: 15px 0 10px 0;

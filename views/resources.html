@@ -1,14 +1,18 @@
 <div layout="column" class="resources">
-    <div layout="row" class="page-content grey-band">
-        <div class="letter" ng-class="{'selected' : selectedLetter == ''}">
-            <a href ng-click="removeFilterFromUrl('letter')">
-                {{'ALL' | translate | uppercase}}
-            </a>
+    <div class="page-content grey-band" layout="column" layout-gt-sm="row">
+        <div class="letter-container">
+            <div class="letter" ng-class="{'selected' : selectedLetter == ''}">
+                <a href ng-click="removeFilterFromUrl('letter')">
+                    {{'ALL' | translate | uppercase}}
+                </a>
+            </div>
         </div>
-        <div ng-repeat="letter in alphabet" class="letter" ng-class="{'selected' : selectedLetter == letter}">
-            <a ng-click="addFilterToUrl('letter', letter);">
-                {{letter}}
-            </a>
+        <div ng-repeat="letter in alphabet track by $index" ng-if="$index % 7 == 0" class="letter-container" layout="row">
+            <div ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3, $index + 4, $index + 5, $index + 6]" class="letter" ng-class="{'selected' : selectedLetter == alphabet[i]}">
+                <a ng-click="addFilterToUrl('letter', alphabet[i]);">
+                    {{alphabet[i]}}
+                </a>
+            </div>
         </div>
     </div>
     <div layout="row" class="page-content">
