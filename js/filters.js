@@ -38,3 +38,12 @@ app.filter('trusted', ['$sce', function ($sce) {
         return $sce.trustAsResourceUrl(url);
     };
 }]);
+
+app.filter('truncateOwnFilter', [function () {
+    return function(input) {
+        if(input) {
+            input = input.substring(0, input.lastIndexOf(" ")) + '...';
+        }
+        return input
+    };
+}]);

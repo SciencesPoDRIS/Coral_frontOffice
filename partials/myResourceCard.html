@@ -25,7 +25,7 @@
         </div>
         <div class="content">
             <a href="#/resource/{{resource._source.resourceid}}">
-                {{resourceDescription | limitTo: 150}}
+                {{resourceDescription | limitTo: 150 | truncateOwnFilter}}
             </a>
         </div>
         <div class="read-more">
