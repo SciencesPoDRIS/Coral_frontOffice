@@ -1,9 +1,5 @@
 {
-    "production" : {
-        "euiHost" : "http://server:port/elasticsearch/index",
-        "GA_UA" : "XX-XXXXXXX-XX"
-    },
-    "development" : {
+    "local" : {
         "euiHost" : "http://server:port/elasticsearch/index",
         "GA_UA" : "XX-XXXXXXX-XX"
     }
