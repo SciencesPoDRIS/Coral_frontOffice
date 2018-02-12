@@ -489,10 +489,8 @@ my-language-switcher {
 .resources {
     .page-content {
         padding: 35px 15%;
-        &.grey-band {
-            @media screen and (max-width: 960px) {
-                padding: 15px 5%;
-            }
+        @media screen and (max-width: 960px) {
+            padding: 15px 5%;
         }
         .letter-container {
             margin: auto;
@@ -509,6 +507,9 @@ my-language-switcher {
                     border-bottom: 3px solid @red;
                 }
             }
+        }
+        md-divider {
+            border-top-width: 1px;
         }
     }
     .facet {
@@ -576,13 +577,17 @@ my-language-switcher {
             }
         }
         .more {
+            border-radius: 7px;
             font-family: georgia;
             font-size: 14px;
             font-style: italic;
-            padding-top: 10px;
+            margin: 5px 0;
+            padding-top: 5px;
             text-align: center;
             text-transform: none;
-
+            &:hover {
+                background-color: @lightgrey;
+            }
             .material-icons {
                 font-size: 17px;
                 line-height: 22px;
@@ -595,7 +600,11 @@ my-language-switcher {
             font-family: inconsolata-bold;
             font-size: 32px;
             font-weight: bold;
+            line-height: 32px;
             margin: 8px 8px 16px 8px;
+            @media screen and (max-width: 960px) {
+                margin-top: 15px;
+            }
         }
         .search-filters {
             display: inline-block;
@@ -754,7 +763,8 @@ my-side-tiles {
             font-family: inconsolata-bold;
             font-size: 32px;
             font-weight: bold;
-            margin: 30px 0 20px 0;
+            line-height: 32px;
+            margin: 0 0 20px 0;
             a {
                 color: #2e2d2d;
             }

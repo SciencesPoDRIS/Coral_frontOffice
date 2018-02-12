@@ -15,8 +15,8 @@
             </div>
         </div>
     </div>
-    <div layout="row" class="page-content">
-        <div layout="column" flex="30">
+    <div layout="column" layout-gt-sm="row" class="page-content">
+        <div layout="column" flex-gt-sm="30">
             <div class="facet subjects-facet">
                 <h3>{{'SUBJECTS' | translate | uppercase}}</h3>
                 <ul class="nav nav-list subjects" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(subjects.size)" layout="column">
@@ -63,9 +63,10 @@
                 </div>
             </div>
         </div>
+        <md-divider hide-gt-sm></md-divider>
         <div flex="70">
-            <div class="results-header">
-                <div class="count-results">
+            <div class="results-header" layout="column" layout-gt-sm="row">
+                <div class="count-results" flex>
                     <span class="font-red">
                         {{indexVM.results.hits.total}}
                         <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;RESOURCE&quot; | translate | uppercase}}', '1' : '{{&quot;RESOURCE&quot; | translate | uppercase}}', 'other' : '{{&quot;RESOURCES&quot; | translate | uppercase}}'}"></ng-pluralize>
@@ -73,7 +74,7 @@
                     <ng-pluralize count="indexVM.results.hits.total" when="{'0': '{{&quot;AVAILABLE&quot; | translate | uppercase}}', '1' : '{{&quot;AVAILABLE&quot; | translate | uppercase}}', 'other' : '{{&quot;AVAILABLES&quot; | translate | uppercase}}'}"></ng-pluralize>
                 </div>
                 <div class="search-filters">
-                    <button mat-button>{{'RESET_FILTERS' | translate}}</button>
+                    <md-button>{{'RESET_FILTERS' | translate}}</md-button>
                 </div>
             </div>
             <my-resource-card ng-repeat="resource in indexVM.results.hits.hits" resource="resource" />
