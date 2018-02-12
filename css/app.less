@@ -313,29 +313,46 @@ ul#menu_appli {
 /* Header */
 
 .header {
+    height: 200px;
     position: relative;
     .title {
-        position: absolute;
-        top: 0;
+        background-attachment: scroll;
+        background-color: #ffffff;
+        background-image: url("/images/header.jpg");
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-size: cover;
         > div {
             left: 50%;
             position: absolute;
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
             width: 50%;
+            @media screen and (max-width: 960px) {
+                width: 90%
+            }
             > h1 {
                 text-align: center;
+                @media screen and (max-width: 960px) {
+                    margin: 5px 0;
+                }
                 a {
                     color: white;
                     font-family: inconsolata-bold;
                     font-size: 42px;
                     line-height: 30px;
                     text-decoration: none;
+                    @media screen and (max-width: 960px) {
+                        font-size: 30px;
+                    }
                 }
             }
         }
         .search-bar {
             background-color: white;
+            @media screen and (max-width: 960px) {
+                margin: 8px 0;
+            }
             .search-icon {
                 color: @red;
                 left: 5px;
