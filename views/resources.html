@@ -19,20 +19,16 @@
         <div layout="column" flex-gt-sm="30">
             <div class="facet subjects-facet">
                 <h3>{{'SUBJECTS' | translate | uppercase}}</h3>
-                <ul class="nav nav-list subjects" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(subjects.size)" layout="column">
-                    <li ng-repeat="subject in aggResult.buckets">
-                        <label eui-filter="ejs.TermsFilter('subjects', subject.key)">
-                            <span ng-class="{'filter-enable' : filter.enabled, 'filter-disable' : !filter.enabled}" ng-click="clickOnFacet('subjects', subject.key, filter.enabled)">
-                                <span class="key">{{subject.key | translate}}</span>
-                                <span class="muted count">{{subject.doc_count}}</span>
-                            </span>
-                        </label>
-                    </li>
+                <div class="nav nav-list subjects" eui-aggregation="ejs.TermsAggregation('subjects').field('subjects').size(subjects.size)" layout="column">
+                    <md-checkbox ng-repeat="subject in aggResult.buckets" eui-filter="ejs.TermsFilter('subjects', subject.key)" ng-model="filter.enabled" aria-label="{{subject.key | translate}}" ng-click="clickOnFacet('subjects', subject.key, filter.enabled)" md-no-ink>
+                        <span class="key">{{subject.key | translate}}</span>
+                        <span class="muted count">{{subject.doc_count}}</span>
+                    </md-checkbox>
                     <md-button class="more" ng-click="subjectsToogle()" md-no-ink>
                         {{subjects.label}}
                         <md-icon>{{subjects.icon}}</md-icon>
                     </md-button>
-                </ul>
+                </div>
             </div>
             <md-divider></md-divider>
             <div class="facet">
