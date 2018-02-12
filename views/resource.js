@@ -14,6 +14,8 @@ app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'e
         $scope.previousUrl = (typeof store.get('previousUrl') == 'undefined' ? '#/resources' : store.get('previousUrl'));
 
         $scope.init = function() {
+            // Scroll to the top of the page
+            $(document).scrollTop(0);
             es.client.search({
                 index: 'downtime',
                 size: 1000,
