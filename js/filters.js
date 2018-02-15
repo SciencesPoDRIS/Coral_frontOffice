@@ -22,10 +22,13 @@ app.filter('getAccessTypeIcon', [function() {
                 break;
             case 'National licenses - local and remote access':
                 tmp = 'national_licenses.png';
+                break;
             case 'Open access':
                 tmp = 'open_access.png';
+                break;
             default:
                 tmp = '';
+                break;
         }
         return tmp;
     };
