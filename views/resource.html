@@ -7,9 +7,6 @@
     <div class="page-content">
         <!-- Downtimes / Issues -->
         <div ng-if="downtimes.length > 0" class="font-red downtimes" layout="column" layout-gt-sm="row">
-            <div class="font-bold" flex="100" flex-gt-sm="20">
-                {{'DOWNTIME' | translate}}
-            </div>
             <div ng-repeat="downtime in downtimes">
                 {{'OUT_OF_ORDER' | translate}} : {{downtime._source.shortname | translate}} {{'FROM' | translate}} {{downtime._source.startdate | date : $parent.dateFormat}} {{'TO' | translate}} {{downtime._source.enddate | date : $parent.dateFormat}}.
                 <br/ >
