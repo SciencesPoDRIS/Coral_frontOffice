@@ -128,5 +128,6 @@
     "HEADER_SCHEDULE" : "Schedule",
     "HEADER_SCHEDULE_LINK" : "http://www.sciencespo.fr/bibliotheque/en/search/inmedia",
     "RESET_FILTERS" : "Reset filters",
-    "National licenses - local and remote access" : "National licenses - local and remote access"
+    "National licenses - local and remote access" : "National licenses - local and remote access",
+    "Open access" : "Open access"
 }

@@ -22,6 +22,8 @@ app.filter('getAccessTypeIcon', [function() {
                 break;
             case 'National licenses - local and remote access':
                 tmp = 'national_licenses.png';
+            case 'Open access':
+                tmp = 'open_access.png';
             default:
                 tmp = '';
         }
