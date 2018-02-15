@@ -20,6 +20,8 @@ app.filter('getAccessTypeIcon', [function() {
             case 'Restricted access':
                 tmp = 'access_restricted.png';
                 break;
+            case 'National licenses - local and remote access':
+                tmp = 'national_licenses.png';
             default:
                 tmp = '';
         }
