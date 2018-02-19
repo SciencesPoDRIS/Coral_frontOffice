@@ -40,7 +40,8 @@ gulp.task('js', function() {
       'js/services.js',
       'views/welcome.js',
       'views/subjects.js',
-      'views/resource.js'
+      'views/resource.js',
+      'views/resources.js'
      ],
       {base: 'bower_components/'}
     )
@@ -84,8 +85,7 @@ gulp.task('assets', function() {
     ]).pipe(gulp.dest('dist/css'));
     // Other JS files that cannot be concatened
     gulp.src([
-      'js/app.js',
-      'views/resources.js'
+      'js/app.js'
     ]).pipe(gulp.dest('dist/js'));
 });
 
@@ -94,7 +94,7 @@ gulp.task('serve', function() {
     browserSync.init({ server: '.' });
     gulp.watch(['js/*.js', 'views/*.js', '!js/app.js', '!views/resources.js'], ['js']);
     gulp.watch('css/app.less', ['css']);
-    gulp.watch(['js/app.js', 'views/resources.js', 'languages/*.json'], ['assets']);
+    gulp.watch(['js/app.js', 'languages/*.json'], ['assets']);
     gulp.watch(['partials/*.html', 'views/*.html', 'dist/**/*']).on('change', browserSync.reload);
 });
 
