@@ -13,6 +13,17 @@ app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'e
         // Get previousUrl through store service
         $scope.previousUrl = (typeof store.get('previousUrl') == 'undefined' ? '#/resources' : store.get('previousUrl'));
 
+        getTimestamp = function(date) {
+            year = parseInt(date.split("T")[0].split("-")[0]);
+            month = parseInt(date.split("T")[0].split("-")[1]);
+            day = parseInt(date.split("T")[0].split("-")[2]);
+            hour = parseInt(date.split("T")[1].split(":")[0]);
+            minute = parseInt(date.split("T")[1].split(":")[1]);
+            second = parseInt(date.split("T")[1].split(":")[2].split(".")[0]);
+            millisecond = parseInt(date.split("T")[1].split(":")[2].split(".")[1].replace('Z', ''));
+            return new Date(year, month - 1, day, hour, minute, second, millisecond).getTime();
+        }
+
         $scope.init = function() {
             // Scroll to the top of the page
             $(document).scrollTop(0);
@@ -27,9 +38,9 @@ app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'e
                 $scope.downtimes = [];
                 response.hits.hits.map(function(obj, index) {
                     // Translate startdate attribute into timestamp
-                    obj._source.starttimestamp = new Date(obj._source.startdate.split('T')[0]).getTime();
+                    obj._source.starttimestamp = getTimestamp(obj._source.startdate);
                     // Translate enddate attribute into timestamp
-                    obj._source.endtimestamp = new Date(obj._source.enddate.split('T')[0]).getTime();
+                    obj._source.endtimestamp = getTimestamp(obj._source.enddate);
                     // If the downtime is currently valid, add it to the scope
                     if((obj._source.starttimestamp < Date.now()) && (Date.now() < obj._source.endtimestamp)) {
                         $scope.downtimes.push(obj);

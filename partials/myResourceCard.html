@@ -11,7 +11,8 @@
         <div ng-if="resource._source.status == 'new'" class="status font-red">
             {{'NEW' | translate}}
         </div>
-        <div ng-if="count > 0" class="status font-red">
+        <div ng-if="count > 0" class="status font-red outoforder">
+            <img ng-src="images/warning.png" alt="Warning" class="icon-lg">
             {{'OUT_OF_ORDER' | translate}}
         </div>
         <div ng-if="resource._source.accesstype == 'Restricted access'" class="access-restricted">
