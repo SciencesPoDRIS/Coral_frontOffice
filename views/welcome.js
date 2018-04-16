@@ -12,7 +12,7 @@ app.controller('WelcomeController', ['$scope', 'es',
             index: 'resource',
             body: ejs.Request()
                 .query(ejs.MatchQuery('status', 'highlight'))
-                .sort(ejs.Sort('title_fr_notanalyzed').asc())
+                .sort(ejs.Sort('title_fr.raw').asc())
         }, function(error, response) {
             $scope.highlighted = response.hits.hits;
         });
@@ -22,7 +22,7 @@ app.controller('WelcomeController', ['$scope', 'es',
             index: 'resource',
             body: ejs.Request()
                 .query(ejs.MatchQuery('status', 'trial'))
-                .sort(ejs.Sort('title_fr_notanalyzed').asc())
+                .sort(ejs.Sort('title_fr.raw').asc())
         }, function(error, response) {
             $scope.trial = response.hits.hits;
         });
@@ -32,7 +32,7 @@ app.controller('WelcomeController', ['$scope', 'es',
             index: 'resource',
             body: ejs.Request()
                 .query(ejs.MatchQuery('status', 'new'))
-                .sort(ejs.Sort('title_fr_notanalyzed').asc())
+                .sort(ejs.Sort('title_fr.raw').asc())
         }, function(error, response) {
             $scope.new = response.hits.hits;
         });

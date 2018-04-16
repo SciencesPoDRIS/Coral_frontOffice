@@ -125,12 +125,12 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
             switch(lang) {
                 case 'en' :
                     searchFields = ['title_en', 'description_en', 'alias'];
-                    sortField = 'title_en_notanalyzed';
+                    sortField = 'title_en.raw';
                     break;
                 case 'fr' :
                 default :
                     searchFields = ['title_fr', 'description_fr', 'alias'];
-                    sortField = 'title_fr_notanalyzed';
+                    sortField = 'title_fr.raw';
                     break;
             }
             // Sort the results on the title
