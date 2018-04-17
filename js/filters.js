@@ -1,4 +1,6 @@
-/* Filters */
+(function() {
+
+// js/filters
 
 'use strict';
 
@@ -54,3 +56,5 @@ app.filter('truncateOwnFilter', [function () {
         return input
     };
 }]);
+
+})();

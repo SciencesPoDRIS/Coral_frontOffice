@@ -1,3 +1,7 @@
+(function() {
+
+// js/app.js
+
 'use strict';
 
 var app = angular.module('eResources', [
@@ -78,6 +82,8 @@ app.config(['$locationProvider', function($locationProvider) {
 }]);
 
 // Set the Google Analytics UA to plug
-app.config(['$analyticsProvider', 'GA_UA', function($analyticsProvider, GA_UA) {
-    $analyticsProvider.settings.ga.account = GA_UA;
-}]);
+// app.config(['$analyticsProvider', 'GA_UA', function($analyticsProvider, GA_UA) {
+//     $analyticsProvider.settings.ga.account = GA_UA;
+// }]);
+
+})();

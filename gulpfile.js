@@ -33,15 +33,16 @@ gulp.task('js', function() {
       'bower_components/angular-sanitize/angular-sanitize.min.js',
       'bower_components/angulartics/dist/angulartics.min.js',
       'bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js',
+      'js/app.js',
       'js/conf.js',
       'js/directives.js',
       'js/elasticui.min.js',
       'js/filters.js',
       'js/services.js',
-      'views/welcome.js',
-      'views/subjects.js',
       'views/resource.js',
-      'views/resources.js'
+      'views/resources.js',
+      'views/subjects.js',
+      'views/welcome.js'
      ],
       {base: 'bower_components/'}
     )
@@ -83,18 +84,14 @@ gulp.task('assets', function() {
       'bower_components/material-design-icons/iconfont/MaterialIcons-Regular.ttf',
       'fonts/georgia.ttf'
     ]).pipe(gulp.dest('dist/css'));
-    // Other JS files that cannot be concatened
-    gulp.src([
-      'js/app.js'
-    ]).pipe(gulp.dest('dist/js'));
 });
 
 // Launch server with livereload
 gulp.task('serve', function() {
     browserSync.init({ server: '.' });
-    gulp.watch(['js/*.js', 'views/*.js', '!js/app.js', '!views/resources.js'], ['js']);
+    gulp.watch(['js/*.js', 'views/*.js'], ['js']);
     gulp.watch('css/app.less', ['css']);
-    gulp.watch(['js/app.js', 'languages/*.json'], ['assets']);
+    gulp.watch(['languages/*.json'], ['assets']);
     gulp.watch(['partials/*.html', 'views/*.html', 'dist/**/*']).on('change', browserSync.reload);
 });
 

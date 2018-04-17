@@ -1,4 +1,6 @@
-/* Services */
+(function() {
+
+// js/services
 
 'use strict';
 
@@ -100,3 +102,5 @@ app.factory('store', [function() {
         remove: remove
     }
 }]);
+
+})();

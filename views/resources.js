@@ -1,3 +1,7 @@
+(function() {
+
+// views/resources.js
+
 'use strict';
 
 var app = angular.module('eResources.resources', []);
@@ -186,3 +190,5 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
         }, 500);
     }
 ]);
+
+})();

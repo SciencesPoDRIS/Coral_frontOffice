@@ -1,3 +1,7 @@
+(function() {
+
+// views/resource.js
+
 'use strict';
 
 var app = angular.module('eResources.resource', []);
@@ -63,3 +67,5 @@ app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'e
         $scope.init();
     }
 ]);
+
+})();

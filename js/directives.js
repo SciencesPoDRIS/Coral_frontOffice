@@ -1,4 +1,6 @@
-/* Directives */
+(function() {
+
+// js/directives.js
 
 'use strict';
 
@@ -111,3 +113,5 @@ app.directive('mySearchBar', ['addFilterToUrl', 'removeFilterFromUrl', function(
         }
     }
 }]);
+
+})();
