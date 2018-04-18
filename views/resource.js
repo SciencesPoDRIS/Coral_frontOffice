@@ -17,7 +17,7 @@ app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'e
         // Get previousUrl through store service
         $scope.previousUrl = (typeof store.get('previousUrl') == 'undefined' ? '#/resources' : store.get('previousUrl'));
 
-        getTimestamp = function(date) {
+        var getTimestamp = function(date) {
             year = parseInt(date.split("T")[0].split("-")[0]);
             month = parseInt(date.split("T")[0].split("-")[1]);
             day = parseInt(date.split("T")[0].split("-")[2]);
@@ -52,6 +52,7 @@ app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'e
                 });
             });
         };
+
         $scope.$watch('indexVM.results.hits.hits', function() {
             if($scope.indexVM && $scope.indexVM.results && $scope.indexVM.results.hits && $scope.indexVM.results.hits.hits) {
                 $scope.tutos = [];
