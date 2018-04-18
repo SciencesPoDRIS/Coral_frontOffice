@@ -36,6 +36,7 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                 });
             }, 0)
         }
+
         $scope.sites = {
             'show': false,
             'size': 5,
@@ -51,6 +52,7 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                 $scope.sites.label = ($scope.sites.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
             }, 0);
         }
+
         $scope.subjects = {
             'show': false,
             'size': 5,
@@ -66,6 +68,7 @@ app.controller('ResourcesController', ['$scope', 'es', '$filter', '$timeout', '$
                 $scope.subjects.label = ($scope.subjects.show ? $filter('translate')('LESS') : $filter('translate')('MORE'));
             }, 0);
         }
+
         $scope.types = {
             'show': false,
             'size': 5,
