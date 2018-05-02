@@ -18,13 +18,13 @@ app.controller('ResourceController', ['$scope', '$translate', '$routeParams', 'e
         $scope.previousUrl = (typeof store.get('previousUrl') == 'undefined' ? '#/resources' : store.get('previousUrl'));
 
         var getTimestamp = function(date) {
-            year = parseInt(date.split("T")[0].split("-")[0]);
-            month = parseInt(date.split("T")[0].split("-")[1]);
-            day = parseInt(date.split("T")[0].split("-")[2]);
-            hour = parseInt(date.split("T")[1].split(":")[0]);
-            minute = parseInt(date.split("T")[1].split(":")[1]);
-            second = parseInt(date.split("T")[1].split(":")[2].split(".")[0]);
-            millisecond = parseInt(date.split("T")[1].split(":")[2].split(".")[1].replace('Z', ''));
+            var year = parseInt(date.split("T")[0].split("-")[0]);
+            var month = parseInt(date.split("T")[0].split("-")[1]);
+            var day = parseInt(date.split("T")[0].split("-")[2]);
+            var hour = parseInt(date.split("T")[1].split(":")[0]);
+            var minute = parseInt(date.split("T")[1].split(":")[1]);
+            var second = parseInt(date.split("T")[1].split(":")[2].split(".")[0]);
+            var millisecond = parseInt(date.split("T")[1].split(":")[2].split(".")[1].replace('Z', ''));
             return new Date(year, month - 1, day, hour, minute, second, millisecond).getTime();
         }
 
